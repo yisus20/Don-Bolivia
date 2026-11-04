@@ -1,0 +1,57 @@
+1:"$Sreact.fragment"
+2:"/_next/static/chunks/33bq3p83pbm65.js"
+3:"/_next/static/chunks/31i1rodw9li8s.js"
+4:I[19449,["$2","$3"],"NavBar"]
+5:I[39756,["$2","$3"],"default"]
+6:I[37457,["$2","$3"],"default"]
+7:I[13642,["$2","$3"],"Footer"]
+18:"ViewportBoundary"
+19:I[97367,["$2","$3"],"$18"]
+1a:"MetadataBoundary"
+1b:I[97367,["$2","$3"],"$1a"]
+1c:"$Sreact.suspense"
+:HL["/_next/static/chunks/0_7rhnsx0dc4j.css","style"]
+:HL["/_next/static/chunks/2yod-l_so2nvi.css","style"]
+:HL["https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap","style"]
+8:T450,M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413za:X
+11:X
+11:C
+15:[["children",{"s":"__PAGE__","h":160,"d":{"r":"$L16","p":"$@17","v":null,"s":"$a"}}]]
+12:[["children",{"s":"nuevo","h":96,"d":{"r":"$L13","p":"$@14","v":"$11","s":"$a"},"c":"$Q15"}]]
+e:[["children",{"s":"productos","h":96,"d":{"r":"$Lf","p":"$@10","v":"$11","s":"$a"},"c":"$Q12"}]]
+b:[["children",{"s":"admin","h":96,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/2yod-l_so2nvi.css","precedence":"next"}]],["$","html",null,{"lang":"es","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}],["$","link",null,{"href":"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap","rel":"stylesheet"}]]}],["$","body",null,{"style":{"fontFamily":"'Inter', sans-serif","background":"#F4F4F2","margin":0,"padding":0},"children":"$Lc"}]]}]]}],"p":"$@d","v":null,"s":"$a"},"c":"$Qe"}]]
+0:{"t":{"t":{"s":"","h":80,"d":{"r":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/0_7rhnsx0dc4j.css","precedence":"next"}],["$","script","script-0",{"src":"/_next/static/chunks/33bq3p83pbm65.js","async":true}],["$","script","script-1",{"src":"/_next/static/chunks/31i1rodw9li8s.js","async":true}]],["$","html",null,{"lang":"es","children":[["$","head",null,{"children":[["$","link",null,{"rel":"preconnect","href":"https://fonts.googleapis.com"}],["$","link",null,{"rel":"preconnect","href":"https://fonts.gstatic.com","crossOrigin":"anonymous"}]]}],["$","body",null,{"children":[["$","$L4",null,{}],["$","main",null,{"children":["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}],"notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]]}]}],["$","$L7",null,{}],["$","a",null,{"href":"https://wa.me/59171234567?text=%C2%A1Hola%2C%20Don%20Bolivia!%20Quisiera%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos.","target":"_blank","rel":"noopener noreferrer","className":"whatsapp-float","aria-label":"Contactar a Don Bolivia por WhatsApp","title":"Consultar por WhatsApp","children":["$","svg",null,{"width":"26","height":"26","viewBox":"0 0 24 24","fill":"white","aria-hidden":"true","children":["$","path",null,{"d":"$8"}]}]}]]}]]}]]}],"p":"$@9","v":null,"s":"$a"},"c":"$Qb"},"h":{"r":["$","$1","h",{"children":[null,["$","$L19",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L1b",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$1c",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Administración – Don Bolivia | Don Bolivia"}],["$","meta","1",{"name":"description","content":"Bajos, guitarras, pedales y accesorios musicales en Cochabamba, Bolivia. Marcas Sire, Donner y Magma. Consulta por WhatsApp."}],["$","meta","2",{"name":"keywords","content":"instrumentos musicales,bajos,guitarras,Cochabamba,Bolivia,Sire,Donner,Magma,pedales,accesorios"}],"$L1d","$L1e","$L1f","$L20","$L21","$L22","$L23","$L24","$L25","$L26","$L27","$L28"]}]}],null]}],null]}],"p":"$@29","v":null,"s":"$a"}},"a":"$@2a","u":"$@2b","b":"dPHSpdORICZkg_NMWuhKD"}
+2c:I[47257,["$2","$3"],"ClientPageRoot"]
+2d:"/_next/static/chunks/1j2_cu2mmjkl4.js"
+2e:I[10066,["$2","$3","$2d"],"default"]
+31:I[97367,["$2","$3"],"OutletBoundary"]
+33:I[27201,["$2","$3"],"IconMark"]
+c:["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]
+f:["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}]
+13:["$","$1","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}]
+16:["$","$1","c",{"children":[["$","$L2c",null,{"Component":"$2e","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@2f","$@30"]}}],[["$","script","script-0",{"src":"/_next/static/chunks/1j2_cu2mmjkl4.js","async":true}]],["$","$L31",null,{"children":["$","$1c",null,{"name":"Next.MetadataOutlet","children":"$@32"}]}]]}]
+1d:["$","meta","3",{"name":"robots","content":"noindex, nofollow"}]
+1e:["$","meta","4",{"property":"og:title","content":"Don Bolivia – Instrumentos y accesorios musicales"}]
+1f:["$","meta","5",{"property":"og:description","content":"Tu próximo instrumento está en Don Bolivia. Bajos, guitarras, pedales y accesorios en Cochabamba, Bolivia."}]
+20:["$","meta","6",{"property":"og:url","content":"https://don-bolivia.com/"}]
+21:["$","meta","7",{"property":"og:site_name","content":"Don Bolivia"}]
+22:["$","meta","8",{"property":"og:locale","content":"es_BO"}]
+23:["$","meta","9",{"property":"og:type","content":"website"}]
+24:["$","meta","10",{"name":"twitter:card","content":"summary"}]
+25:["$","meta","11",{"name":"twitter:title","content":"Don Bolivia – Instrumentos y accesorios musicales"}]
+26:["$","meta","12",{"name":"twitter:description","content":"Tu próximo instrumento está en Don Bolivia. Bajos, guitarras, pedales y accesorios en Cochabamba, Bolivia."}]
+27:["$","link","13",{"rel":"icon","href":"/favicon.ico?favicon.117ezoe8m31dk.ico","sizes":"48x48","type":"image/x-icon"}]
+28:["$","$L33","14",{}]
+a:300
+2f:{}
+30:"$16:props:children:0:props:serverProvidedParams:params"
+32:null
+2b:true
+a:C
+2a:0
+14:"$undefined"
+10:"$undefined"
+d:"$undefined"
+9:"$undefined"
+29:"$undefined"
+17:"$undefined"

@@ -1,0 +1,9 @@
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Block direct access to source and config files
+  RewriteRule ^src(/.*)?$ - [F,L]
+  RewriteRule ^(package(-lock)?\.json|tsconfig\.json|next\.config\.ts|eslint\.config\.mjs)$ - [F,L]
+</IfModule>

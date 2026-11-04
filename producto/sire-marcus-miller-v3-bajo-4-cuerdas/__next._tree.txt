@@ -1,0 +1,5 @@
+:HL["/_next/static/chunks/0_7rhnsx0dc4j.css","style"]
+3:[["children",{"s":"__PAGE__","h":160}]]
+2:[["children",{"s":{"n":"slug","t":"d","k":"sire-marcus-miller-v3-bajo-4-cuerdas","s":[]},"h":96,"c":"$Q3"}]]
+1:[["children",{"s":"producto","h":96,"c":"$Q2"}]]
+0:{"b":"dPHSpdORICZkg_NMWuhKD","t":{"t":{"s":"","h":80,"c":"$Q1"}}}

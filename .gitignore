@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+
+# Dependencies & Build
+node_modules/
+dist/
+.env
+.env.*
+
+# Agent skills & local config
+.agents/
+.claude/
+agent/
+skills-lock.json
+*.pdf

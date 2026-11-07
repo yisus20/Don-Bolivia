@@ -1,9 +1,10 @@
 'use client'
-import { useState, useMemo, useEffect } from 'react'
-import { Search, SlidersHorizontal, X } from 'lucide-react'
+
+import React, { useState, useMemo, useEffect } from 'react'
+import { Search, X, ArrowUpRight, SlidersHorizontal } from 'lucide-react'
 import { ProductCard } from '@/components/ProductCard'
 import { STATIC_PRODUCTS, STATIC_CATEGORIES, STATIC_BRANDS } from '@/lib/data'
-import type { Product } from '@/types'
+import { useStoreInteractive } from '@/components/StoreInteractiveProvider'
 
 interface CatalogClientProps {
   initialCategory?: string
@@ -12,20 +13,30 @@ interface CatalogClientProps {
 
 type SortOption = 'relevance' | 'name_asc' | 'name_desc' | 'price_asc' | 'price_desc'
 
+const SORT_OPTIONS: { value: SortOption; label: string }[] = [
+  { value: 'relevance', label: 'Destacados' },
+  { value: 'name_asc', label: 'Nombre A – Z' },
+  { value: 'name_desc', label: 'Nombre Z – A' },
+  { value: 'price_asc', label: 'Menor precio' },
+  { value: 'price_desc', label: 'Mayor precio' },
+]
+
 export function CatalogClient({ initialCategory, initialBrand }: CatalogClientProps) {
+  const { openWhatsApp } = useStoreInteractive()
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState(initialCategory || '')
   const [brand, setBrand] = useState(initialBrand || '')
   const [sort, setSort] = useState<SortOption>('relevance')
-  const [showFilters, setShowFilters] = useState(false)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
     const params = new URLSearchParams(window.location.search)
     const urlCategory = params.get('category')
     const urlBrand = params.get('brand')
+    const urlQuery = params.get('q')
     if (urlCategory && !initialCategory) setCategory(urlCategory)
     if (urlBrand && !initialBrand) setBrand(urlBrand)
+    if (urlQuery) setSearch(urlQuery)
   }, [initialCategory, initialBrand])
 
   const publishedProducts = useMemo(
@@ -33,15 +44,20 @@ export function CatalogClient({ initialCategory, initialBrand }: CatalogClientPr
     []
   )
 
-  // Get available categories and brands from published products
   const availableCategories = useMemo(() => {
     const ids = new Set(publishedProducts.map(p => p.category_id))
-    return STATIC_CATEGORIES.filter(c => c.active && ids.has(c.id))
+    return STATIC_CATEGORIES.filter(c => c.active && ids.has(c.id)).map(cat => ({
+      ...cat,
+      count: publishedProducts.filter(p => p.category_id === cat.id).length,
+    }))
   }, [publishedProducts])
 
   const availableBrands = useMemo(() => {
     const ids = new Set(publishedProducts.map(p => p.brand_id))
-    return STATIC_BRANDS.filter(b => b.active && ids.has(b.id))
+    return STATIC_BRANDS.filter(b => b.active && ids.has(b.id)).map(br => ({
+      ...br,
+      count: publishedProducts.filter(p => p.brand_id === br.id).length,
+    }))
   }, [publishedProducts])
 
   const filtered = useMemo(() => {
@@ -49,13 +65,14 @@ export function CatalogClient({ initialCategory, initialBrand }: CatalogClientPr
     const q = search.toLowerCase().trim()
 
     if (q) {
-      results = results.filter(p =>
-        p.name.toLowerCase().includes(q) ||
-        p.model?.toLowerCase().includes(q) ||
-        p.brand?.name.toLowerCase().includes(q) ||
-        p.description_short?.toLowerCase().includes(q) ||
-        p.category?.name.toLowerCase().includes(q) ||
-        p.subcategory?.toLowerCase().includes(q)
+      results = results.filter(
+        p =>
+          p.name.toLowerCase().includes(q) ||
+          p.model?.toLowerCase().includes(q) ||
+          p.brand?.name.toLowerCase().includes(q) ||
+          p.description_short?.toLowerCase().includes(q) ||
+          p.category?.name.toLowerCase().includes(q) ||
+          p.subcategory?.toLowerCase().includes(q)
       )
     }
 
@@ -69,7 +86,6 @@ export function CatalogClient({ initialCategory, initialBrand }: CatalogClientPr
       if (br) results = results.filter(p => p.brand_id === br.id)
     }
 
-    // Sort
     switch (sort) {
       case 'name_asc':
         results.sort((a, b) => a.name.localeCompare(b.name, 'es'))
@@ -84,7 +100,6 @@ export function CatalogClient({ initialCategory, initialBrand }: CatalogClientPr
         results.sort((a, b) => (b.price ?? -Infinity) - (a.price ?? -Infinity))
         break
       default:
-        // relevance: featured first, then by order
         results.sort((a, b) => {
           if (a.featured && !b.featured) return -1
           if (!a.featured && b.featured) return 1
@@ -95,7 +110,7 @@ export function CatalogClient({ initialCategory, initialBrand }: CatalogClientPr
     return results
   }, [publishedProducts, search, category, brand, sort])
 
-  const hasActiveFilters = search || category || brand || sort !== 'relevance'
+  const hasActiveFilters = Boolean(search || category || brand || sort !== 'relevance')
 
   function clearFilters() {
     setSearch('')
@@ -105,153 +120,178 @@ export function CatalogClient({ initialCategory, initialBrand }: CatalogClientPr
   }
 
   return (
-    <>
-      {/* Search + filter bar */}
-      <div
-        style={{
-          background: 'white',
-          borderBottom: '1px solid var(--color-gray-200)',
-          padding: '1rem 0',
-          position: 'sticky',
-          top: '64px',
-          zIndex: 50,
-        }}
-      >
-        <div className="container">
-          <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', flexWrap: 'wrap' }}>
-            {/* Search */}
-            <div className="search-wrapper" style={{ flex: '1 1 200px' }}>
-              <Search size={16} className="search-icon" aria-hidden="true" />
+    <div className="lux-catalog-shell">
+      <div className="lux-catalog-container">
+        {/* Always-Visible Filter Panel */}
+        <section className="lux-filter-panel" aria-label="Filtros del catálogo">
+          <div className="lux-filter-panel__top">
+            <div className="lux-filter-panel__title-wrap">
+              <SlidersHorizontal size={15} className="lux-filter-panel__icon" />
+              <span className="lux-filter-panel__heading">FILTRAR CATÁLOGO</span>
+              <span className="lux-catalog-count">
+                ({filtered.length} {filtered.length === 1 ? 'instrumento' : 'instrumentos'})
+              </span>
+            </div>
+
+            {/* Search Input */}
+            <div className="lux-catalog-search">
+              <Search size={15} className="lux-catalog-search__icon" aria-hidden="true" />
               <input
                 type="search"
-                className="search-input"
-                placeholder="Buscar por nombre, marca, modelo…"
+                className="lux-catalog-search__input"
+                placeholder="Buscar por modelo, serie o marca..."
                 value={search}
                 onChange={e => setSearch(e.target.value)}
                 aria-label="Buscar productos"
                 id="catalog-search"
               />
+              {search && (
+                <button
+                  type="button"
+                  onClick={() => setSearch('')}
+                  className="lux-catalog-search__clear"
+                  aria-label="Limpiar búsqueda"
+                >
+                  <X size={13} />
+                </button>
+              )}
             </div>
 
-            {/* Mobile filter toggle */}
-            <button
-              className="btn btn-secondary btn-sm"
-              onClick={() => setShowFilters(!showFilters)}
-              aria-expanded={showFilters}
-              id="catalog-filter-toggle"
-              style={{ whiteSpace: 'nowrap' }}
-            >
-              <SlidersHorizontal size={14} />
-              Filtros
-            </button>
-
-            {/* Sort */}
-            <select
-              className="form-select"
-              style={{ maxWidth: '180px', padding: '0.5rem 0.75rem', fontSize: '0.875rem' }}
-              value={sort}
-              onChange={e => setSort(e.target.value as SortOption)}
-              aria-label="Ordenar productos"
-              id="catalog-sort"
-            >
-              <option value="relevance">Relevancia</option>
-              <option value="name_asc">Nombre A–Z</option>
-              <option value="name_desc">Nombre Z–A</option>
-              <option value="price_asc">Precio menor a mayor</option>
-              <option value="price_desc">Precio mayor a menor</option>
-            </select>
-
             {hasActiveFilters && (
-              <button className="btn btn-ghost btn-sm" onClick={clearFilters} aria-label="Limpiar filtros" id="catalog-clear-filters">
-                <X size={14} /> Limpiar
+              <button
+                type="button"
+                onClick={clearFilters}
+                className="lux-catalog-reset"
+                id="catalog-clear-filters"
+              >
+                <X size={13} />
+                <span>Limpiar filtros</span>
               </button>
             )}
           </div>
 
-          {/* Filter chips */}
-          {showFilters && (
-            <div style={{ marginTop: '0.75rem', display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-              {/* Category chips */}
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-gray-500)', alignSelf: 'center', marginRight: '0.25rem' }}>
-                Categoría:
-              </span>
-              <button
-                className={`filter-chip ${!category ? 'filter-chip--active' : ''}`}
-                onClick={() => setCategory('')}
-                id="filter-category-all"
-              >
-                Todos
-              </button>
-              {availableCategories.map(cat => (
+          <div className="lux-filter-panel__rows">
+            {/* Row 1: Categorías */}
+            <div className="lux-filter-group">
+              <span className="lux-filter-group__label">CATEGORÍA</span>
+              <div className="lux-filter-group__chips" role="group" aria-label="Filtrar por categoría">
                 <button
-                  key={cat.id}
-                  className={`filter-chip ${category === cat.slug ? 'filter-chip--active' : ''}`}
-                  onClick={() => setCategory(cat.slug)}
-                  id={`filter-category-${cat.slug}`}
+                  type="button"
+                  onClick={() => setCategory('')}
+                  className={`lux-filter-pill ${!category ? 'lux-filter-pill--active' : ''}`}
+                  id="filter-category-all"
                 >
-                  {cat.name}
+                  <span>Todas</span>
+                  <span className="lux-filter-pill__num">{publishedProducts.length}</span>
                 </button>
-              ))}
-
-              {/* Brand chips */}
-              <span style={{ fontSize: '0.75rem', fontWeight: 600, color: 'var(--color-gray-500)', alignSelf: 'center', marginLeft: '0.5rem', marginRight: '0.25rem' }}>
-                Marca:
-              </span>
-              <button
-                className={`filter-chip ${!brand ? 'filter-chip--active' : ''}`}
-                onClick={() => setBrand('')}
-                id="filter-brand-all"
-              >
-                Todas
-              </button>
-              {availableBrands.map(br => (
-                <button
-                  key={br.id}
-                  className={`filter-chip ${brand === br.slug ? 'filter-chip--active' : ''}`}
-                  onClick={() => setBrand(br.slug)}
-                  id={`filter-brand-${br.slug}`}
-                >
-                  {br.name}
-                </button>
-              ))}
+                {availableCategories.map(cat => (
+                  <button
+                    key={cat.id}
+                    type="button"
+                    onClick={() => setCategory(prev => (prev === cat.slug ? '' : cat.slug))}
+                    className={`lux-filter-pill ${
+                      category === cat.slug ? 'lux-filter-pill--active' : ''
+                    }`}
+                    id={`filter-category-${cat.slug}`}
+                  >
+                    <span>{cat.name}</span>
+                    <span className="lux-filter-pill__num">{cat.count}</span>
+                  </button>
+                ))}
+              </div>
             </div>
-          )}
-        </div>
-      </div>
 
-      {/* Results */}
-      <div className="container" style={{ paddingBlock: '1.5rem 3rem' }}>
-        <div style={{ marginBottom: '1rem', fontSize: '0.875rem', color: 'var(--color-gray-500)' }}>
-          {filtered.length === 0
-            ? null
-            : `${filtered.length} ${filtered.length === 1 ? 'producto' : 'productos'}`}
-        </div>
+            {/* Row 2: Marcas & Orden */}
+            <div className="lux-filter-panel__split">
+              <div className="lux-filter-group">
+                <span className="lux-filter-group__label">MARCA OFICIAL</span>
+                <div className="lux-filter-group__chips" role="group" aria-label="Filtrar por marca">
+                  <button
+                    type="button"
+                    onClick={() => setBrand('')}
+                    className={`lux-filter-pill ${!brand ? 'lux-filter-pill--active' : ''}`}
+                    id="filter-brand-all"
+                  >
+                    <span>Todas</span>
+                  </button>
+                  {availableBrands.map(br => (
+                    <button
+                      key={br.id}
+                      type="button"
+                      onClick={() => setBrand(prev => (prev === br.slug ? '' : br.slug))}
+                      className={`lux-filter-pill ${
+                        brand === br.slug ? 'lux-filter-pill--active' : ''
+                      }`}
+                      id={`filter-brand-${br.slug}`}
+                    >
+                      <span>{br.name}</span>
+                      <span className="lux-filter-pill__num">{br.count}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
 
+              <div className="lux-filter-group">
+                <span className="lux-filter-group__label">ORDENAR POR</span>
+                <div className="lux-filter-group__chips" role="group" aria-label="Ordenar productos">
+                  {SORT_OPTIONS.map(opt => (
+                    <button
+                      key={opt.value}
+                      type="button"
+                      onClick={() => setSort(opt.value)}
+                      className={`lux-filter-pill ${
+                        sort === opt.value ? 'lux-filter-pill--active' : ''
+                      }`}
+                      id={`sort-${opt.value}`}
+                    >
+                      <span>{opt.label}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Results Grid */}
         {filtered.length > 0 ? (
-          <div className="products-grid">
+          <div className="lux-catalog-grid">
             {filtered.map(product => (
               <ProductCard key={product.id} product={product} showWhatsApp />
             ))}
           </div>
         ) : (
-          <div style={{ textAlign: 'center', padding: '4rem 1rem' }}>
-            <p style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.5rem' }}>
-              Sin resultados
+          <div className="lux-catalog-empty">
+            <h3 className="lux-catalog-empty__title">
+              No encontramos instrumentos con ese filtro.
+            </h3>
+            <p className="lux-catalog-empty__desc">
+              Prueba con otra palabra clave o consúltanos directamente por WhatsApp para encargos especiales.
             </p>
-            <p style={{ color: 'var(--color-gray-500)', marginBottom: '1.5rem' }}>
-              No encontramos productos con esos criterios. Prueba con otra búsqueda o contáctanos directamente.
-            </p>
-            <a
-              href="https://wa.link/um8fsd"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-whatsapp"
-            >
-              Consultar por WhatsApp
-            </a>
+            <div className="lux-catalog-empty__actions">
+              <button
+                type="button"
+                onClick={clearFilters}
+                className="lux-btn-outline-sm"
+              >
+                Ver todo el catálogo
+              </button>
+              <button
+                type="button"
+                onClick={() =>
+                  openWhatsApp(
+                    'Hola Don Bolivia! Busco un instrumento específico que no encontré en el catálogo web.'
+                  )
+                }
+                className="lux-btn-dark"
+              >
+                <span>Consultar por WhatsApp</span>
+                <ArrowUpRight size={15} />
+              </button>
+            </div>
           </div>
         )}
       </div>
-    </>
+    </div>
   )
 }

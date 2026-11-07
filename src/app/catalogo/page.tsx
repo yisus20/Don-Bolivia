@@ -3,49 +3,28 @@ import { CatalogClient } from '@/components/CatalogClient'
 
 export const metadata: Metadata = {
   title: 'Catálogo – Instrumentos y accesorios musicales',
-  description: 'Explora todo el catálogo de Don Bolivia. Bajos, guitarras, pedales, accesorios y más. Consulta por WhatsApp.',
+  description:
+    'Explora todo el catálogo de Don Bolivia. Bajos Sire Marcus Miller, guitarras Larry Carlton, pedales Donner, cuerdas Magma y más.',
 }
 
 export default function CatalogPage() {
   return (
-    <>
-      <div
-        style={{
-          borderBottom: '1px solid var(--color-gray-200)',
-          padding: '2.5rem 0 2rem',
-          background: 'white',
-        }}
-      >
-        <div className="container">
-          <span
-            style={{
-              fontSize: '0.6875rem',
-              fontWeight: 700,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: 'var(--color-red)',
-              display: 'block',
-              marginBottom: '0.5rem',
-            }}
-          >
-            Catálogo 2025–2026
-          </span>
-          <h1
-            style={{
-              fontSize: 'clamp(2rem, 4vw, 3rem)',
-              fontWeight: 900,
-              letterSpacing: '-0.035em',
-              marginBottom: '0.625rem',
-            }}
-          >
-            Instrumentos y accesorios
+    <div className="lux-page">
+      <section className="lux-page-hero bordeaux-lacquer" aria-label="Encabezado de catálogo">
+        <div className="db-grain-bordeaux" />
+        <div className="lux-page-hero__inner">
+          <span className="lux-eyebrow lux-eyebrow--light">CATÁLOGO OFICIAL · BOLIVIA</span>
+          <h1 className="lux-page-hero__title">
+            Instrumentos y accesorios seleccionados.
           </h1>
-          <p style={{ fontSize: '1.0625rem', color: 'var(--color-gray-500)', maxWidth: '520px' }}>
-            Bajos, guitarras, pedales y más. Consulta precios y disponibilidad directamente por WhatsApp.
+          <p className="lux-page-hero__sub">
+            Bajos Sire Marcus Miller, guitarras Larry Carlton, pedales Donner y cuerdas Magma.
+            Consulta stock y precio actualizado directamente con nuestro equipo.
           </p>
         </div>
-      </div>
+      </section>
+
       <CatalogClient />
-    </>
+    </div>
   )
 }

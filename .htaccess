@@ -7,3 +7,4 @@ ErrorDocument 404 /404.html
   RewriteRule ^src(/.*)?$ - [F,L]
   RewriteRule ^(package(-lock)?\.json|tsconfig\.json|next\.config\.ts|eslint\.config\.mjs)$ - [F,L]
 </IfModule>
+

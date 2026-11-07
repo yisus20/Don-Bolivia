@@ -1,83 +1,156 @@
 'use client'
 
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { MapPin } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/data'
-import { buildWhatsAppLinkGeneric } from '@/lib/whatsapp'
-import { MapPin, MessageCircle } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { DonLogo } from '@/components/DonLogo'
+import { useStoreInteractive } from '@/components/StoreInteractiveProvider'
 
 export function Footer() {
-  const waLink = buildWhatsAppLinkGeneric()
-  const [year, setYear] = useState(2026)
+  const pathname = usePathname()
+  const { openWhatsApp } = useStoreInteractive()
 
-  useEffect(() => {
-    setYear(new Date().getFullYear())
-  }, [])
+  if (pathname.startsWith('/admin')) return null
 
   return (
-    <footer className="footer" role="contentinfo">
-      <div className="container">
-        <div className="footer__grid">
-          {/* Brand */}
-          <div>
-            <div className="footer__logo">DON <span>BOLIVIA</span></div>
-            <p className="footer__tagline">
-              Instrumentos y accesorios musicales en Cochabamba. Para quienes se toman la música en serio.
+    <footer className="lux-footer" role="contentinfo">
+      <div className="lux-footer__inner">
+        <div className="lux-footer__grid">
+          {/* Col 1: DON Bass Logo */}
+          <div className="lux-footer__col lux-footer__col--brand">
+            <Link href="/" aria-label="Don Bolivia - Inicio">
+              <DonLogo variant="white" />
+            </Link>
+            <p className="lux-footer__disclaimer">
+              «Don Bolivia no se hace responsable por bandas que se disolvieron después de comprar
+              instrumentos caros, ni por vecinos intolerantes a las frecuencias graves.»
             </p>
-            <div style={{ marginTop: '1.5rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
-              <MapPin size={14} style={{ color: 'rgba(254,255,250,0.4)', marginTop: '2px', flexShrink: 0 }} />
-              <span style={{ fontSize: '0.8125rem', color: 'rgba(254,255,250,0.5)', lineHeight: 1.5 }}>
-                {CONTACT_INFO.address}<br />
-                {CONTACT_INFO.city}, {CONTACT_INFO.country}
-              </span>
+          </div>
+
+          {/* Col 2: Navegación */}
+          <div className="lux-footer__col">
+            <h4 className="lux-footer__heading">Navegación</h4>
+            <ul className="lux-footer__links">
+              <li>
+                <Link href="/" className="lux-footer__link">
+                  Inicio
+                </Link>
+              </li>
+              <li>
+                <Link href="/catalogo" className="lux-footer__link">
+                  Catálogo
+                </Link>
+              </li>
+              <li>
+                <Link href="/nosotros" className="lux-footer__link">
+                  Nosotros
+                </Link>
+              </li>
+              <li>
+                <Link href="/contacto" className="lux-footer__link">
+                  Contacto
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 3: Contacto */}
+          <div className="lux-footer__col">
+            <h4 className="lux-footer__heading">Contacto</h4>
+            <div className="lux-footer__contact">
+              <button
+                type="button"
+                onClick={() =>
+                  openWhatsApp(
+                    'Hola Don Bolivia, quisiera consultar por instrumentos disponibles en tienda.'
+                  )
+                }
+                className="lux-footer__contact-item lux-footer__contact-btn"
+              >
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{ flexShrink: 0, marginTop: '2px' }}
+                >
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+                <span>Consultar por WhatsApp</span>
+              </button>
+
+              <div className="lux-footer__contact-item">
+                <MapPin size={17} strokeWidth={1.75} style={{ flexShrink: 0, marginTop: '2px' }} />
+                <span>
+                  {CONTACT_INFO.address}
+                  <br />
+                  {CONTACT_INFO.city}, {CONTACT_INFO.country}
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Catálogo */}
-          <div>
-            <div className="footer__heading">Catálogo</div>
-            <nav className="footer__links" aria-label="Links de catálogo">
-              <Link href="/catalogo" className="footer__link">Todo el catálogo</Link>
-              <Link href="/catalogo/bajos" className="footer__link">Bajos</Link>
-              <Link href="/catalogo/guitarras" className="footer__link">Guitarras</Link>
-              <Link href="/catalogo/pedales-efectos" className="footer__link">Pedales y efectos</Link>
-              <Link href="/catalogo/accesorios" className="footer__link">Accesorios</Link>
-              <Link href="/catalogo/otros-instrumentos" className="footer__link">Otros instrumentos</Link>
-            </nav>
-          </div>
-
-          {/* Info */}
-          <div>
-            <div className="footer__heading">Don Bolivia</div>
-            <nav className="footer__links" aria-label="Links informativos">
-              <Link href="/nosotros" className="footer__link">Nosotros</Link>
-              <Link href="/contacto" className="footer__link">Contacto</Link>
+          {/* Col 4: Síguenos */}
+          <div className="lux-footer__col lux-footer__col--last">
+            <h4 className="lux-footer__heading">Síguenos</h4>
+            <div className="lux-footer__socials">
+              {/* Instagram */}
               <a
-                href={waLink}
+                href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="footer__link"
-                style={{ display: 'flex', alignItems: 'center', gap: '0.375rem' }}
+                className="lux-footer__social-icon"
+                aria-label="Instagram de Don Bolivia"
               >
-                <MessageCircle size={14} />
-                WhatsApp
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
               </a>
-            </nav>
+              {/* TikTok */}
+              <a
+                href="https://tiktok.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lux-footer__social-icon"
+                aria-label="TikTok de Don Bolivia"
+              >
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                  <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                </svg>
+              </a>
+              {/* YouTube */}
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="lux-footer__social-icon"
+                aria-label="YouTube de Don Bolivia"
+              >
+                <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                  <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                  <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
 
-        <div className="footer__bottom">
-          <span className="footer__copy">
-            © {year} Don Bolivia · Cochabamba, Bolivia
-          </span>
-          <a
-            href={waLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ fontSize: '0.75rem', color: 'rgba(254,255,250,0.4)', textDecoration: 'none' }}
+        <div className="lux-footer__bottom">
+          <span>© 2026 DON BOLIVIA · SHOWROOM COCHABAMBA & ENVÍOS A TODA BOLIVIA</span>
+          <button
+            type="button"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="lux-footer__top-btn"
           >
-            Consultas por WhatsApp
-          </a>
+            VOLVER ARRIBA ↑
+          </button>
         </div>
       </div>
     </footer>

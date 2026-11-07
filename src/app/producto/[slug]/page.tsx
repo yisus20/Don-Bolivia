@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { MessageCircle, ArrowLeft, Tag } from 'lucide-react'
+import { ArrowUpRight, Check } from 'lucide-react'
 import { ProductGallery } from '@/components/ProductGallery'
 import { ProductCard } from '@/components/ProductCard'
 import { STATIC_PRODUCTS, getProductBySlug, getRelatedProducts } from '@/lib/data'
@@ -12,9 +12,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return STATIC_PRODUCTS
-    .filter(p => p.status === 'published')
-    .map(p => ({ slug: p.slug }))
+  return STATIC_PRODUCTS.filter(p => p.status === 'published').map(p => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -23,7 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) return {}
   return {
     title: `${product.name} – Don Bolivia`,
-    description: product.description_short || `${product.name} disponible en Don Bolivia, Cochabamba.`,
+    description:
+      product.description_short || `${product.name} disponible en Don Bolivia, Cochabamba.`,
     openGraph: {
       title: `${product.name} | Don Bolivia`,
       description: product.description_short,
@@ -42,175 +41,133 @@ export default async function ProductPage({ params }: Props) {
   const waLink = buildWhatsAppLink(product, siteUrl)
 
   return (
-    <>
-      <div className="container" style={{ paddingBlock: '1.5rem' }}>
-        {/* Breadcrumb */}
-        <nav aria-label="Navegación de ruta" style={{ marginBottom: '1.5rem' }}>
-          <ol style={{ display: 'flex', gap: '0.375rem', fontSize: '0.8125rem', color: 'var(--color-gray-400)', listStyle: 'none', flexWrap: 'wrap' }}>
-            <li><Link href="/" style={{ color: 'inherit', textDecoration: 'none' }}>Inicio</Link></li>
-            <li aria-hidden="true">/</li>
-            <li><Link href="/catalogo" style={{ color: 'inherit', textDecoration: 'none' }}>Catálogo</Link></li>
-            {product.category && (
-              <>
-                <li aria-hidden="true">/</li>
-                <li>
-                  <Link
-                    href={`/catalogo/${product.category.slug}`}
-                    style={{ color: 'inherit', textDecoration: 'none' }}
-                  >
-                    {product.category.name}
-                  </Link>
-                </li>
-              </>
-            )}
-            <li aria-hidden="true">/</li>
-            <li aria-current="page" style={{ color: 'var(--color-text)', fontWeight: 500 }}>
-              {product.name}
-            </li>
-          </ol>
+    <div className="lux-page">
+      <div className="lux-curated-container" style={{ paddingBlock: 'clamp(2.25rem, 4vw, 3.5rem)' }}>
+        {/* Minimalist Breadcrumb */}
+        <nav className="lux-breadcrumb" aria-label="Navegación de ruta">
+          <Link href="/" className="lux-breadcrumb__link">
+            Inicio
+          </Link>
+          <span className="lux-breadcrumb__sep">/</span>
+          <Link href="/catalogo" className="lux-breadcrumb__link">
+            Catálogo
+          </Link>
+          {product.category && (
+            <>
+              <span className="lux-breadcrumb__sep">/</span>
+              <Link
+                href={`/catalogo/${product.category.slug}`}
+                className="lux-breadcrumb__link"
+              >
+                {product.category.name}
+              </Link>
+            </>
+          )}
+          <span className="lux-breadcrumb__sep">/</span>
+          <span className="lux-breadcrumb__current">{product.name}</span>
         </nav>
 
-        {/* Product grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr',
-            gap: '3rem',
-            marginBottom: '4rem',
-          }}
-        >
-          <style>{`@media(min-width:768px){#product-detail-grid{grid-template-columns:1fr 1fr;}}`}</style>
-          <div id="product-detail-grid" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '3rem' }}>
-            {/* Gallery */}
-            <div>
-              <ProductGallery product={product} />
+        {/* Product Detail Split */}
+        <div className="lux-product-detail">
+          <div className="lux-product-detail__gallery">
+            <ProductGallery product={product} />
+          </div>
+
+          <div className="lux-product-detail__info">
+            <div className="lux-curated-card__top" style={{ justifyContent: 'flex-start', gap: '0.6rem' }}>
+              {product.brand && (
+                <span className="lux-curated-card__tag">{product.brand.name}</span>
+              )}
+              {product.category && (
+                <span className="lux-curated-card__count">{product.category.name}</span>
+              )}
+              {product.model && (
+                <span className="lux-curated-card__count">Modelo {product.model}</span>
+              )}
             </div>
 
-            {/* Info */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              {/* Brand + category */}
-              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                {product.brand && (
-                  <span className="tag tag-red">{product.brand.name}</span>
-                )}
-                {product.category && (
-                  <span className="tag tag-brand">{product.category.name}</span>
-                )}
-                {product.featured && (
-                  <span className="tag" style={{ background: '#FFF3CD', color: '#856404' }}>Destacado</span>
-                )}
-              </div>
+            <h1 className="lux-product-detail__title">{product.name}</h1>
 
-              {/* Name */}
-              <div>
-                <h1 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.25rem)', fontWeight: 800, letterSpacing: '-0.03em', lineHeight: 1.1, marginBottom: '0.375rem' }}>
-                  {product.name}
-                </h1>
-                {product.model && (
-                  <p style={{ fontSize: '1rem', color: 'var(--color-gray-500)', fontWeight: 500 }}>
-                    Modelo: {product.model}
-                  </p>
-                )}
-              </div>
+            {product.description_short && (
+              <p className="lux-product-detail__lead">{product.description_short}</p>
+            )}
 
-              {/* Description */}
-              {product.description_short && (
-                <p style={{ fontSize: '1.0625rem', color: 'var(--color-gray-600)', lineHeight: 1.65 }}>
-                  {product.description_short}
-                </p>
-              )}
-
-              {/* Price */}
-              <div
-                style={{
-                  padding: '1.25rem',
-                  background: 'var(--color-gray-100)',
-                  borderRadius: '4px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '1rem',
-                }}
-              >
+            {/* Bordeaux Lacquer Consultation Box */}
+            <div className="lux-product-consult bordeaux-lacquer">
+              <div className="db-grain-bordeaux" />
+              <div className="lux-product-consult__inner">
                 <div>
-                  <div style={{ fontSize: '0.6875rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--color-gray-400)', marginBottom: '0.25rem' }}>
-                    Precio referencial
-                  </div>
+                  <span className="lux-curated-card__tag lux-curated-card__tag--light">
+                    DISPONIBILIDAD &amp; COTIZACIÓN
+                  </span>
                   {product.price ? (
-                    <div style={{ fontSize: '1.75rem', fontWeight: 900, letterSpacing: '-0.03em', color: 'var(--color-text)' }}>
-                      {product.price.toLocaleString('es-BO')}
-                      <span style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--color-gray-400)', marginLeft: '0.375rem' }}>
-                        {product.currency}
-                      </span>
+                    <div className="lux-product-consult__price">
+                      ${product.price.toLocaleString('es-BO')}{' '}
+                      <span>{product.currency}</span>
                     </div>
                   ) : (
-                    <div style={{ fontSize: '1.25rem', fontWeight: 600, color: 'var(--color-gray-400)', fontStyle: 'italic' }}>
-                      Consultar precio
+                    <div className="lux-product-consult__price">
+                      Stock bajo consulta directa
                     </div>
                   )}
-                </div>
-                <div style={{ fontSize: '0.75rem', color: 'var(--color-gray-400)', textAlign: 'right', maxWidth: '160px', lineHeight: 1.4 }}>
-                  Precios de referencia. Confirma disponibilidad por WhatsApp.
-                </div>
-              </div>
-
-              {/* WhatsApp CTA */}
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-whatsapp btn-lg"
-                style={{ justifyContent: 'center' }}
-                id="product-whatsapp-cta"
-              >
-                <MessageCircle size={20} />
-                Consultar por WhatsApp
-              </a>
-
-              {/* Long description */}
-              {product.description_long && (
-                <div>
-                  <h2 style={{ fontSize: '0.6875rem', fontWeight: 700, marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--color-gray-400)' }}>
-                    Descripción
-                  </h2>
-                  <p style={{ fontSize: '0.9375rem', color: 'var(--color-gray-600)', lineHeight: 1.7 }}>
-                    {product.description_long}
+                  <p className="lux-product-consult__note">
+                    Atención personalizada en Cochabamba y envíos asegurados a La Paz y toda
+                    Bolivia.
                   </p>
                 </div>
-              )}
+
+                <a
+                  href={waLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="lux-btn-cream-sm"
+                  id="product-whatsapp-cta"
+                >
+                  <span>Consultar este modelo por WhatsApp</span>
+                  <ArrowUpRight size={16} />
+                </a>
+              </div>
             </div>
+
+            {product.description_long && (
+              <div className="lux-product-detail__section">
+                <h2 className="lux-curated-card__tag">ACERCA DE ESTE INSTRUMENTO</h2>
+                <p className="lux-product-detail__copy">{product.description_long}</p>
+              </div>
+            )}
+
+            <ul className="lux-product-detail__perks">
+              <li>
+                <Check size={14} />
+                <span>Inspección y calibración previa a la entrega</span>
+              </li>
+              <li>
+                <Check size={14} />
+                <span>Garantía oficial Don Bolivia</span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* Specs */}
+        {/* Technical Specs */}
         {product.specs && product.specs.length > 0 && (
-          <section style={{ marginBottom: '4rem' }} aria-label="Especificaciones técnicas">
-            <h2 style={{ fontSize: '1.25rem', fontWeight: 800, letterSpacing: '-0.02em', marginBottom: '1rem' }}>
-              Especificaciones técnicas
-            </h2>
-            <div
-              style={{
-                border: '1px solid var(--color-gray-200)',
-                borderRadius: '4px',
-                overflow: 'hidden',
-              }}
-            >
+          <section className="lux-specs-section" aria-label="Especificaciones técnicas">
+            <div className="lux-curated-header" style={{ marginBottom: '1.75rem' }}>
+              <div>
+                <span className="lux-eyebrow">FICHA TÉCNICA</span>
+                <h2 className="lux-heading-lg" style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.2rem)' }}>
+                  Especificaciones del instrumento.
+                </h2>
+              </div>
+            </div>
+
+            <div className="lux-specs-table">
               {product.specs.map((spec, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr 2fr',
-                    padding: '0.75rem 1rem',
-                    borderBottom: idx < product.specs.length - 1 ? '1px solid var(--color-gray-100)' : 'none',
-                    background: idx % 2 === 0 ? 'white' : 'var(--color-gray-100)',
-                  }}
-                >
-                  <span style={{ fontSize: '0.8125rem', fontWeight: 600, color: 'var(--color-gray-500)' }}>
-                    {spec.key}
-                  </span>
-                  <span style={{ fontSize: '0.9375rem', color: 'var(--color-text)' }}>
-                    {spec.value}{spec.unit ? ` ${spec.unit}` : ''}
+                <div key={idx} className="lux-specs-row">
+                  <span className="lux-specs-row__key">{spec.key}</span>
+                  <span className="lux-specs-row__val">
+                    {spec.value}
+                    {spec.unit ? ` ${spec.unit}` : ''}
                   </span>
                 </div>
               ))}
@@ -218,39 +175,22 @@ export default async function ProductPage({ params }: Props) {
           </section>
         )}
 
-        {/* Notes / disclaimer */}
-        {product.notes && (
-          <div
-            style={{
-              padding: '1rem',
-              background: '#FFFBEB',
-              border: '1px solid #FDE68A',
-              borderRadius: '4px',
-              marginBottom: '3rem',
-              fontSize: '0.8125rem',
-              color: '#92400E',
-              display: 'flex',
-              gap: '0.5rem',
-              alignItems: 'flex-start',
-            }}
-          >
-            <Tag size={14} style={{ flexShrink: 0, marginTop: '1px' }} />
-            <span>{product.notes}</span>
-          </div>
-        )}
-
-        {/* Related products */}
+        {/* Related Products */}
         {related.length > 0 && (
-          <section aria-label="Productos relacionados">
-            <div className="section-header">
-              <h2 className="section-header__title" style={{ fontSize: '1.25rem' }}>
-                También te puede interesar
-              </h2>
-              <Link href="/catalogo" className="section-header__link" style={{ fontSize: '0.8125rem' }}>
-                Ver todo →
+          <section className="lux-related-section" aria-label="Productos relacionados">
+            <div className="lux-curated-header">
+              <div>
+                <span className="lux-eyebrow">SELECCIÓN RELACIONADA</span>
+                <h2 className="lux-heading-lg" style={{ fontSize: 'clamp(1.6rem, 2.8vw, 2.2rem)' }}>
+                  También te puede interesar.
+                </h2>
+              </div>
+              <Link href="/catalogo" className="lux-link-subtle">
+                Ver catálogo completo ↗
               </Link>
             </div>
-            <div className="products-grid">
+
+            <div className="lux-catalog-grid">
               {related.map(p => (
                 <ProductCard key={p.id} product={p} showWhatsApp />
               ))}
@@ -258,6 +198,6 @@ export default async function ProductPage({ params }: Props) {
           </section>
         )}
       </div>
-    </>
+    </div>
   )
 }

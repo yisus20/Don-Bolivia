@@ -145,9 +145,15 @@ export function Footer() {
         <div className="lux-footer__bottom">
           <span>
             © 2026 Don Bolivia. Todos los derechos reservados · Desarrollado por{' '}
-            <strong style={{ color: 'rgba(255, 255, 255, 0.78)', fontWeight: 600 }}>
+            <a
+              href="https://xn--dimems-tta.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="lux-footer__dev-link"
+              title="Dime Más"
+            >
               Dime Más
-            </strong>
+            </a>
           </span>
           <button
             type="button"

@@ -76,7 +76,8 @@ const GLOBAL_SCHEMA = {
       contactPoint: {
         '@type': 'ContactPoint',
         contactType: 'customer service',
-        url: 'https://wa.link/um8fsd',
+        telephone: '+591-79326391',
+        url: 'https://wa.me/59179326391',
         areaServed: 'BO',
         availableLanguage: ['Spanish'],
       },
@@ -85,6 +86,7 @@ const GLOBAL_SCHEMA = {
       '@type': 'MusicStore',
       '@id': 'https://don-bolivia.com/#store',
       name: 'Don Bolivia',
+      telephone: '+591-79326391',
       description:
         'Tienda especializada en bajos eléctricos Marcus Miller by Sire, guitarras Larry Carlton, guitarras silenciosas y pedales Donner, pianos digitales, baterías electrónicas y cuerdas Magma en Cochabamba con envíos a toda Bolivia.',
       url: 'https://don-bolivia.com/',

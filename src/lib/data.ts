@@ -5,8 +5,8 @@
 
 import type { Product, Brand, Category, ProductImage, ProductSpec, Currency, AvailabilityStatus, ProductStatus } from '@/types'
 
-export const WHATSAPP_LINK = process.env.NEXT_PUBLIC_WHATSAPP_LINK || 'https://wa.link/um8fsd'
-export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '59171234567'
+export const WHATSAPP_LINK = process.env.NEXT_PUBLIC_WHATSAPP_LINK || 'https://wa.me/59179326391'
+export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '59179326391'
 export const EXCHANGE_RATE_BS = 12.05
 
 export const CONTACT_INFO = {

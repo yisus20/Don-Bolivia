@@ -4811,6 +4811,19 @@ h1, h2, h3, h4 {
     align-items: center;
   }
 }
+.lux-footer__dev-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 180ms ease, opacity 180ms ease;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.35);
+  padding-bottom: 1px;
+}
+.lux-footer__dev-link:hover {
+  color: #FFFFFF;
+  border-bottom-color: #FFFFFF;
+}
+
 .lux-footer__top-btn {
   font-family: var(--font-mono);
   font-size: 10px;

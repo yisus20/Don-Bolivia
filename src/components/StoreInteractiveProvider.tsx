@@ -131,7 +131,7 @@ export function StoreInteractiveProvider({ children }: { children: React.ReactNo
               />
 
               <p className="db-wa-modal__hint">
-                Puedes editar el texto arriba si quieres agregar algo. Al continuar, se abrirá WhatsApp directo con nuestro equipo en Cochabamba y La Paz. Sin bots.
+                Puedes editar el texto arriba si quieres agregar algo. Al continuar, se abrirá WhatsApp directo (+591 79326391) con nuestro equipo en Cochabamba y envíos a todo el país. Sin bots.
               </p>
 
               <div className="db-wa-modal__actions">

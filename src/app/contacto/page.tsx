@@ -58,7 +58,7 @@ export default function ContactoPage() {
 
               <div className="lux-curated-card__manifesto">
                 <h2 className="lux-curated-card__manifesto-title">
-                  Atención directa por WhatsApp.
+                  Atención directa por WhatsApp (+591 79326391).
                 </h2>
                 <p className="lux-curated-card__manifesto-copy">
                   Te asesoramos en vivo sobre stock real, comparativas de sonido entre modelos Sire

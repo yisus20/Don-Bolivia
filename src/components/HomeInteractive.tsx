@@ -136,6 +136,7 @@ export function HomeInteractive() {
         <div className="lux-marquee-viewport" role="region" aria-label="Carrusel de productos destacados">
           <div className="lux-marquee-track" key={selectedCategory}>
             {marqueeItems.map((product, index) => {
+              const isClone = index >= marqueeItems.length / 2
               const imgUrl =
                 customImages[product.id] ||
                 product.primary_image_url ||
@@ -148,6 +149,7 @@ export function HomeInteractive() {
                 <article
                   key={`${product.id}-${index}`}
                   className="lux-marquee-card"
+                  aria-hidden={isClone ? 'true' : undefined}
                 >
                   <Link
                     href={`/producto/${product.slug}`}
@@ -158,6 +160,7 @@ export function HomeInteractive() {
                           : 'lux-catalog-card__box--mono-light'
                         : ''
                     }`}
+                    tabIndex={isClone ? -1 : undefined}
                   >
                     {imgUrl ? (
                       <Image
@@ -192,8 +195,12 @@ export function HomeInteractive() {
                           ? ` · $${product.price.toLocaleString('es-BO', { minimumFractionDigits: 2 })} USD`
                           : ''}
                       </span>
-                      <Link href={`/producto/${product.slug}`}>
-                        <h3 className="lux-showcase-card__title">{product.name}</h3>
+                      <Link href={`/producto/${product.slug}`} tabIndex={isClone ? -1 : undefined}>
+                        {isClone ? (
+                          <div className="lux-showcase-card__title">{product.name}</div>
+                        ) : (
+                          <h3 className="lux-showcase-card__title">{product.name}</h3>
+                        )}
                       </Link>
                     </div>
 
@@ -364,7 +371,7 @@ export function HomeInteractive() {
                   MANIFIESTO DON BOLIVIA
                 </span>
                 <span className="lux-curated-card__count lux-curated-card__count--light">
-                  Cochabamba · La Paz
+                  Cochabamba
                 </span>
               </div>
 

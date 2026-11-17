@@ -151,7 +151,7 @@ export function InkFlutedHero() {
           >
             <span className="lux-ink-hero__line lux-ink-hero__line--1">
               Tu próximo instrumento
-            </span>
+            </span>{' '}
             <span className="lux-ink-hero__line lux-ink-hero__line--2">
               no se va a elegir solo.
             </span>

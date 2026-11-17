@@ -4,9 +4,19 @@ import { CONTACT_INFO } from '@/lib/data'
 import { buildWhatsAppLinkGeneric } from '@/lib/whatsapp'
 
 export const metadata: Metadata = {
-  title: 'Contacto – Don Bolivia',
+  title: 'Contacto y Ubicación en Cochabamba — Don Bolivia',
   description:
-    'Contacta a Don Bolivia en Cochabamba, Bolivia. Atención directa por WhatsApp para consultas de precios, pruebas de sonido y envíos a todo el país.',
+    'Visítanos en calle Buenos Aires casi Tarija #1527, Cochabamba, Bolivia o contáctanos por WhatsApp para precios, pruebas de sonido y envíos a todo el país.',
+  alternates: {
+    canonical: 'https://don-bolivia.com/contacto/',
+  },
+  openGraph: {
+    title: 'Contacto y Showroom en Cochabamba — Don Bolivia',
+    description:
+      'Atención directa por WhatsApp y showroom en Cochabamba (Buenos Aires casi Tarija #1527) con envíos asegurados a toda Bolivia.',
+    url: 'https://don-bolivia.com/contacto/',
+    type: 'website',
+  },
 }
 
 export default function ContactoPage() {

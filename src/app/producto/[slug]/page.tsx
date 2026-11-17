@@ -19,14 +19,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const product = getProductBySlug(slug)
   if (!product) return {}
+
+  const productUrl = `https://don-bolivia.com/producto/${product.slug}/`
+  const priceText = product.price ? ` — $${product.price.toFixed(2)} USD` : ''
+  const title = `${product.name}${priceText}`
+  const description =
+    product.description_short ||
+    `${product.name} disponible en Don Bolivia (Cochabamba con envíos a todo el país). Consulta existencias por WhatsApp.`
+
   return {
-    title: `${product.name} – Don Bolivia`,
-    description:
-      product.description_short || `${product.name} disponible en Don Bolivia, Cochabamba.`,
+    title,
+    description,
+    alternates: {
+      canonical: productUrl,
+    },
     openGraph: {
       title: `${product.name} | Don Bolivia`,
-      description: product.description_short,
-      images: product.primary_image_url ? [{ url: product.primary_image_url }] : [],
+      description,
+      url: productUrl,
+      type: 'website',
+      images: [
+        {
+          url: product.primary_image_url
+            ? `https://don-bolivia.com${product.primary_image_url}`
+            : 'https://don-bolivia.com/hero-instruments.jpg',
+          alt: product.name,
+        },
+      ],
     },
   }
 }
@@ -39,9 +58,96 @@ export default async function ProductPage({ params }: Props) {
   const related = getRelatedProducts(product, 4)
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://don-bolivia.com'
   const waLink = buildWhatsAppLink(product, siteUrl)
+  const productUrl = `https://don-bolivia.com/producto/${product.slug}/`
+  const imageUrl = product.primary_image_url
+    ? `https://don-bolivia.com${product.primary_image_url}`
+    : 'https://don-bolivia.com/hero-instruments.jpg'
+
+  // Validated Product + Offer + BreadcrumbList Schema.org JSON-LD
+  const productSchema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Inicio',
+            item: 'https://don-bolivia.com/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Catálogo',
+            item: 'https://don-bolivia.com/catalogo/',
+          },
+          ...(product.category
+            ? [
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: product.category.name,
+                  item: `https://don-bolivia.com/catalogo/${product.category.slug}/`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 4,
+                  name: product.name,
+                  item: productUrl,
+                },
+              ]
+            : [
+                {
+                  '@type': 'ListItem',
+                  position: 3,
+                  name: product.name,
+                  item: productUrl,
+                },
+              ]),
+        ],
+      },
+      {
+        '@type': 'Product',
+        '@id': `${productUrl}#product`,
+        name: product.name,
+        sku: product.model || product.id,
+        mpn: product.model || product.id,
+        description: product.description_long || product.description_short || product.name,
+        image: [imageUrl],
+        category: product.subcategory || product.category?.name || 'Musical Instruments',
+        brand: {
+          '@type': 'Brand',
+          name: product.brand?.name || 'Don Bolivia',
+        },
+        offers: {
+          '@type': 'Offer',
+          url: productUrl,
+          priceCurrency: 'USD',
+          price: product.price ? product.price.toFixed(2) : '0.00',
+          availability: 'https://schema.org/InStock',
+          itemCondition: 'https://schema.org/NewCondition',
+          seller: {
+            '@id': 'https://don-bolivia.com/#store',
+          },
+          shippingDetails: {
+            '@type': 'OfferShippingDetails',
+            shippingDestination: {
+              '@type': 'DefinedRegion',
+              addressCountry: 'BO',
+            },
+          },
+        },
+      },
+    ],
+  }
 
   return (
     <div className="lux-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
       <div className="lux-curated-container" style={{ paddingBlock: 'clamp(2.25rem, 4vw, 3.5rem)' }}>
         {/* Minimalist Breadcrumb */}
         <nav className="lux-breadcrumb" aria-label="Navegación de ruta">

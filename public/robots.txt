@@ -1,0 +1,31 @@
+# Don Bolivia — robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# Search & AI Answer Engine Crawlers (Citability Enabled)
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+
+User-agent: Applebot
+Allow: /
+Disallow: /admin/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-SearchBot
+Allow: /
+Disallow: /admin/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+
+Sitemap: https://don-bolivia.com/sitemap.xml

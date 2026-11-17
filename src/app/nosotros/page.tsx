@@ -5,9 +5,19 @@ import { buildWhatsAppLinkGeneric } from '@/lib/whatsapp'
 import { STATIC_BRANDS, STATIC_CATEGORIES, STATIC_PRODUCTS } from '@/lib/data'
 
 export const metadata: Metadata = {
-  title: 'Nosotros – Don Bolivia',
+  title: 'Nosotros — Manifiesto y Filosofía de Don Bolivia en Cochabamba',
   description:
-    'Conoce Don Bolivia. Instrumentos y accesorios musicales en Cochabamba con envíos a La Paz y toda Bolivia. Sire, Donner, Magma.',
+    'Hay que ahorrar. Hasta que aparece el instrumento correcto. Conoce Don Bolivia en Cochabamba con envíos a todo el país: distribuidores de Sire, Donner y Magma.',
+  alternates: {
+    canonical: 'https://don-bolivia.com/nosotros/',
+  },
+  openGraph: {
+    title: 'Nosotros — Manifiesto Don Bolivia',
+    description:
+      'El equipo no hace al músico. Pero ayuda a que se siente a tocar. Cochabamba y envíos al resto del país.',
+    url: 'https://don-bolivia.com/nosotros/',
+    type: 'website',
+  },
 }
 
 export default function NosotrosPage() {
@@ -21,17 +31,16 @@ export default function NosotrosPage() {
         <div className="db-grain-bordeaux" />
         <div className="lux-page-hero__inner">
           <span className="lux-eyebrow lux-eyebrow--light">
-            MANIFIESTO DON BOLIVIA · COCHABAMBA &amp; LA PAZ
+            MANIFIESTO DON BOLIVIA · COCHABAMBA
           </span>
           <h1 className="lux-page-hero__title">
-            La música no necesita más discursos.
+            Hay que ahorrar.
             <br />
-            Necesita buenos instrumentos.
+            Hasta que aparece el instrumento correcto.
           </h1>
           <p className="lux-page-hero__sub">
-            Seleccionamos bajos, guitarras, pedales y accesorios con criterio de estudio.
-            Trabajamos directamente con marcas oficiales para que en Bolivia toques con el mismo
-            estándar que afuera.
+            Llevas meses diciendo que no necesitas nada. Luego ves un bajo, una guitarra o un pedal
+            y “cuidar tu proceso creativo” pasa a ser una prioridad financiera.
           </p>
         </div>
       </section>
@@ -43,14 +52,24 @@ export default function NosotrosPage() {
             <div>
               <span className="lux-eyebrow">NUESTRA FILOSOFÍA</span>
               <h2 className="lux-heading-lg">
-                Curaduría real, sin relleno.
+                El equipo no hace al músico.
+                <br />
+                Pero ayuda a que se siente a tocar.
               </h2>
               <div className="lux-accent-bar lux-accent-bar--left" />
             </div>
-            <p className="lux-curated-header__lead">
-              Cada instrumento del catálogo pasa por revisión antes de entregarse en tienda en
-              Cochabamba o despacharse hacia La Paz y el resto del país.
-            </p>
+            <div className="lux-curated-header__lead" style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+              <p>
+                No vendemos la fantasía de que un instrumento nuevo va a solucionar todo. La canción
+                seguirá sin terminar y tus amigos seguirán preguntando cuándo sale.
+              </p>
+              <p>
+                Pero si igual vas a posponerla, al menos que sea con algo que suene bien.
+              </p>
+              <p style={{ fontWeight: 600, color: '#181818' }}>
+                Cochabamba y envíos al resto del país.
+              </p>
+            </div>
           </div>
 
           <div className="lux-stats-grid">
@@ -72,7 +91,7 @@ export default function NosotrosPage() {
               },
               {
                 value: 'BO',
-                label: 'Cochabamba · La Paz',
+                label: 'Cochabamba',
                 detail: 'Showroom en Cochabamba y envíos asegurados a todo el país.',
               },
             ].map(stat => (

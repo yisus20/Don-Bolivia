@@ -102,8 +102,13 @@ export default async function ProductPage({ params }: Props) {
                   </span>
                   {product.price ? (
                     <div className="lux-product-consult__price">
-                      ${product.price.toLocaleString('es-BO')}{' '}
+                      ${product.price.toLocaleString('es-BO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}{' '}
                       <span>{product.currency}</span>
+                      {product.price_bs && (
+                        <div style={{ fontSize: '1.05rem', color: 'rgba(250, 248, 245, 0.85)', marginTop: '0.25rem' }}>
+                          Bs {product.price_bs.toLocaleString('es-BO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (TC 12.05)
+                        </div>
+                      )}
                     </div>
                   ) : (
                     <div className="lux-product-consult__price">

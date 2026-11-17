@@ -1,11 +1,13 @@
-// Don Bolivia - Datos estáticos locales
-// Esta es la fuente de datos principal para cuando Supabase no está configurado
-// Los datos vienen directamente de los catálogos analizados
+// Don Bolivia - Catálogo Oficial sincronizado desde Google Sheets
+// Fuente: https://docs.google.com/spreadsheets/d/10CMdTQKjMuUzGU2dDLkIs4eT04pg1ZCfI0pRY3vsyAE
+// Tipo de cambio aplicado en planilla: 12.05 Bs/USD
+// Imágenes vacías por defecto para carga posterior desde el Dashboard de Administrador
 
-import type { Product, Brand, Category, ProductImage } from '@/types'
+import type { Product, Brand, Category, ProductImage, ProductSpec, Currency, AvailabilityStatus, ProductStatus } from '@/types'
 
 export const WHATSAPP_LINK = process.env.NEXT_PUBLIC_WHATSAPP_LINK || 'https://wa.link/um8fsd'
 export const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '59171234567'
+export const EXCHANGE_RATE_BS = 12.05
 
 export const CONTACT_INFO = {
   address: 'Buenos Aires casi Tarija #1527',
@@ -22,30 +24,30 @@ export const STATIC_BRANDS: Brand[] = [
     name: 'Sire',
     slug: 'sire',
     logo_url: '/brands/sire-logo.png',
-    description: 'Marcus Miller by Sire – Bajos y guitarras de alto rendimiento con diseño inspirado en el legendario bajista Marcus Miller.',
+    description: 'Marcus Miller & Larry Carlton by Sire – Bajos y guitarras de alto rendimiento con electrónica activa Heritage-3 y mástiles de arce tostado.',
     active: true,
-    created_at: '2025-01-01T00:00:00Z',
-    updated_at: '2025-01-01T00:00:00Z',
+    created_at: '2026-11-17T00:00:00Z',
+    updated_at: '2026-11-17T00:00:00Z',
   },
   {
     id: 'brand-donner',
     name: 'Donner',
     slug: 'donner',
     logo_url: '/brands/donner-logo.png',
-    description: 'Donner – Instrumentos, pedales, pianos digitales y accesorios para músicos de todos los niveles.',
+    description: 'Donner – Guitarras silenciosas HUSH, pedales multiefectos, pianos digitales, baterías electrónicas y monitores personales.',
     active: true,
-    created_at: '2025-01-01T00:00:00Z',
-    updated_at: '2025-01-01T00:00:00Z',
+    created_at: '2026-11-17T00:00:00Z',
+    updated_at: '2026-11-17T00:00:00Z',
   },
   {
     id: 'brand-magma',
     name: 'Magma',
     slug: 'magma',
     logo_url: '/brands/magma-logo.png',
-    description: 'Magma – Cuerdas y accesorios de calidad para instrumentos de cuerda.',
+    description: 'Magma Strings – Cuerdas profesionales y correas de cuero y polipropileno para bajo y guitarra.',
     active: true,
-    created_at: '2025-01-01T00:00:00Z',
-    updated_at: '2025-01-01T00:00:00Z',
+    created_at: '2026-11-17T00:00:00Z',
+    updated_at: '2026-11-17T00:00:00Z',
   },
 ]
 
@@ -54,60 +56,59 @@ export const STATIC_CATEGORIES: Category[] = [
     id: 'cat-bajos',
     name: 'Bajos',
     slug: 'bajos',
-    description: 'Bajos eléctricos de 4, 5 y 6 cuerdas. Desde modelos de entrada hasta instrumentos premium.',
+    description: 'Bajos eléctricos de 4, 5 y 6 cuerdas Marcus Miller by Sire. El precio base incluye gigbag oficial.',
     image_url: '/categories/bajos.jpg',
     active: true,
     order: 1,
-    created_at: '2025-01-01T00:00:00Z',
-    updated_at: '2025-01-01T00:00:00Z',
+    created_at: '2026-11-17T00:00:00Z',
+    updated_at: '2026-11-17T00:00:00Z',
   },
   {
     id: 'cat-guitarras',
     name: 'Guitarras',
     slug: 'guitarras',
-    description: 'Guitarras eléctricas, acústicas y clásicas para todos los estilos.',
+    description: 'Guitarras eléctricas Larry Carlton by Sire y guitarras viajeras/eléctricas Donner.',
     image_url: '/categories/guitarras.jpg',
     active: true,
     order: 2,
-    created_at: '2025-01-01T00:00:00Z',
-    updated_at: '2025-01-01T00:00:00Z',
+    created_at: '2026-11-17T00:00:00Z',
+    updated_at: '2026-11-17T00:00:00Z',
   },
   {
     id: 'cat-pedales',
     name: 'Pedales y efectos',
     slug: 'pedales-efectos',
-    description: 'Pedales de efectos, multiefectos y procesadores para guitarra y bajo.',
+    description: 'Procesadores multiefectos, modeladores de amplificador y preamplificadores acústicos Donner.',
     image_url: '/categories/pedales.jpg',
     active: true,
     order: 3,
-    created_at: '2025-01-01T00:00:00Z',
-    updated_at: '2025-01-01T00:00:00Z',
+    created_at: '2026-11-17T00:00:00Z',
+    updated_at: '2026-11-17T00:00:00Z',
   },
   {
     id: 'cat-accesorios',
     name: 'Accesorios',
     slug: 'accesorios',
-    description: 'Cuerdas, correas, monitores personales y accesorios para instrumentos.',
+    description: 'Encordados profesionales Magma, correas Sire y Magma, baquetas y amplificadores in-ear Donner.',
     image_url: '/categories/accesorios.jpg',
     active: true,
     order: 4,
-    created_at: '2025-01-01T00:00:00Z',
-    updated_at: '2025-01-01T00:00:00Z',
+    created_at: '2026-11-17T00:00:00Z',
+    updated_at: '2026-11-17T00:00:00Z',
   },
   {
     id: 'cat-otros',
     name: 'Otros instrumentos',
     slug: 'otros-instrumentos',
-    description: 'Pianos digitales, teclados, baterías electrónicas y más.',
+    description: 'Pianos digitales, controladores MIDI y baterías electrónicas Donner.',
     image_url: '/categories/otros.jpg',
     active: true,
     order: 5,
-    created_at: '2025-01-01T00:00:00Z',
-    updated_at: '2025-01-01T00:00:00Z',
+    created_at: '2026-11-17T00:00:00Z',
+    updated_at: '2026-11-17T00:00:00Z',
   },
 ]
 
-// Mapa de slugs de categoría a ID
 const CATEGORY_SLUG_MAP: Record<string, string> = {
   'bajos': 'cat-bajos',
   'guitarras': 'cat-guitarras',
@@ -122,1128 +123,4905 @@ const BRAND_NAME_MAP: Record<string, string> = {
   'Magma': 'brand-magma',
 }
 
-// Datos de productos extraídos de los catálogos
-// Fuente: Catálogo Sire 2025 y Catálogo Donner 2026
-const RAW_PRODUCTS = [
-  // ===== SIRE - BAJOS =====
+interface RawProductEntry {
+  id: string
+  name: string
+  slug: string
+  brand: string
+  category: string
+  subcategory: string
+  model: string
+  description_short: string
+  description_long: string
+  price: number
+  price_bs: number
+  currency: Currency
+  availability: AvailabilityStatus
+  status: ProductStatus
+  featured: boolean
+  specs: ProductSpec[]
+  images: { url: string; alt_text: string; is_primary: boolean; order: number }[]
+  source: string
+  notes: string
+}
+
+const RAW_PRODUCTS: RawProductEntry[] = [
   {
-    id: 'sire-d5-4c',
-    name: 'Marcus Miller by Sire D5',
-    slug: 'sire-marcus-miller-d5-bajo-4-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 4 cuerdas',
-    model: 'D5',
-    description_short: 'Bajo eléctrico de 4 cuerdas de la línea Marcus Miller by Sire, con sonido versátil y construcción de calidad.',
-    description_long: 'El D5 es parte de la línea Marcus Miller by Sire, reconocida mundialmente por ofrecer instrumentos de alta calidad a precios accesibles. Con pickups de diseño propio y electrónica activa, es ideal para músicos exigentes que buscan versatilidad tonal tanto en estudio como en escenario.',
-    price: 850,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: true,
-    specs: [
-      { key: 'Cuerdas', value: '4' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'D' },
+    "id": "sire-v7-alder-5-2nd-gen-bk",
+    "name": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — BK",
+    "slug": "sire-v7-alder-5-2nd-gen-bk",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V7 ALDER-5 (2nd Gen) · BK",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Black (BK). Precio base con gigbag: $1,355.00 USD (Bs 16,327.75) · Sin gigbag: $1,285.00 USD (Bs 15,484.25).",
+    "description_long": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — BK disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Black (BK). Precio base con gigbag: $1,355.00 USD (Bs 16,327.75) · Sin gigbag: $1,285.00 USD (Bs 15,484.25).",
+    "price": 1355.0,
+    "price_bs": 16327.75,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V7 ALDER-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Black (BK)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,355.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 16,327.75"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,285.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 15,484.25"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p003_img00.jpeg', alt_text: 'Sire D5 Marcus Miller Bass 4 cuerdas - vista frontal', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p003_img01.jpeg', alt_text: 'Sire D5 - detalle cabezal', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p003_img02.jpeg', alt_text: 'Sire D5 - detalle cuerpo', is_primary: false, order: 2 },
-      { url: '/catalog-images/sire/p003_img03.jpeg', alt_text: 'Sire D5 - vista lateral', is_primary: false, order: 3 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio de referencia: $850 USD según catálogo 2025.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,355.00 USD / Bs 16,327.75). Opción sin gigbag: $1,285.00 USD (Bs 15,484.25). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-m2-4c',
-    name: 'Marcus Miller by Sire M2',
-    slug: 'sire-marcus-miller-m2-bajo-4-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 4 cuerdas',
-    model: 'M2',
-    description_short: 'Bajo eléctrico de 4 cuerdas Marcus Miller by Sire M2, excelente relación calidad-precio.',
-    description_long: 'El M2 es uno de los modelos más accesibles de la línea Marcus Miller, ofreciendo el carácter sonoro característico de la serie a un precio de entrada. Construcción sólida, electrónica activa/pasiva y acabados cuidados.',
-    price: 745,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '4' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'M' },
+    "id": "sire-v7-alder-5-2nd-gen-ts",
+    "name": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — TS",
+    "slug": "sire-v7-alder-5-2nd-gen-ts",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V7 ALDER-5 (2nd Gen) · TS",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,355.00 USD (Bs 16,327.75) · Sin gigbag: $1,285.00 USD (Bs 15,484.25).",
+    "description_long": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — TS disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,355.00 USD (Bs 16,327.75) · Sin gigbag: $1,285.00 USD (Bs 15,484.25).",
+    "price": 1355.0,
+    "price_bs": 16327.75,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V7 ALDER-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Tobacco Sunburst (TS)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,355.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 16,327.75"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,285.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 15,484.25"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p004_img00.jpeg', alt_text: 'Sire M2 Bass 4 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p004_img01.jpeg', alt_text: 'Sire M2 - detalle', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p004_img02.jpeg', alt_text: 'Sire M2 - cuerpo', is_primary: false, order: 2 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio de referencia: $745 USD. NOTA: También aparece a $940 en otra página del catálogo - podría ser variante diferente. Verificar con proveedor.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,355.00 USD / Bs 16,327.75). Opción sin gigbag: $1,285.00 USD (Bs 15,484.25). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-p10dx-5c',
-    name: 'Marcus Miller by Sire P10DX',
-    slug: 'sire-marcus-miller-p10dx-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'P10DX',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller by Sire P10DX, modelo premium de la línea P.',
-    description_long: 'El P10DX es el modelo de mayor gama de la línea P de Marcus Miller by Sire. Con especificaciones de nivel profesional, electrónica activa de alta gama y acabados premium, es el instrumento para el músico más exigente.',
-    price: 2150,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: true,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'P' },
+    "id": "sire-v7-alder-5-2nd-gen-awh",
+    "name": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — AWH",
+    "slug": "sire-v7-alder-5-2nd-gen-awh",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V7 ALDER-5 (2nd Gen) · AWH",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Antique White (AWH). Precio base con gigbag: $1,355.00 USD (Bs 16,327.75) · Sin gigbag: $1,285.00 USD (Bs 15,484.25).",
+    "description_long": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — AWH disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Antique White (AWH). Precio base con gigbag: $1,355.00 USD (Bs 16,327.75) · Sin gigbag: $1,285.00 USD (Bs 15,484.25).",
+    "price": 1355.0,
+    "price_bs": 16327.75,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V7 ALDER-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Antique White (AWH)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,355.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 16,327.75"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,285.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 15,484.25"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p005_img00.jpeg', alt_text: 'Sire P10DX 5 cuerdas - vista frontal', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p005_img01.jpeg', alt_text: 'Sire P10DX - detalle', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p005_img03.jpeg', alt_text: 'Sire P10DX - cuerpo', is_primary: false, order: 2 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio de referencia: $2150 USD. Modelo premium.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,355.00 USD / Bs 16,327.75). Opción sin gigbag: $1,285.00 USD (Bs 15,484.25). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-p5-5c',
-    name: 'Marcus Miller by Sire P5',
-    slug: 'sire-marcus-miller-p5-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'P5',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller by Sire P5.',
-    description_long: 'El P5 ofrece las características de la serie P de Marcus Miller by Sire en formato de 5 cuerdas. Un balance excelente entre precio y prestaciones para el bajista que necesita el rango extendido del bajo B.',
-    price: 960,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'P' },
+    "id": "sire-v7-alder-5-2nd-gen-lpb",
+    "name": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — LPB",
+    "slug": "sire-v7-alder-5-2nd-gen-lpb",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V7 ALDER-5 (2nd Gen) · LPB",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Lake Placid Blue (LPB). Precio base con gigbag: $1,355.00 USD (Bs 16,327.75) · Sin gigbag: $1,285.00 USD (Bs 15,484.25).",
+    "description_long": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — LPB disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Lake Placid Blue (LPB). Precio base con gigbag: $1,355.00 USD (Bs 16,327.75) · Sin gigbag: $1,285.00 USD (Bs 15,484.25).",
+    "price": 1355.0,
+    "price_bs": 16327.75,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V7 ALDER-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Lake Placid Blue (LPB)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,355.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 16,327.75"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,285.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 15,484.25"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p006_img00.jpeg', alt_text: 'Sire P5 5 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p006_img01.jpeg', alt_text: 'Sire P5 - detalle', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p006_img02.jpeg', alt_text: 'Sire P5 - cuerpo', is_primary: false, order: 2 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio de referencia: $960 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,355.00 USD / Bs 16,327.75). Opción sin gigbag: $1,285.00 USD (Bs 15,484.25). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-p7-alder-4c',
-    name: 'Marcus Miller Alder by Sire P7',
-    slug: 'sire-marcus-miller-alder-p7-bajo-4-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 4 cuerdas',
-    model: 'P7 Alder',
-    description_short: 'Bajo eléctrico de 4 cuerdas Marcus Miller Alder by Sire P7, con cuerpo de aliso.',
-    description_long: 'El P7 Alder combina la construcción característica de la línea Marcus Miller con un cuerpo de aliso que aporta un carácter tonal brillante, articulado y equilibrado. Uno de los favoritos de la línea P.',
-    price: 965,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '4' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'P' },
-      { key: 'Cuerpo', value: 'Aliso (Alder)' },
+    "id": "sire-v7-vintage-alder-5-2nd-gen-bk",
+    "name": "Marcus Miller by Sire V7 VINTAGE ALDER-5 (2nd Gen) — BK",
+    "slug": "sire-v7-vintage-alder-5-2nd-gen-bk",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V7 VINTAGE ALDER-5 (2nd Gen) · BK",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Black (BK). Precio base con gigbag: $1,385.00 USD (Bs 16,689.25) · Sin gigbag: $1,315.00 USD (Bs 15,845.75).",
+    "description_long": "Marcus Miller by Sire V7 VINTAGE ALDER-5 (2nd Gen) — BK disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Black (BK). Precio base con gigbag: $1,385.00 USD (Bs 16,689.25) · Sin gigbag: $1,315.00 USD (Bs 15,845.75).",
+    "price": 1385.0,
+    "price_bs": 16689.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V7 VINTAGE ALDER-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Black (BK)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,385.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 16,689.25"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,315.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 15,845.75"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p007_img00.jpeg', alt_text: 'Sire P7 Alder 4 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p007_img02.jpeg', alt_text: 'Sire P7 Alder - detalle', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p007_img03.jpeg', alt_text: 'Sire P7 Alder - cuerpo', is_primary: false, order: 2 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio de referencia: $965 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,385.00 USD / Bs 16,689.25). Opción sin gigbag: $1,315.00 USD (Bs 15,845.75). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-u5-4c',
-    name: 'Marcus Miller by Sire U5',
-    slug: 'sire-marcus-miller-u5-bajo-4-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 4 cuerdas',
-    model: 'U5',
-    description_short: 'Bajo eléctrico de 4 cuerdas Marcus Miller by Sire U5.',
-    description_long: 'El U5 es parte de la línea U de Marcus Miller by Sire, diseñado para ofrecer versatilidad y calidad en un formato de 4 cuerdas. Ideal para músicos que buscan el sonido característico de Marcus Miller.',
-    price: 850,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '4' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'U' },
+    "id": "sire-v7-vintage-alder-5-2nd-gen-ts",
+    "name": "Marcus Miller by Sire V7 VINTAGE ALDER-5 (2nd Gen) — TS",
+    "slug": "sire-v7-vintage-alder-5-2nd-gen-ts",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V7 VINTAGE ALDER-5 (2nd Gen) · TS",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,385.00 USD (Bs 16,689.25) · Sin gigbag: $1,315.00 USD (Bs 15,845.75).",
+    "description_long": "Marcus Miller by Sire V7 VINTAGE ALDER-5 (2nd Gen) — TS disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,385.00 USD (Bs 16,689.25) · Sin gigbag: $1,315.00 USD (Bs 15,845.75).",
+    "price": 1385.0,
+    "price_bs": 16689.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V7 VINTAGE ALDER-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Tobacco Sunburst (TS)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,385.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 16,689.25"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,315.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 15,845.75"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p008_img00.jpeg', alt_text: 'Sire U5 4 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p008_img02.jpeg', alt_text: 'Sire U5 - detalle', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p008_img03.jpeg', alt_text: 'Sire U5 - cuerpo', is_primary: false, order: 2 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio de referencia: $850 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,385.00 USD / Bs 16,689.25). Opción sin gigbag: $1,315.00 USD (Bs 15,845.75). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-v10dx',
-    name: 'Marcus Miller by Sire V10DX',
-    slug: 'sire-marcus-miller-v10dx-bajo',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 4/5 cuerdas',
-    model: 'V10DX',
-    description_short: 'Bajo eléctrico premium Marcus Miller by Sire V10DX. Disponible en 4 cuerdas ($1,950) y 5 cuerdas ($2,150).',
-    description_long: 'El V10DX es el modelo de mayor rango de la línea V, con especificaciones de nivel profesional. Disponible en 4 y 5 cuerdas, ofrece el máximo rendimiento de la línea Marcus Miller by Sire.',
-    price: 1950,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: true,
-    specs: [
-      { key: 'Cuerdas', value: '4 o 5' },
-      { key: 'Precio 4 cuerdas', value: '$1,950 USD' },
-      { key: 'Precio 5 cuerdas', value: '$2,150 USD' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'V' },
+    "id": "sire-v7-vintage-swamp-ash-5-2nd-gen-nt",
+    "name": "Marcus Miller by Sire V7 VINTAGE SWAMP ASH-5 (2nd Gen) — NT",
+    "slug": "sire-v7-vintage-swamp-ash-5-2nd-gen-nt",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V7 VINTAGE SWAMP ASH-5 (2nd Gen) · NT",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Natural (NT). Precio base con gigbag: $1,637.00 USD (Bs 19,725.85) · Sin gigbag: $1,567.00 USD (Bs 18,882.35).",
+    "description_long": "Marcus Miller by Sire V7 VINTAGE SWAMP ASH-5 (2nd Gen) — NT disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Natural (NT). Precio base con gigbag: $1,637.00 USD (Bs 19,725.85) · Sin gigbag: $1,567.00 USD (Bs 18,882.35).",
+    "price": 1637.0,
+    "price_bs": 19725.85,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V7 VINTAGE SWAMP ASH-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Natural (NT)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,637.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 19,725.85"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,567.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 18,882.35"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p009_img00.jpeg', alt_text: 'Sire V10DX bajo eléctrico', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p009_img02.jpeg', alt_text: 'Sire V10DX - detalle cabezal', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p009_img03.jpeg', alt_text: 'Sire V10DX - cuerpo', is_primary: false, order: 2 },
-      { url: '/catalog-images/sire/p009_img04.jpeg', alt_text: 'Sire V10DX - vista adicional', is_primary: false, order: 3 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio base 4 cuerdas: $1950 / 5 cuerdas: $2150 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,637.00 USD / Bs 19,725.85). Opción sin gigbag: $1,567.00 USD (Bs 18,882.35). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-v3p',
-    name: 'Marcus Miller by Sire V3P',
-    slug: 'sire-marcus-miller-v3p-bajo',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 4/5 cuerdas',
-    model: 'V3P',
-    description_short: 'Bajo eléctrico Marcus Miller by Sire V3P. Disponible en 4 cuerdas ($705) y 5 cuerdas ($785).',
-    description_long: 'El V3P es un modelo de gran relación calidad-precio dentro de la línea V de Marcus Miller by Sire. Perfecto para músicos que buscan entrar a la familia Sire.',
-    price: 705,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '4 o 5' },
-      { key: 'Precio 4 cuerdas', value: '$705 USD' },
-      { key: 'Precio 5 cuerdas', value: '$785 USD' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'V' },
+    "id": "sire-v7-vintage-swamp-ash-5-2nd-gen-wb",
+    "name": "Marcus Miller by Sire V7 VINTAGE SWAMP ASH-5 (2nd Gen) — WB",
+    "slug": "sire-v7-vintage-swamp-ash-5-2nd-gen-wb",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V7 VINTAGE SWAMP ASH-5 (2nd Gen) · WB",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado White Blonde (WB). Precio base con gigbag: $1,637.00 USD (Bs 19,725.85) · Sin gigbag: $1,567.00 USD (Bs 18,882.35).",
+    "description_long": "Marcus Miller by Sire V7 VINTAGE SWAMP ASH-5 (2nd Gen) — WB disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado White Blonde (WB). Precio base con gigbag: $1,637.00 USD (Bs 19,725.85) · Sin gigbag: $1,567.00 USD (Bs 18,882.35).",
+    "price": 1637.0,
+    "price_bs": 19725.85,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V7 VINTAGE SWAMP ASH-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "White Blonde (WB)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,637.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 19,725.85"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,567.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 18,882.35"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p010_img00.jpeg', alt_text: 'Sire V3P bajo eléctrico', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p010_img02.jpeg', alt_text: 'Sire V3P - detalle', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p010_img03.jpeg', alt_text: 'Sire V3P - cuerpo', is_primary: false, order: 2 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $705 (4c) / $785 (5c) USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,637.00 USD / Bs 19,725.85). Opción sin gigbag: $1,567.00 USD (Bs 18,882.35). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-v5',
-    name: 'Marcus Miller by Sire V5',
-    slug: 'sire-marcus-miller-v5-bajo',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 4/5 cuerdas',
-    model: 'V5',
-    description_short: 'Bajo eléctrico Marcus Miller by Sire V5. Disponible en 4 cuerdas ($850) y 5 cuerdas ($960).',
-    description_long: 'El V5 es uno de los modelos más populares de la línea V, ofreciendo un balance perfecto entre precio y prestaciones profesionales. El bajo preferido de muchos músicos de la familia Sire.',
-    price: 850,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: true,
-    specs: [
-      { key: 'Cuerdas', value: '4 o 5' },
-      { key: 'Precio 4 cuerdas', value: '$850 USD' },
-      { key: 'Precio 5 cuerdas', value: '$960 USD' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'V' },
+    "id": "sire-v8-5-nt",
+    "name": "Marcus Miller by Sire V8-5 — NT",
+    "slug": "sire-v8-5-nt",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V8-5 · NT",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Natural (NT). Precio base con gigbag: $1,661.00 USD (Bs 20,015.05) · Sin gigbag: $1,591.00 USD (Bs 19,171.55).",
+    "description_long": "Marcus Miller by Sire V8-5 — NT disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Natural (NT). Precio base con gigbag: $1,661.00 USD (Bs 20,015.05) · Sin gigbag: $1,591.00 USD (Bs 19,171.55).",
+    "price": 1661.0,
+    "price_bs": 20015.05,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V8-5"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Natural (NT)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,661.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 20,015.05"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,591.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 19,171.55"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p011_img00.jpeg', alt_text: 'Sire V5 bajo eléctrico', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p011_img02.jpeg', alt_text: 'Sire V5 - detalle', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p011_img03.jpeg', alt_text: 'Sire V5 - cuerpo', is_primary: false, order: 2 },
-      { url: '/catalog-images/sire/p011_img04.jpeg', alt_text: 'Sire V5 - perfil', is_primary: false, order: 3 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $850 (4c) / $960 (5c) USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,661.00 USD / Bs 20,015.05). Opción sin gigbag: $1,591.00 USD (Bs 19,171.55). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-v5r',
-    name: 'Marcus Miller by Sire V5R',
-    slug: 'sire-marcus-miller-v5r-bajo',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 4/5 cuerdas',
-    model: 'V5R',
-    description_short: 'Bajo eléctrico Marcus Miller by Sire V5R. Disponible en 4 cuerdas ($850) y 5 cuerdas ($960).',
-    description_long: 'El V5R es la variante de la línea V5 con características específicas de construcción o acabado. Mismo precio que el V5 estándar.',
-    price: 850,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '4 o 5' },
-      { key: 'Precio 4 cuerdas', value: '$850 USD' },
-      { key: 'Precio 5 cuerdas', value: '$960 USD' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'V' },
+    "id": "sire-v8-5-ts",
+    "name": "Marcus Miller by Sire V8-5 — TS",
+    "slug": "sire-v8-5-ts",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V8-5 · TS",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,661.00 USD (Bs 20,015.05) · Sin gigbag: $1,591.00 USD (Bs 19,171.55).",
+    "description_long": "Marcus Miller by Sire V8-5 — TS disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,661.00 USD (Bs 20,015.05) · Sin gigbag: $1,591.00 USD (Bs 19,171.55).",
+    "price": 1661.0,
+    "price_bs": 20015.05,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V8-5"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Tobacco Sunburst (TS)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,661.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 20,015.05"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,591.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 19,171.55"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p012_img00.jpeg', alt_text: 'Sire V5R bajo eléctrico', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p012_img01.jpeg', alt_text: 'Sire V5R - detalle', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p012_img02.jpeg', alt_text: 'Sire V5R - cuerpo', is_primary: false, order: 2 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $850 (4c) / $960 (5c) USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,661.00 USD / Bs 20,015.05). Opción sin gigbag: $1,591.00 USD (Bs 19,171.55). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-m5-swamp-ash-5c',
-    name: 'Marcus Miller Swamp Ash by Sire M5',
-    slug: 'sire-marcus-miller-swamp-ash-m5-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'M5 Swamp Ash',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller Swamp Ash by Sire M5. Cuerpo de fresno de pantano.',
-    description_long: 'El M5 con cuerpo de Swamp Ash ofrece un carácter tonal brillante y articulado, característico de este tipo de madera. Cinco cuerdas que amplían el rango tonal para el bajista más versátil.',
-    price: 1320,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'M' },
-      { key: 'Cuerpo', value: 'Swamp Ash' },
+    "id": "sire-v5-24-5-ts",
+    "name": "Marcus Miller by Sire V5 24-5 — TS",
+    "slug": "sire-v5-24-5-ts",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V5 24-5 · TS",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,301.00 USD (Bs 15,677.05) · Sin gigbag: $1,231.00 USD (Bs 14,833.55).",
+    "description_long": "Marcus Miller by Sire V5 24-5 — TS disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,301.00 USD (Bs 15,677.05) · Sin gigbag: $1,231.00 USD (Bs 14,833.55).",
+    "price": 1301.0,
+    "price_bs": 15677.05,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V5 24-5"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Tobacco Sunburst (TS)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,301.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 15,677.05"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,231.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 14,833.55"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p014_img00.jpeg', alt_text: 'Sire M5 Swamp Ash 5 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p014_img02.jpeg', alt_text: 'Sire M5 - detalle', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p014_img03.jpeg', alt_text: 'Sire M5 - cuerpo', is_primary: false, order: 2 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1320 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,301.00 USD / Bs 15,677.05). Opción sin gigbag: $1,231.00 USD (Bs 14,833.55). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-m7-6c',
-    name: 'Marcus Miller by Sire M7',
-    slug: 'sire-marcus-miller-m7-bajo-6-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 6 cuerdas',
-    model: 'M7',
-    description_short: 'Bajo eléctrico de 6 cuerdas Marcus Miller by Sire M7.',
-    description_long: 'El M7 de 6 cuerdas es el modelo más completo de la línea M, ofreciendo un rango armónico extendido para músicos avanzados que necesitan las notas más altas y bajas al alcance de la mano.',
-    price: 1700,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '6' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'M' },
+    "id": "sire-v5-24-5-mlg",
+    "name": "Marcus Miller by Sire V5 24-5 — MLG",
+    "slug": "sire-v5-24-5-mlg",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V5 24-5 · MLG",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Mild Green (MLG). Precio base con gigbag: $1,301.00 USD (Bs 15,677.05) · Sin gigbag: $1,231.00 USD (Bs 14,833.55).",
+    "description_long": "Marcus Miller by Sire V5 24-5 — MLG disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Mild Green (MLG). Precio base con gigbag: $1,301.00 USD (Bs 15,677.05) · Sin gigbag: $1,231.00 USD (Bs 14,833.55).",
+    "price": 1301.0,
+    "price_bs": 15677.05,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V5 24-5"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Mild Green (MLG)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,301.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 15,677.05"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,231.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 14,833.55"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p015_img00.jpeg', alt_text: 'Sire M7 6 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p015_img02.jpeg', alt_text: 'Sire M7 - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1700 USD. 6 cuerdas.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,301.00 USD / Bs 15,677.05). Opción sin gigbag: $1,231.00 USD (Bs 14,833.55). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-m7-alder-5c',
-    name: 'Marcus Miller Alder by Sire M7',
-    slug: 'sire-marcus-miller-alder-m7-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'M7 Alder',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller Alder by Sire M7.',
-    description_long: 'El M7 Alder de 5 cuerdas ofrece un cuerpo de aliso con las características premium de la línea M. Sonido brillante y articulado con el rango extendido de las 5 cuerdas.',
-    price: 1400,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'M' },
-      { key: 'Cuerpo', value: 'Aliso (Alder)' },
+    "id": "sire-v3-4-2nd-gen-org",
+    "name": "Marcus Miller by Sire V3-4 (2nd Gen) — ORG",
+    "slug": "sire-v3-4-2nd-gen-org",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 4 cuerdas Marcus Miller by Sire",
+    "model": "V3-4 (2nd Gen) · ORG",
+    "description_short": "Bajo eléctrico 4 cuerdas Marcus Miller by Sire en acabado Orange (ORG). Precio base con gigbag: $1,037.00 USD (Bs 12,495.85) · Sin gigbag: $967.00 USD (Bs 11,652.35).",
+    "description_long": "Marcus Miller by Sire V3-4 (2nd Gen) — ORG disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 4 cuerdas Marcus Miller by Sire en acabado Orange (ORG). Precio base con gigbag: $1,037.00 USD (Bs 12,495.85) · Sin gigbag: $967.00 USD (Bs 11,652.35).",
+    "price": 1037.0,
+    "price_bs": 12495.85,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V3-4 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Orange (ORG)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,037.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 12,495.85"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$967.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 11,652.35"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p016_img00.jpeg', alt_text: 'Sire M7 Alder 5 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p016_img02.jpeg', alt_text: 'Sire M7 Alder - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1400 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,037.00 USD / Bs 12,495.85). Opción sin gigbag: $967.00 USD (Bs 11,652.35). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-m7-swamp-ash-5c',
-    name: 'Marcus Miller Swamp Ash by Sire M7',
-    slug: 'sire-marcus-miller-swamp-ash-m7-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'M7 Swamp Ash',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller Swamp Ash by Sire M7.',
-    description_long: 'El M7 Swamp Ash de 5 cuerdas combina el cuerpo de fresno de pantano con las características premium de la línea M. Tono brillante con profundidad natural.',
-    price: 1620,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'M' },
-      { key: 'Cuerpo', value: 'Swamp Ash' },
+    "id": "sire-v3-4-2nd-gen-snb",
+    "name": "Marcus Miller by Sire V3-4 (2nd Gen) — SNB",
+    "slug": "sire-v3-4-2nd-gen-snb",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 4 cuerdas Marcus Miller by Sire",
+    "model": "V3-4 (2nd Gen) · SNB",
+    "description_short": "Bajo eléctrico 4 cuerdas Marcus Miller by Sire en acabado Sonic Blue (SNB). Precio base con gigbag: $1,037.00 USD (Bs 12,495.85) · Sin gigbag: $967.00 USD (Bs 11,652.35).",
+    "description_long": "Marcus Miller by Sire V3-4 (2nd Gen) — SNB disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 4 cuerdas Marcus Miller by Sire en acabado Sonic Blue (SNB). Precio base con gigbag: $1,037.00 USD (Bs 12,495.85) · Sin gigbag: $967.00 USD (Bs 11,652.35).",
+    "price": 1037.0,
+    "price_bs": 12495.85,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V3-4 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Sonic Blue (SNB)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,037.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 12,495.85"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$967.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 11,652.35"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p017_img00.jpeg', alt_text: 'Sire M7 Swamp Ash 5 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p017_img02.jpeg', alt_text: 'Sire M7 Swamp Ash - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1620 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,037.00 USD / Bs 12,495.85). Opción sin gigbag: $967.00 USD (Bs 11,652.35). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-p7-alder-5c',
-    name: 'Marcus Miller Alder by Sire P7 (5c)',
-    slug: 'sire-marcus-miller-alder-p7-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'P7 Alder 5c',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller Alder by Sire P7.',
-    description_long: 'Versión de 5 cuerdas del P7 Alder, con cuerpo de aliso y las características de la serie P para mayor rango tonal.',
-    price: 1190,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'P' },
-      { key: 'Cuerpo', value: 'Aliso (Alder)' },
+    "id": "sire-v3-5-2nd-gen-ts",
+    "name": "Marcus Miller by Sire V3-5 (2nd Gen) — TS",
+    "slug": "sire-v3-5-2nd-gen-ts",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V3-5 (2nd Gen) · TS",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,133.00 USD (Bs 13,652.65) · Sin gigbag: $1,063.00 USD (Bs 12,809.15).",
+    "description_long": "Marcus Miller by Sire V3-5 (2nd Gen) — TS disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,133.00 USD (Bs 13,652.65) · Sin gigbag: $1,063.00 USD (Bs 12,809.15).",
+    "price": 1133.0,
+    "price_bs": 13652.65,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V3-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Tobacco Sunburst (TS)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,133.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 13,652.65"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,063.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 12,809.15"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p018_img00.jpeg', alt_text: 'Sire P7 Alder 5 cuerdas', is_primary: true, order: 0 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1190 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,133.00 USD / Bs 13,652.65). Opción sin gigbag: $1,063.00 USD (Bs 12,809.15). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-p8-5c',
-    name: 'Marcus Miller by Sire P8',
-    slug: 'sire-marcus-miller-p8-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'P8',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller by Sire P8, modelo premium de la serie P.',
-    description_long: 'El P8 es el modelo premium de la serie P para 5 cuerdas, con características de alto rendimiento y acabados superiores.',
-    price: 1440,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'P' },
+    "id": "sire-v3-5-2nd-gen-awh",
+    "name": "Marcus Miller by Sire V3-5 (2nd Gen) — AWH",
+    "slug": "sire-v3-5-2nd-gen-awh",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V3-5 (2nd Gen) · AWH",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Antique White (AWH). Precio base con gigbag: $1,133.00 USD (Bs 13,652.65) · Sin gigbag: $1,063.00 USD (Bs 12,809.15).",
+    "description_long": "Marcus Miller by Sire V3-5 (2nd Gen) — AWH disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Antique White (AWH). Precio base con gigbag: $1,133.00 USD (Bs 13,652.65) · Sin gigbag: $1,063.00 USD (Bs 12,809.15).",
+    "price": 1133.0,
+    "price_bs": 13652.65,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V3-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Antique White (AWH)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,133.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 13,652.65"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,063.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 12,809.15"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p019_img00.jpeg', alt_text: 'Sire P8 5 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p019_img02.jpeg', alt_text: 'Sire P8 - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1440 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,133.00 USD / Bs 13,652.65). Opción sin gigbag: $1,063.00 USD (Bs 12,809.15). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-v3-5c',
-    name: 'Marcus Miller by Sire V3 (5 cuerdas)',
-    slug: 'sire-marcus-miller-v3-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'V3 5c',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller by Sire V3.',
-    description_long: 'El V3 de 5 cuerdas ofrece las características de la popular línea V3 en formato de 5 cuerdas, ampliando el rango tonal disponible.',
-    price: 990,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'V' },
+    "id": "sire-v3-5-2nd-gen-ma",
+    "name": "Marcus Miller by Sire V3-5 (2nd Gen) — MA",
+    "slug": "sire-v3-5-2nd-gen-ma",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V3-5 (2nd Gen) · MA",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Mahogany (MA). Precio base con gigbag: $1,133.00 USD (Bs 13,652.65) · Sin gigbag: $1,063.00 USD (Bs 12,809.15).",
+    "description_long": "Marcus Miller by Sire V3-5 (2nd Gen) — MA disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Mahogany (MA). Precio base con gigbag: $1,133.00 USD (Bs 13,652.65) · Sin gigbag: $1,063.00 USD (Bs 12,809.15).",
+    "price": 1133.0,
+    "price_bs": 13652.65,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V3-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Mahogany (MA)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,133.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 13,652.65"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,063.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 12,809.15"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p020_img00.jpeg', alt_text: 'Sire V3 5 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p020_img02.jpeg', alt_text: 'Sire V3 - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $990 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,133.00 USD / Bs 13,652.65). Opción sin gigbag: $1,063.00 USD (Bs 12,809.15). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-v3-4c',
-    name: 'Marcus Miller by Sire V3 (4 cuerdas)',
-    slug: 'sire-marcus-miller-v3-bajo-4-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 4 cuerdas',
-    model: 'V3 4c',
-    description_short: 'Bajo eléctrico de 4 cuerdas Marcus Miller by Sire V3.',
-    description_long: 'El V3 es uno de los bajos más populares de la línea Marcus Miller by Sire, ofreciendo excelente relación calidad-precio en formato estándar de 4 cuerdas.',
-    price: 910,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '4' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'V' },
+    "id": "sire-v3-5-2nd-gen-snb",
+    "name": "Marcus Miller by Sire V3-5 (2nd Gen) — SNB",
+    "slug": "sire-v3-5-2nd-gen-snb",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "V3-5 (2nd Gen) · SNB",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Sonic Blue (SNB). Precio base con gigbag: $1,133.00 USD (Bs 13,652.65) · Sin gigbag: $1,063.00 USD (Bs 12,809.15).",
+    "description_long": "Marcus Miller by Sire V3-5 (2nd Gen) — SNB disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Sonic Blue (SNB). Precio base con gigbag: $1,133.00 USD (Bs 13,652.65) · Sin gigbag: $1,063.00 USD (Bs 12,809.15).",
+    "price": 1133.0,
+    "price_bs": 13652.65,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "V3-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Sonic Blue (SNB)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,133.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 13,652.65"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,063.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 12,809.15"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p021_img00.jpeg', alt_text: 'Sire V3 4 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p021_img02.jpeg', alt_text: 'Sire V3 4c - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $910 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,133.00 USD / Bs 13,652.65). Opción sin gigbag: $1,063.00 USD (Bs 12,809.15). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-v5-5c-24f',
-    name: 'Marcus Miller by Sire V5 (5c / 24 trastes)',
-    slug: 'sire-marcus-miller-v5-bajo-5-cuerdas-24-trastes',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'V5 5c 24f',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller by Sire V5 con 24 trastes.',
-    description_long: 'Versión de 5 cuerdas con 24 trastes del popular V5, que amplía el rango tonal superior con mayor alcance en el diapasón.',
-    price: 1130,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Trastes', value: '24' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'V' },
+    "id": "sire-p7-alder-5-2nd-gen-ts",
+    "name": "Marcus Miller by Sire P7 ALDER-5 (2nd Gen) — TS",
+    "slug": "sire-p7-alder-5-2nd-gen-ts",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "P7 ALDER-5 (2nd Gen) · TS",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,373.00 USD (Bs 16,544.65) · Sin gigbag: $1,303.00 USD (Bs 15,701.15).",
+    "description_long": "Marcus Miller by Sire P7 ALDER-5 (2nd Gen) — TS disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,373.00 USD (Bs 16,544.65) · Sin gigbag: $1,303.00 USD (Bs 15,701.15).",
+    "price": 1373.0,
+    "price_bs": 16544.65,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "P7 ALDER-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Tobacco Sunburst (TS)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,373.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 16,544.65"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,303.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 15,701.15"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p022_img00.jpeg', alt_text: 'Sire V5 5 cuerdas 24 trastes', is_primary: true, order: 0 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1130 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,373.00 USD / Bs 16,544.65). Opción sin gigbag: $1,303.00 USD (Bs 15,701.15). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-v7-alder-5c',
-    name: 'Marcus Miller Alder by Sire V7',
-    slug: 'sire-marcus-miller-alder-v7-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'V7 Alder',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller Alder by Sire V7.',
-    description_long: 'El V7 Alder de 5 cuerdas combina el cuerpo de aliso con las prestaciones premium de la serie V7.',
-    price: 1175,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'V' },
-      { key: 'Cuerpo', value: 'Aliso (Alder)' },
+    "id": "sire-p8-5-nt",
+    "name": "Marcus Miller by Sire P8-5 — NT",
+    "slug": "sire-p8-5-nt",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "P8-5 · NT",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Natural (NT). Precio base con gigbag: $1,673.00 USD (Bs 20,159.65) · Sin gigbag: $1,603.00 USD (Bs 19,316.15).",
+    "description_long": "Marcus Miller by Sire P8-5 — NT disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Natural (NT). Precio base con gigbag: $1,673.00 USD (Bs 20,159.65) · Sin gigbag: $1,603.00 USD (Bs 19,316.15).",
+    "price": 1673.0,
+    "price_bs": 20159.65,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "P8-5"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Natural (NT)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,673.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 20,159.65"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,603.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 19,316.15"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p023_img00.jpeg', alt_text: 'Sire V7 Alder 5 cuerdas', is_primary: true, order: 0 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1175 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,673.00 USD / Bs 20,159.65). Opción sin gigbag: $1,603.00 USD (Bs 19,316.15). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-v7-vintage-alder-5c',
-    name: 'Marcus Miller Vintage Alder by Sire V7',
-    slug: 'sire-marcus-miller-vintage-alder-v7-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'V7 Vintage Alder',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller Vintage Alder by Sire V7.',
-    description_long: 'El V7 Vintage Alder de 5 cuerdas ofrece un acabado vintage con cuerpo de aliso para los músicos que buscan una estética clásica con sonido moderno.',
-    price: 1285,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'V' },
-      { key: 'Cuerpo', value: 'Vintage Alder' },
+    "id": "sire-p8-5-ts",
+    "name": "Marcus Miller by Sire P8-5 — TS",
+    "slug": "sire-p8-5-ts",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "P8-5 · TS",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,673.00 USD (Bs 20,159.65) · Sin gigbag: $1,603.00 USD (Bs 19,316.15).",
+    "description_long": "Marcus Miller by Sire P8-5 — TS disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Tobacco Sunburst (TS). Precio base con gigbag: $1,673.00 USD (Bs 20,159.65) · Sin gigbag: $1,603.00 USD (Bs 19,316.15).",
+    "price": 1673.0,
+    "price_bs": 20159.65,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "P8-5"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Tobacco Sunburst (TS)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,673.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 20,159.65"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,603.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 19,316.15"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p024_img00.jpeg', alt_text: 'Sire V7 Vintage Alder 5 cuerdas', is_primary: true, order: 0 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1285 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,673.00 USD / Bs 20,159.65). Opción sin gigbag: $1,603.00 USD (Bs 19,316.15). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-v7-vintage-swamp-ash-5c',
-    name: 'Marcus Miller Vintage Swamp Ash by Sire V7',
-    slug: 'sire-marcus-miller-vintage-swamp-ash-v7-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'V7 Vintage Swamp Ash',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller Vintage Swamp Ash by Sire V7.',
-    description_long: 'El V7 Vintage Swamp Ash de 5 cuerdas combina cuerpo de fresno de pantano con acabados vintage de la serie V7. Tono brillante con profundidad natural.',
-    price: 1390,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'V' },
-      { key: 'Cuerpo', value: 'Swamp Ash Vintage' },
+    "id": "sire-m7-alder-5-2nd-gen-brs",
+    "name": "Marcus Miller by Sire M7 ALDER-5 (2nd Gen) — BRS",
+    "slug": "sire-m7-alder-5-2nd-gen-brs",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "M7 ALDER-5 (2nd Gen) · BRS",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Brown Sunburst (BRS). Precio base con gigbag: $1,625.00 USD (Bs 19,581.25) · Sin gigbag: $1,555.00 USD (Bs 18,737.75).",
+    "description_long": "Marcus Miller by Sire M7 ALDER-5 (2nd Gen) — BRS disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Brown Sunburst (BRS). Precio base con gigbag: $1,625.00 USD (Bs 19,581.25) · Sin gigbag: $1,555.00 USD (Bs 18,737.75).",
+    "price": 1625.0,
+    "price_bs": 19581.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "M7 ALDER-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Brown Sunburst (BRS)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,625.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 19,581.25"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,555.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 18,737.75"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p025_img00.jpeg', alt_text: 'Sire V7 Vintage Swamp Ash 5 cuerdas', is_primary: true, order: 0 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1390 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,625.00 USD / Bs 19,581.25). Opción sin gigbag: $1,555.00 USD (Bs 18,737.75). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-v8-5c',
-    name: 'Marcus Miller by Sire V8',
-    slug: 'sire-marcus-miller-v8-bajo-5-cuerdas',
-    brand: 'Sire',
-    category: 'bajos',
-    subcategory: 'Bajo eléctrico 5 cuerdas',
-    model: 'V8',
-    description_short: 'Bajo eléctrico de 5 cuerdas Marcus Miller by Sire V8, modelo premium de la línea V.',
-    description_long: 'El V8 es el modelo de mayor rango de la serie V estándar, con características que lo posicionan como un instrumento de alto rendimiento para el músico profesional.',
-    price: 1450,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Cuerdas', value: '5' },
-      { key: 'Línea', value: 'Marcus Miller by Sire' },
-      { key: 'Serie', value: 'V' },
+    "id": "sire-m7-alder-5-2nd-gen-tbl",
+    "name": "Marcus Miller by Sire M7 ALDER-5 (2nd Gen) — TBL",
+    "slug": "sire-m7-alder-5-2nd-gen-tbl",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "M7 ALDER-5 (2nd Gen) · TBL",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Transparent Blue (TBL). Precio base con gigbag: $1,625.00 USD (Bs 19,581.25) · Sin gigbag: $1,555.00 USD (Bs 18,737.75).",
+    "description_long": "Marcus Miller by Sire M7 ALDER-5 (2nd Gen) — TBL disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Transparent Blue (TBL). Precio base con gigbag: $1,625.00 USD (Bs 19,581.25) · Sin gigbag: $1,555.00 USD (Bs 18,737.75).",
+    "price": 1625.0,
+    "price_bs": 19581.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "M7 ALDER-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Transparent Blue (TBL)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,625.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 19,581.25"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,555.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 18,737.75"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p026_img00.jpeg', alt_text: 'Sire V8 5 cuerdas', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p026_img02.jpeg', alt_text: 'Sire V8 - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1450 USD.',
-  },
-  // SIRE - GUITARRAS
-  {
-    id: 'sire-h7-guitar',
-    name: 'Sire H7 Electric Guitar',
-    slug: 'sire-h7-electric-guitar',
-    brand: 'Sire',
-    category: 'guitarras',
-    subcategory: 'Guitarra eléctrica',
-    model: 'H7',
-    description_short: 'Guitarra eléctrica Sire H7, de la línea de guitarras de la marca.',
-    description_long: 'La H7 es parte de la línea de guitarras eléctricas de Sire, ofreciendo la calidad y el detalle constructivo característico de la marca aplicado a las 6 cuerdas.',
-    price: 1015,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Guitarra eléctrica' },
-      { key: 'Línea', value: 'Sire Guitars' },
-    ],
-    images: [
-      { url: '/catalog-images/sire/p028_img00.jpeg', alt_text: 'Sire H7 guitarra eléctrica', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p028_img02.jpeg', alt_text: 'Sire H7 - detalle', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p028_img03.jpeg', alt_text: 'Sire H7 - cuerpo', is_primary: false, order: 2 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1015 USD.',
-  },
-  {
-    id: 'sire-s7-guitar',
-    name: 'Sire S7 Electric Guitar',
-    slug: 'sire-s7-electric-guitar',
-    brand: 'Sire',
-    category: 'guitarras',
-    subcategory: 'Guitarra eléctrica',
-    model: 'S7',
-    description_short: 'Guitarra eléctrica Sire S7, tipo Stratocaster de la línea Sire.',
-    description_long: 'La S7 es la guitarra tipo Stratocaster de la línea Sire, con la calidad constructiva característica de la marca aplicada a este formato clásico. Sonido limpio, brillante y versátil.',
-    price: 955,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Guitarra eléctrica tipo Stratocaster' },
-      { key: 'Línea', value: 'Sire Guitars' },
-    ],
-    images: [
-      { url: '/catalog-images/sire/p029_img00.jpeg', alt_text: 'Sire S7 guitarra eléctrica', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p029_img02.jpeg', alt_text: 'Sire S7 - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $955 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,625.00 USD / Bs 19,581.25). Opción sin gigbag: $1,555.00 USD (Bs 18,737.75). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-t7-fm-guitar',
-    name: 'Sire T7 FM Electric Guitar',
-    slug: 'sire-t7-fm-electric-guitar',
-    brand: 'Sire',
-    category: 'guitarras',
-    subcategory: 'Guitarra eléctrica',
-    model: 'T7 FM',
-    description_short: 'Guitarra eléctrica Sire T7 FM, tipo Telecaster con tapa flameada.',
-    description_long: 'La T7 FM combina el diseño tipo Telecaster con una tapa de arce flameado (Flame Maple), añadiendo una estética premium al instrumento. El sonido cristalino del Telecaster con la elegancia del arce flameado.',
-    price: 1015,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: true,
-    specs: [
-      { key: 'Tipo', value: 'Guitarra eléctrica tipo Telecaster' },
-      { key: 'Tapa', value: 'Flame Maple' },
-      { key: 'Línea', value: 'Sire Guitars' },
+    "id": "sire-m7-swamp-ash-5-2nd-gen-nt",
+    "name": "Marcus Miller by Sire M7 SWAMP ASH-5 (2nd Gen) — NT",
+    "slug": "sire-m7-swamp-ash-5-2nd-gen-nt",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "M7 SWAMP ASH-5 (2nd Gen) · NT",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Natural (NT). Precio base con gigbag: $1,889.00 USD (Bs 22,762.45) · Sin gigbag: $1,819.00 USD (Bs 21,918.95).",
+    "description_long": "Marcus Miller by Sire M7 SWAMP ASH-5 (2nd Gen) — NT disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Natural (NT). Precio base con gigbag: $1,889.00 USD (Bs 22,762.45) · Sin gigbag: $1,819.00 USD (Bs 21,918.95).",
+    "price": 1889.0,
+    "price_bs": 22762.45,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "M7 SWAMP ASH-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Natural (NT)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,889.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 22,762.45"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,819.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 21,918.95"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p030_img00.jpeg', alt_text: 'Sire T7 FM guitarra Telecaster', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p030_img02.jpeg', alt_text: 'Sire T7 FM - detalle tapa', is_primary: false, order: 1 },
-      { url: '/catalog-images/sire/p030_img03.jpeg', alt_text: 'Sire T7 FM - cuerpo', is_primary: false, order: 2 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1015 USD. Tapa Flame Maple.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,889.00 USD / Bs 22,762.45). Opción sin gigbag: $1,819.00 USD (Bs 21,918.95). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-s3-sss-guitar',
-    name: 'Sire S3 SSS Electric Guitar',
-    slug: 'sire-s3-sss-electric-guitar',
-    brand: 'Sire',
-    category: 'guitarras',
-    subcategory: 'Guitarra eléctrica',
-    model: 'S3 SSS',
-    description_short: 'Guitarra eléctrica Sire S3 SSS, configuración de tres pastillas single coil.',
-    description_long: 'La S3 SSS es la entrada de la línea de guitarras tipo Stratocaster de Sire, con tres pastillas single coil que ofrecen el sonido clásico y brillante de este formato.',
-    price: 830,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Guitarra eléctrica tipo Stratocaster' },
-      { key: 'Pastillas', value: 'SSS (3 single coil)' },
-      { key: 'Línea', value: 'Sire Guitars' },
+    "id": "sire-m7-swamp-ash-5-2nd-gen-tbk",
+    "name": "Marcus Miller by Sire M7 SWAMP ASH-5 (2nd Gen) — TBK",
+    "slug": "sire-m7-swamp-ash-5-2nd-gen-tbk",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "M7 SWAMP ASH-5 (2nd Gen) · TBK",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Transparent Black (TBK). Precio base con gigbag: $1,889.00 USD (Bs 22,762.45) · Sin gigbag: $1,819.00 USD (Bs 21,918.95).",
+    "description_long": "Marcus Miller by Sire M7 SWAMP ASH-5 (2nd Gen) — TBK disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Transparent Black (TBK). Precio base con gigbag: $1,889.00 USD (Bs 22,762.45) · Sin gigbag: $1,819.00 USD (Bs 21,918.95).",
+    "price": 1889.0,
+    "price_bs": 22762.45,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "M7 SWAMP ASH-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Transparent Black (TBK)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,889.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 22,762.45"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,819.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 21,918.95"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p031_img00.jpeg', alt_text: 'Sire S3 SSS guitarra eléctrica', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p031_img02.jpeg', alt_text: 'Sire S3 SSS - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $830 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,889.00 USD / Bs 22,762.45). Opción sin gigbag: $1,819.00 USD (Bs 21,918.95). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'sire-s7-fm-guitar',
-    name: 'Sire S7 FM Electric Guitar',
-    slug: 'sire-s7-fm-electric-guitar',
-    brand: 'Sire',
-    category: 'guitarras',
-    subcategory: 'Guitarra eléctrica',
-    model: 'S7 FM',
-    description_short: 'Guitarra eléctrica Sire S7 FM, tipo Stratocaster con tapa flameada.',
-    description_long: 'La S7 FM combina el diseño tipo Stratocaster con una tapa de arce flameado (Flame Maple), ofreciendo una estética premium con el sonido característico de la línea S.',
-    price: 1135,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Guitarra eléctrica tipo Stratocaster' },
-      { key: 'Tapa', value: 'Flame Maple' },
-      { key: 'Línea', value: 'Sire Guitars' },
+    "id": "sire-m7-6-tbl",
+    "name": "Marcus Miller by Sire M7-6 — TBL",
+    "slug": "sire-m7-6-tbl",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 6 cuerdas Marcus Miller by Sire",
+    "model": "M7-6 · TBL",
+    "description_short": "Bajo eléctrico 6 cuerdas Marcus Miller by Sire en acabado Transparent Blue (TBL). Precio base con gigbag: $1,985.00 USD (Bs 23,919.25) · Sin gigbag: $1,915.00 USD (Bs 23,075.75).",
+    "description_long": "Marcus Miller by Sire M7-6 — TBL disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 6 cuerdas Marcus Miller by Sire en acabado Transparent Blue (TBL). Precio base con gigbag: $1,985.00 USD (Bs 23,919.25) · Sin gigbag: $1,915.00 USD (Bs 23,075.75).",
+    "price": 1985.0,
+    "price_bs": 23919.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "M7-6"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Transparent Blue (TBL)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,985.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 23,919.25"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,915.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 23,075.75"
+      }
     ],
-    images: [
-      { url: '/catalog-images/sire/p032_img00.jpeg', alt_text: 'Sire S7 FM guitarra eléctrica', is_primary: true, order: 0 },
-      { url: '/catalog-images/sire/p032_img02.jpeg', alt_text: 'Sire S7 FM - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'sire_2025',
-    notes: 'Precio: $1135 USD.',
-  },
-  // ===== DONNER PRODUCTS =====
-  {
-    id: 'donner-hush-i-pro',
-    name: 'Donner HUSH-I PRO Guitar',
-    slug: 'donner-hush-i-pro-guitar',
-    brand: 'Donner',
-    category: 'guitarras',
-    subcategory: 'Guitarra acústico-eléctrica',
-    model: 'HUSH-I PRO',
-    description_short: 'Guitarra de viaje acústico-eléctrica tipo headless. Portabilidad sin sacrificar funciones.',
-    description_long: 'La HUSH‑I PRO destaca por su formato liviano, preamp integrado, salida para audífonos o amplificador y una propuesta moderna para músicos en movimiento. Disponible en Natural Spruce y White.',
-    price: undefined,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Guitarra headless acústico-eléctrica' },
-      { key: 'Colores', value: 'Natural Spruce, White' },
-      { key: 'Características', value: 'Preamp integrado, salida audífonos' },
-    ],
-    images: [
-      { url: '/catalog-images/donner/p002_img00.jpeg', alt_text: 'Donner HUSH-I PRO guitarra de viaje', is_primary: true, order: 0 },
-      { url: '/catalog-images/donner/p002_img01.jpeg', alt_text: 'Donner HUSH-I PRO - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'donner_2026',
-    notes: 'Precio no indicado en el catálogo.',
-  },
-  {
-    id: 'donner-hush-x-pro',
-    name: 'Donner HUSH-X PRO Guitar',
-    slug: 'donner-hush-x-pro-guitar',
-    brand: 'Donner',
-    category: 'guitarras',
-    subcategory: 'Guitarra eléctrica',
-    model: 'HUSH-X PRO',
-    description_short: 'Guitarra eléctrica portable de diseño headless. Compacta, ligera y versátil.',
-    description_long: 'La HUSH‑X PRO está orientada a quienes buscan tocar, practicar o viajar con un equipo más compacto. Diseño moderno con buena respuesta, sustain y versatilidad para práctica y uso en escenario. Disponible en White y Black.',
-    price: undefined,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Guitarra eléctrica headless' },
-      { key: 'Colores', value: 'White, Black' },
-      { key: 'Características', value: 'Diseño compacto, portátil, sustain mejorado' },
-    ],
-    images: [
-      { url: '/catalog-images/donner/p003_img00.jpeg', alt_text: 'Donner HUSH-X PRO guitarra eléctrica headless', is_primary: true, order: 0 },
-      { url: '/catalog-images/donner/p003_img01.jpeg', alt_text: 'Donner HUSH-X PRO - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'donner_2026',
-    notes: 'Precio no indicado en el catálogo.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,985.00 USD / Bs 23,919.25). Opción sin gigbag: $1,915.00 USD (Bs 23,075.75). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'donner-hush-c',
-    name: 'Donner HUSH-C Nylon String Classical Guitar',
-    slug: 'donner-hush-c-nylon-string-guitar',
-    brand: 'Donner',
-    category: 'guitarras',
-    subcategory: 'Guitarra clásica',
-    model: 'HUSH-C',
-    description_short: 'Guitarra clásica de cuerdas de nylon en formato compacto headless. Perfecta para práctica y traslado.',
-    description_long: 'La HUSH-C es pensada para quienes quieren una opción más cómoda para práctica, estudio y traslado, manteniendo la sensación de una guitarra clásica. Disponible en Black y Sunburst.',
-    price: undefined,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Guitarra clásica headless' },
-      { key: 'Cuerdas', value: 'Nylon' },
-      { key: 'Colores', value: 'Black, Sunburst' },
+    "id": "sire-m7-6-tbk",
+    "name": "Marcus Miller by Sire M7-6 — TBK",
+    "slug": "sire-m7-6-tbk",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 6 cuerdas Marcus Miller by Sire",
+    "model": "M7-6 · TBK",
+    "description_short": "Bajo eléctrico 6 cuerdas Marcus Miller by Sire en acabado Transparent Black (TBK). Precio base con gigbag: $1,985.00 USD (Bs 23,919.25) · Sin gigbag: $1,915.00 USD (Bs 23,075.75).",
+    "description_long": "Marcus Miller by Sire M7-6 — TBK disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 6 cuerdas Marcus Miller by Sire en acabado Transparent Black (TBK). Precio base con gigbag: $1,985.00 USD (Bs 23,919.25) · Sin gigbag: $1,915.00 USD (Bs 23,075.75).",
+    "price": 1985.0,
+    "price_bs": 23919.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "M7-6"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Transparent Black (TBK)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,985.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 23,919.25"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,915.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 23,075.75"
+      }
     ],
-    images: [
-      { url: '/catalog-images/donner/p004_img00.jpeg', alt_text: 'Donner HUSH-C guitarra clásica nylon', is_primary: true, order: 0 },
-      { url: '/catalog-images/donner/p004_img01.jpeg', alt_text: 'Donner HUSH-C - detalle', is_primary: false, order: 1 },
-    ],
-    source: 'donner_2026',
-    notes: 'Precio no indicado en el catálogo.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,985.00 USD / Bs 23,919.25). Opción sin gigbag: $1,915.00 USD (Bs 23,075.75). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'donner-dst-80',
-    name: 'Donner DST-80 Electric Guitar',
-    slug: 'donner-dst-80-electric-guitar',
-    brand: 'Donner',
-    category: 'guitarras',
-    subcategory: 'Guitarra eléctrica',
-    model: 'DST-80',
-    description_short: 'Set de guitarra eléctrica tipo ST para principiantes. Todo lo que necesitas para empezar.',
-    description_long: 'La serie DST‑80 se comercializa con amplificador y accesorios esenciales, lo que la vuelve una alternativa práctica y económica para empezar. Disponible en Surf Green y Matton Black.',
-    price: undefined,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Guitarra eléctrica tipo Stratocaster' },
-      { key: 'Incluye', value: 'Amplificador y accesorios' },
-      { key: 'Nivel', value: 'Principiante' },
-      { key: 'Colores', value: 'Surf Green, Matton Black' },
+    "id": "sire-m5-swamp-ash-5-nt",
+    "name": "Marcus Miller by Sire M5 SWAMP ASH-5 — NT",
+    "slug": "sire-m5-swamp-ash-5-nt",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "M5 SWAMP ASH-5 · NT",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Natural (NT). Precio base con gigbag: $1,529.00 USD (Bs 18,424.45) · Sin gigbag: $1,459.00 USD (Bs 17,580.95).",
+    "description_long": "Marcus Miller by Sire M5 SWAMP ASH-5 — NT disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Natural (NT). Precio base con gigbag: $1,529.00 USD (Bs 18,424.45) · Sin gigbag: $1,459.00 USD (Bs 17,580.95).",
+    "price": 1529.0,
+    "price_bs": 18424.45,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "M5 SWAMP ASH-5"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Natural (NT)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,529.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 18,424.45"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,459.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 17,580.95"
+      }
     ],
-    images: [
-      { url: '/catalog-images/donner/p005_img01.jpeg', alt_text: 'Donner DST-80 set guitarra eléctrica', is_primary: true, order: 0 },
-      { url: '/catalog-images/donner/p005_img02.jpeg', alt_text: 'Donner DST-80 - set completo', is_primary: false, order: 1 },
-    ],
-    source: 'donner_2026',
-    notes: 'Precio no indicado. Se vende como set completo con amplificador.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,529.00 USD / Bs 18,424.45). Opción sin gigbag: $1,459.00 USD (Bs 17,580.95). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'donner-arena-multi-fx',
-    name: 'Donner Arena Multi-FX Pedal Amp-Modeller',
-    slug: 'donner-arena-multi-fx-pedal',
-    brand: 'Donner',
-    category: 'pedales-efectos',
-    subcategory: 'Multiefectos',
-    model: 'Arena 2000',
-    description_short: 'Multiefectos y modelador de amplificador. Todo el sonido que necesitas en una sola unidad.',
-    description_long: 'La serie Arena 2000 destaca por incluir una biblioteca amplia de efectos e IRs, conectividad útil para directo y un enfoque moderno en captura de sonido de amplificador. Para guitarristas que necesitan versatilidad.',
-    price: 385,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: true,
-    specs: [
-      { key: 'Tipo', value: 'Multiefectos + Amp Modeller' },
-      { key: 'Características', value: 'Biblioteca de IRs, múltiples efectos' },
-      { key: 'Conectividad', value: 'Directo (DI)' },
+    "id": "sire-m5-swamp-ash-5-tbl",
+    "name": "Marcus Miller by Sire M5 SWAMP ASH-5 — TBL",
+    "slug": "sire-m5-swamp-ash-5-tbl",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "M5 SWAMP ASH-5 · TBL",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Transparent Blue (TBL). Precio base con gigbag: $1,529.00 USD (Bs 18,424.45) · Sin gigbag: $1,459.00 USD (Bs 17,580.95).",
+    "description_long": "Marcus Miller by Sire M5 SWAMP ASH-5 — TBL disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Transparent Blue (TBL). Precio base con gigbag: $1,529.00 USD (Bs 18,424.45) · Sin gigbag: $1,459.00 USD (Bs 17,580.95).",
+    "price": 1529.0,
+    "price_bs": 18424.45,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "M5 SWAMP ASH-5"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Transparent Blue (TBL)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,529.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 18,424.45"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,459.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 17,580.95"
+      }
     ],
-    images: [
-      { url: '/catalog-images/donner/p006_img00.jpeg', alt_text: 'Donner Arena Multi-FX pedalera', is_primary: true, order: 0 },
-      { url: '/catalog-images/donner/p006_img01.jpeg', alt_text: 'Donner Arena - vista superior', is_primary: false, order: 1 },
-    ],
-    source: 'donner_2026',
-    notes: 'Precio: $385.00 USD según catálogo 2026.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,529.00 USD / Bs 18,424.45). Opción sin gigbag: $1,459.00 USD (Bs 17,580.95). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'donner-ultra-dual',
-    name: 'Donner Ultra Dual Acoustic Preamp Loop',
-    slug: 'donner-ultra-dual-acoustic-preamp-loop',
-    brand: 'Donner',
-    category: 'pedales-efectos',
-    subcategory: 'Multiefectos acústico',
-    model: 'Ultra Dual',
-    description_short: 'Pedal multiefectos para guitarra acústica con preamp integrado y loop.',
-    description_long: 'Pensado para dar más control al sonido en directo o en práctica. Integra simulaciones, efectos, afinador y control de señal completo para el guitarrista acústico moderno.',
-    price: 440,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Multiefectos acústico + Preamp + Loop' },
-      { key: 'Aplicación', value: 'Guitarra acústica' },
-      { key: 'Incluye', value: 'Afinador, simulaciones, efectos, loop' },
+    "id": "sire-m2-5-2nd-gen-tbk",
+    "name": "Marcus Miller by Sire M2-5 (2nd Gen) — TBK",
+    "slug": "sire-m2-5-2nd-gen-tbk",
+    "brand": "Sire",
+    "category": "bajos",
+    "subcategory": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire",
+    "model": "M2-5 (2nd Gen) · TBK",
+    "description_short": "Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Transparent Black (TBK). Precio base con gigbag: $1,073.00 USD (Bs 12,929.65) · Sin gigbag: $1,003.00 USD (Bs 12,086.15).",
+    "description_long": "Marcus Miller by Sire M2-5 (2nd Gen) — TBK disponible en el catálogo oficial de Don Bolivia. Bajo eléctrico 5 cuerdas Marcus Miller by Sire en acabado Transparent Black (TBK). Precio base con gigbag: $1,073.00 USD (Bs 12,929.65) · Sin gigbag: $1,003.00 USD (Bs 12,086.15).",
+    "price": 1073.0,
+    "price_bs": 12929.65,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Marcus Miller by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "M2-5 (2nd Gen)"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Transparent Black (TBK)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,073.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 12,929.65"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,003.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 12,086.15"
+      }
     ],
-    images: [
-      { url: '/catalog-images/donner/p007_img00.jpeg', alt_text: 'Donner Ultra Dual preamp acústico', is_primary: true, order: 0 },
-    ],
-    source: 'donner_2026',
-    notes: 'Precio: $440.00 USD según catálogo 2026.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,073.00 USD / Bs 12,929.65). Opción sin gigbag: $1,003.00 USD (Bs 12,086.15). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'donner-pocketx',
-    name: 'Donner PocketX Guitar/Bass AMP Modeler',
-    slug: 'donner-pocketx-guitar-bass-amp-modeler',
-    brand: 'Donner',
-    category: 'pedales-efectos',
-    subcategory: 'Procesador multiefectos portátil',
-    model: 'PocketX',
-    description_short: 'Procesador multiefectos portátil para guitarra y bajo. Con batería recargable.',
-    description_long: 'PocketX ofrece presets editables, módulos de efectos y batería recargable, por lo que funciona muy bien para práctica, ensayo y trabajo en campo sin necesidad de alimentación externa. Ideal para músicos en movimiento.',
-    price: 198,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: true,
-    specs: [
-      { key: 'Tipo', value: 'Procesador multiefectos portátil' },
-      { key: 'Aplicación', value: 'Guitarra y Bajo' },
-      { key: 'Alimentación', value: 'Batería recargable' },
-      { key: 'Conectividad', value: 'USB' },
+    "id": "sire-s7-fm-tbk",
+    "name": "Larry Carlton by Sire S7 FM — TBK",
+    "slug": "sire-s7-fm-tbk",
+    "brand": "Sire",
+    "category": "guitarras",
+    "subcategory": "Guitarra eléctrica Larry Carlton by Sire",
+    "model": "S7 FM · TBK",
+    "description_short": "Guitarra eléctrica Larry Carlton by Sire en acabado Transparent Black (TBK). Precio base con gigbag: $1,307.00 USD (Bs 15,749.35) · Sin gigbag: $1,237.00 USD (Bs 14,905.85).",
+    "description_long": "Larry Carlton by Sire S7 FM — TBK disponible en el catálogo oficial de Don Bolivia. Guitarra eléctrica Larry Carlton by Sire en acabado Transparent Black (TBK). Precio base con gigbag: $1,307.00 USD (Bs 15,749.35) · Sin gigbag: $1,237.00 USD (Bs 14,905.85).",
+    "price": 1307.0,
+    "price_bs": 15749.35,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Larry Carlton by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "S7 FM"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Transparent Black (TBK)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$1,307.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 15,749.35"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$1,237.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 14,905.85"
+      }
     ],
-    images: [
-      { url: '/catalog-images/donner/p008_img00.jpeg', alt_text: 'Donner PocketX procesador portátil', is_primary: true, order: 0 },
-    ],
-    source: 'donner_2026',
-    notes: 'Precio: $198.00 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($1,307.00 USD / Bs 15,749.35). Opción sin gigbag: $1,237.00 USD (Bs 14,905.85). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'donner-dek-620',
-    name: 'Donner DEK-620 Electronic Piano Bundle',
-    slug: 'donner-dek-620-electronic-piano',
-    brand: 'Donner',
-    category: 'otros-instrumentos',
-    subcategory: 'Teclado electrónico',
-    model: 'DEK-620',
-    description_short: 'Teclado electrónico de 61 teclas en bundle. Todo para empezar.',
-    description_long: 'Por su tamaño y enfoque, encaja bien como opción portable y accesible para quienes quieren comenzar a tocar. Se comercializa como bundle con accesorios esenciales incluidos.',
-    price: 352,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Teclado electrónico' },
-      { key: 'Teclas', value: '61' },
-      { key: 'Nivel', value: 'Principiante/Intermedio' },
-      { key: 'Formato', value: 'Bundle con accesorios' },
+    "id": "sire-s3-sss-drd",
+    "name": "Larry Carlton by Sire S3 SSS — DRD",
+    "slug": "sire-s3-sss-drd",
+    "brand": "Sire",
+    "category": "guitarras",
+    "subcategory": "Guitarra eléctrica Larry Carlton by Sire",
+    "model": "S3 SSS · DRD",
+    "description_short": "Guitarra eléctrica Larry Carlton by Sire en acabado Dakota Red (DRD). Precio base con gigbag: $941.00 USD (Bs 11,339.05) · Sin gigbag: $871.00 USD (Bs 10,495.55).",
+    "description_long": "Larry Carlton by Sire S3 SSS — DRD disponible en el catálogo oficial de Don Bolivia. Guitarra eléctrica Larry Carlton by Sire en acabado Dakota Red (DRD). Precio base con gigbag: $941.00 USD (Bs 11,339.05) · Sin gigbag: $871.00 USD (Bs 10,495.55).",
+    "price": 941.0,
+    "price_bs": 11339.05,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Larry Carlton by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "S3 SSS"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Dakota Red (DRD)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$941.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 11,339.05"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$871.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 10,495.55"
+      }
     ],
-    images: [],
-    source: 'donner_2026',
-    notes: 'Precio: $352.00 USD. Sin imagen disponible en el catálogo.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($941.00 USD / Bs 11,339.05). Opción sin gigbag: $871.00 USD (Bs 10,495.55). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'donner-dmk-25-pro',
-    name: 'Donner DMK-25 PRO MIDI Keyboard',
-    slug: 'donner-dmk-25-pro-midi-keyboard',
-    brand: 'Donner',
-    category: 'otros-instrumentos',
-    subcategory: 'Controlador MIDI',
-    model: 'DMK-25 PRO',
-    description_short: 'Controlador MIDI compacto de 25 teclas para producción musical y DAWs.',
-    description_long: 'El DMK‑25 PRO destaca por su formato portátil, controles dedicados y compatibilidad con software de producción, siendo una opción práctica para beatmakers, productores y home studios.',
-    price: 242,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Controlador MIDI' },
-      { key: 'Teclas', value: '25' },
-      { key: 'Conectividad', value: 'USB' },
-      { key: 'Aplicación', value: 'Producción musical, DAW' },
+    "id": "sire-s3-sss-mlg",
+    "name": "Larry Carlton by Sire S3 SSS — MLG",
+    "slug": "sire-s3-sss-mlg",
+    "brand": "Sire",
+    "category": "guitarras",
+    "subcategory": "Guitarra eléctrica Larry Carlton by Sire",
+    "model": "S3 SSS · MLG",
+    "description_short": "Guitarra eléctrica Larry Carlton by Sire en acabado Mild Green (MLG). Precio base con gigbag: $941.00 USD (Bs 11,339.05) · Sin gigbag: $871.00 USD (Bs 10,495.55).",
+    "description_long": "Larry Carlton by Sire S3 SSS — MLG disponible en el catálogo oficial de Don Bolivia. Guitarra eléctrica Larry Carlton by Sire en acabado Mild Green (MLG). Precio base con gigbag: $941.00 USD (Bs 11,339.05) · Sin gigbag: $871.00 USD (Bs 10,495.55).",
+    "price": 941.0,
+    "price_bs": 11339.05,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Larry Carlton by Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "S3 SSS"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Mild Green (MLG)"
+      },
+      {
+        "key": "Precio base USD (con gigbag)",
+        "value": "$941.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 11,339.05"
+      },
+      {
+        "key": "Precio sin gigbag USD",
+        "value": "$871.00 USD (-$70 USD)"
+      },
+      {
+        "key": "Precio sin gigbag Bs",
+        "value": "Bs 10,495.55"
+      }
     ],
-    images: [],
-    source: 'donner_2026',
-    notes: 'Precio: $242.00 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Incluye gigbag en precio base ($941.00 USD / Bs 11,339.05). Opción sin gigbag: $871.00 USD (Bs 10,495.55). Existencias por confirmar antes de ofrecer."
   },
   {
-    id: 'donner-groove-drum-set',
-    name: 'Donner Groove Drum Set',
-    slug: 'donner-groove-drum-set',
-    brand: 'Donner',
-    category: 'otros-instrumentos',
-    subcategory: 'Batería electrónica',
-    model: 'Groove',
-    description_short: 'Batería electrónica compacta con módulo versátil y múltiples kits.',
-    description_long: 'La línea Groove se presenta con módulo versátil, múltiples kits y sonidos, y una estructura pensada para ahorrar espacio sin perder opciones de práctica y performance.',
-    price: 748,
-    currency: 'USD' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Batería electrónica compacta' },
-      { key: 'Características', value: 'Módulo versátil, múltiples kits' },
+    "id": "sire-sire-strap-brn",
+    "name": "Sire Strap — BRN",
+    "slug": "sire-sire-strap-brn",
+    "brand": "Sire",
+    "category": "accesorios",
+    "subcategory": "Correa oficial Sire",
+    "model": "Sire Strap · BRN",
+    "description_short": "Correa oficial Sire en acabado Brown (BRN). Precio único: $60.00 USD (Bs 723.00).",
+    "description_long": "Sire Strap — BRN disponible en el catálogo oficial de Don Bolivia. Correa oficial Sire en acabado Brown (BRN). Precio único: $60.00 USD (Bs 723.00).",
+    "price": 60.0,
+    "price_bs": 723.0,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "Sire Strap"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Brown (BRN)"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$60.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 723.00"
+      }
     ],
-    images: [],
-    source: 'donner_2026',
-    notes: 'Precio: $748.00 USD.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Precio único: $60.00 USD (Bs 723.00). Existencias por confirmar."
   },
   {
-    id: 'donner-em1',
-    name: 'Donner EM1 Personal In-Ear Monitor',
-    slug: 'donner-em1-personal-inear-monitor',
-    brand: 'Donner',
-    category: 'accesorios',
-    subcategory: 'Monitor personal',
-    model: 'EM1',
-    description_short: 'Amplificador personal para monitoreo in-ear. Control total sobre tu sonido.',
-    description_long: 'La serie EM1 está orientada a músicos que necesitan una solución portátil de monitoreo por audífonos directamente desde su señal. Ideal para ensayo, práctica o escenario.',
-    price: 575,
-    currency: 'BOB' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Amplificador para auriculares' },
-      { key: 'Aplicación', value: 'Monitoreo in-ear' },
+    "id": "sire-sire-strap-blk",
+    "name": "Sire Strap — BLK",
+    "slug": "sire-sire-strap-blk",
+    "brand": "Sire",
+    "category": "accesorios",
+    "subcategory": "Correa oficial Sire",
+    "model": "Sire Strap · BLK",
+    "description_short": "Correa oficial Sire en acabado Black (BLK). Precio único: $60.00 USD (Bs 723.00).",
+    "description_long": "Sire Strap — BLK disponible en el catálogo oficial de Don Bolivia. Correa oficial Sire en acabado Black (BLK). Precio único: $60.00 USD (Bs 723.00).",
+    "price": 60.0,
+    "price_bs": 723.0,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Sire"
+      },
+      {
+        "key": "Línea",
+        "value": "Sire"
+      },
+      {
+        "key": "Modelo",
+        "value": "Sire Strap"
+      },
+      {
+        "key": "Acabado / Color",
+        "value": "Black (BLK)"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$60.00 USD"
+      },
+      {
+        "key": "Precio base Bs (TC 12.05)",
+        "value": "Bs 723.00"
+      }
     ],
-    images: [
-      { url: '/catalog-images/donner/p019_img00.jpeg', alt_text: 'Donner EM1 monitor personal in-ear', is_primary: true, order: 0 },
-    ],
-    source: 'donner_2026',
-    notes: 'Precio: Bs. 575 según catálogo 2026.',
+    "images": [],
+    "source": "google_sheets_sire_2026",
+    "notes": "Precio único: $60.00 USD (Bs 723.00). Existencias por confirmar."
   },
   {
-    id: 'donner-em2',
-    name: 'Donner EM2 Personal In-Ear Monitor',
-    slug: 'donner-em2-personal-inear-monitor',
-    brand: 'Donner',
-    category: 'accesorios',
-    subcategory: 'Monitor personal',
-    model: 'EM2',
-    description_short: 'Amplificador personal para monitoreo in-ear, versión mejorada del EM1.',
-    description_long: 'La serie EM2 está orientada a músicos que necesitan una solución portátil de monitoreo por audífonos directamente desde su señal, con prestaciones superiores al EM1.',
-    price: 780,
-    currency: 'BOB' as const,
-    availability: 'consultar' as const,
-    status: 'published' as const,
-    featured: false,
-    specs: [
-      { key: 'Tipo', value: 'Amplificador para auriculares' },
-      { key: 'Aplicación', value: 'Monitoreo in-ear' },
+    "id": "donner-ec6866",
+    "name": "Donner HUSH-I PRO Guitar Natural Spruce",
+    "slug": "donner-hush-i-pro-guitar-natural-spruce-ec6866",
+    "brand": "Donner",
+    "category": "guitarras",
+    "subcategory": "Guitarra Donner",
+    "model": "EC6866",
+    "description_short": "Donner HUSH-I PRO Guitar Natural Spruce (SKU: EC6866). Precio de tienda: $528.00 USD (Bs 6,362.40).",
+    "description_long": "Donner HUSH-I PRO Guitar Natural Spruce disponible en Don Bolivia. Donner HUSH-I PRO Guitar Natural Spruce (SKU: EC6866). Precio de tienda: $528.00 USD (Bs 6,362.40).",
+    "price": 528.0,
+    "price_bs": 6362.4,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC6866"
+      },
+      {
+        "key": "Categoría",
+        "value": "Guitarra Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$528.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 6,362.40"
+      }
     ],
-    images: [
-      { url: '/catalog-images/donner/p020_img00.jpeg', alt_text: 'Donner EM2 monitor personal in-ear', is_primary: true, order: 0 },
-    ],
-    source: 'donner_2026',
-    notes: 'Precio: Bs. 780 según catálogo 2026.',
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC6866 · Publicado: $528.00 USD (Bs 6,362.40) · Cierre: $480.00 USD (Bs 5,784.00). Confirmar existencias antes de ofrecer."
   },
+  {
+    "id": "donner-ec6868",
+    "name": "Donner HUSH-I PRO Guitar White",
+    "slug": "donner-hush-i-pro-guitar-white-ec6868",
+    "brand": "Donner",
+    "category": "guitarras",
+    "subcategory": "Guitarra Donner",
+    "model": "EC6868",
+    "description_short": "Donner HUSH-I PRO Guitar White (SKU: EC6868). Precio de tienda: $528.00 USD (Bs 6,362.40).",
+    "description_long": "Donner HUSH-I PRO Guitar White disponible en Don Bolivia. Donner HUSH-I PRO Guitar White (SKU: EC6868). Precio de tienda: $528.00 USD (Bs 6,362.40).",
+    "price": 528.0,
+    "price_bs": 6362.4,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC6868"
+      },
+      {
+        "key": "Categoría",
+        "value": "Guitarra Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$528.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 6,362.40"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC6868 · Publicado: $528.00 USD (Bs 6,362.40) · Cierre: $480.00 USD (Bs 5,784.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec7029",
+    "name": "Donner HUSH-X PRO Guitar White",
+    "slug": "donner-hush-x-pro-guitar-white-ec7029",
+    "brand": "Donner",
+    "category": "guitarras",
+    "subcategory": "Guitarra Donner",
+    "model": "EC7029",
+    "description_short": "Donner HUSH-X PRO Guitar White (SKU: EC7029). Precio de tienda: $605.00 USD (Bs 7,290.25).",
+    "description_long": "Donner HUSH-X PRO Guitar White disponible en Don Bolivia. Donner HUSH-X PRO Guitar White (SKU: EC7029). Precio de tienda: $605.00 USD (Bs 7,290.25).",
+    "price": 605.0,
+    "price_bs": 7290.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC7029"
+      },
+      {
+        "key": "Categoría",
+        "value": "Guitarra Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$605.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 7,290.25"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC7029 · Publicado: $605.00 USD (Bs 7,290.25) · Cierre: $550.00 USD (Bs 6,627.50). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec7030",
+    "name": "Donner HUSH-X PRO Guitar Black",
+    "slug": "donner-hush-x-pro-guitar-black-ec7030",
+    "brand": "Donner",
+    "category": "guitarras",
+    "subcategory": "Guitarra Donner",
+    "model": "EC7030",
+    "description_short": "Donner HUSH-X PRO Guitar Black (SKU: EC7030). Precio de tienda: $605.00 USD (Bs 7,290.25).",
+    "description_long": "Donner HUSH-X PRO Guitar Black disponible en Don Bolivia. Donner HUSH-X PRO Guitar Black (SKU: EC7030). Precio de tienda: $605.00 USD (Bs 7,290.25).",
+    "price": 605.0,
+    "price_bs": 7290.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC7030"
+      },
+      {
+        "key": "Categoría",
+        "value": "Guitarra Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$605.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 7,290.25"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC7030 · Publicado: $605.00 USD (Bs 7,290.25) · Cierre: $550.00 USD (Bs 6,627.50). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec7251",
+    "name": "Donner HUSH-C SUNBURST Classical Guitar",
+    "slug": "donner-hush-c-sunburst-classical-guitar-ec7251",
+    "brand": "Donner",
+    "category": "guitarras",
+    "subcategory": "Guitarra Donner",
+    "model": "EC7251",
+    "description_short": "Donner HUSH-C SUNBURST Classical Guitar (SKU: EC7251). Precio de tienda: $418.00 USD (Bs 5,036.90).",
+    "description_long": "Donner HUSH-C SUNBURST Classical Guitar disponible en Don Bolivia. Donner HUSH-C SUNBURST Classical Guitar (SKU: EC7251). Precio de tienda: $418.00 USD (Bs 5,036.90).",
+    "price": 418.0,
+    "price_bs": 5036.9,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC7251"
+      },
+      {
+        "key": "Categoría",
+        "value": "Guitarra Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$418.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 5,036.90"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC7251 · Publicado: $418.00 USD (Bs 5,036.90) · Cierre: $380.00 USD (Bs 4,579.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec7252",
+    "name": "Donner HUSH-C BLACK Nylon String Classical Guitar",
+    "slug": "donner-hush-c-black-nylon-string-classical-guitar-ec7252",
+    "brand": "Donner",
+    "category": "guitarras",
+    "subcategory": "Guitarra Donner",
+    "model": "EC7252",
+    "description_short": "Donner HUSH-C BLACK Nylon String Classical Guitar (SKU: EC7252). Precio de tienda: $418.00 USD (Bs 5,036.90).",
+    "description_long": "Donner HUSH-C BLACK Nylon String Classical Guitar disponible en Don Bolivia. Donner HUSH-C BLACK Nylon String Classical Guitar (SKU: EC7252). Precio de tienda: $418.00 USD (Bs 5,036.90).",
+    "price": 418.0,
+    "price_bs": 5036.9,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC7252"
+      },
+      {
+        "key": "Categoría",
+        "value": "Guitarra Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$418.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 5,036.90"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC7252 · Publicado: $418.00 USD (Bs 5,036.90) · Cierre: $380.00 USD (Bs 4,579.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec6961",
+    "name": "Donner DST-80 Matton Black Electric Guitar with Amplifier,Strap,String,Tuner,Cable,Capo and Pick",
+    "slug": "donner-dst-80-matton-black-electric-guitar-with-amplifier-strap-string-tuner-cable-capo-and-pick-ec6961",
+    "brand": "Donner",
+    "category": "guitarras",
+    "subcategory": "Guitarra Donner",
+    "model": "EC6961",
+    "description_short": "Donner DST-80 Matton Black Electric Guitar with Amplifier,Strap,String,Tuner,Cable,Capo and Pick (SKU: EC6961). Precio de tienda: $333.34 USD (Bs 4,016.75).",
+    "description_long": "Donner DST-80 Matton Black Electric Guitar with Amplifier,Strap,String,Tuner,Cable,Capo and Pick disponible en Don Bolivia. Donner DST-80 Matton Black Electric Guitar with Amplifier,Strap,String,Tuner,Cable,Capo and Pick (SKU: EC6961). Precio de tienda: $333.34 USD (Bs 4,016.75).",
+    "price": 333.34,
+    "price_bs": 4016.75,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC6961"
+      },
+      {
+        "key": "Categoría",
+        "value": "Guitarra Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$333.34 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 4,016.75"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC6961 · Publicado: $333.34 USD (Bs 4,016.75) · Cierre: $300.00 USD (Bs 3,615.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec6960",
+    "name": "Donner DST-80 Surf Green Electric Guitar with Amplifier,Strap,String,Tuner,Cable,Capo and Pick",
+    "slug": "donner-dst-80-surf-green-electric-guitar-with-amplifier-strap-string-tuner-cable-capo-and-pick-ec6960",
+    "brand": "Donner",
+    "category": "guitarras",
+    "subcategory": "Guitarra Donner",
+    "model": "EC6960",
+    "description_short": "Donner DST-80 Surf Green Electric Guitar with Amplifier,Strap,String,Tuner,Cable,Capo and Pick (SKU: EC6960). Precio de tienda: $333.34 USD (Bs 4,016.75).",
+    "description_long": "Donner DST-80 Surf Green Electric Guitar with Amplifier,Strap,String,Tuner,Cable,Capo and Pick disponible en Don Bolivia. Donner DST-80 Surf Green Electric Guitar with Amplifier,Strap,String,Tuner,Cable,Capo and Pick (SKU: EC6960). Precio de tienda: $333.34 USD (Bs 4,016.75).",
+    "price": 333.34,
+    "price_bs": 4016.75,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC6960"
+      },
+      {
+        "key": "Categoría",
+        "value": "Guitarra Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$333.34 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 4,016.75"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC6960 · Publicado: $333.34 USD (Bs 4,016.75) · Cierre: $300.00 USD (Bs 3,615.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec1790",
+    "name": "Donner Arena Multi-FX Pedal Amp-Modeller",
+    "slug": "donner-arena-multi-fx-pedal-amp-modeller-ec1790",
+    "brand": "Donner",
+    "category": "pedales-efectos",
+    "subcategory": "Procesador / Pedal de efectos Donner",
+    "model": "EC1790",
+    "description_short": "Donner Arena Multi-FX Pedal Amp-Modeller (SKU: EC1790). Precio de tienda: $385.00 USD (Bs 4,639.25).",
+    "description_long": "Donner Arena Multi-FX Pedal Amp-Modeller disponible en Don Bolivia. Donner Arena Multi-FX Pedal Amp-Modeller (SKU: EC1790). Precio de tienda: $385.00 USD (Bs 4,639.25).",
+    "price": 385.0,
+    "price_bs": 4639.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC1790"
+      },
+      {
+        "key": "Categoría",
+        "value": "Procesador / Pedal de efectos Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$385.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 4,639.25"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC1790 · Publicado: $385.00 USD (Bs 4,639.25) · Cierre: $350.00 USD (Bs 4,217.50). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec6928",
+    "name": "Donner Ultra Dual Series Multi Effects Acoustic Preamp Loop",
+    "slug": "donner-ultra-dual-series-multi-effects-acoustic-preamp-loop-ec6928",
+    "brand": "Donner",
+    "category": "pedales-efectos",
+    "subcategory": "Procesador / Pedal de efectos Donner",
+    "model": "EC6928",
+    "description_short": "Donner Ultra Dual Series Multi Effects Acoustic Preamp Loop (SKU: EC6928). Precio de tienda: $440.00 USD (Bs 5,302.00).",
+    "description_long": "Donner Ultra Dual Series Multi Effects Acoustic Preamp Loop disponible en Don Bolivia. Donner Ultra Dual Series Multi Effects Acoustic Preamp Loop (SKU: EC6928). Precio de tienda: $440.00 USD (Bs 5,302.00).",
+    "price": 440.0,
+    "price_bs": 5302.0,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC6928"
+      },
+      {
+        "key": "Categoría",
+        "value": "Procesador / Pedal de efectos Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$440.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 5,302.00"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC6928 · Publicado: $440.00 USD (Bs 5,302.00) · Cierre: $400.00 USD (Bs 4,820.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec7031",
+    "name": "Donner PocketX Guitar/Bass AMP Modeler Multi Effects Processor",
+    "slug": "donner-pocketx-guitar-bass-amp-modeler-multi-effects-processor-ec7031",
+    "brand": "Donner",
+    "category": "pedales-efectos",
+    "subcategory": "Procesador / Pedal de efectos Donner",
+    "model": "EC7031",
+    "description_short": "Donner PocketX Guitar/Bass AMP Modeler Multi Effects Processor (SKU: EC7031). Precio de tienda: $198.00 USD (Bs 2,385.90).",
+    "description_long": "Donner PocketX Guitar/Bass AMP Modeler Multi Effects Processor disponible en Don Bolivia. Donner PocketX Guitar/Bass AMP Modeler Multi Effects Processor (SKU: EC7031). Precio de tienda: $198.00 USD (Bs 2,385.90).",
+    "price": 198.0,
+    "price_bs": 2385.9,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC7031"
+      },
+      {
+        "key": "Categoría",
+        "value": "Procesador / Pedal de efectos Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$198.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 2,385.90"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC7031 · Publicado: $198.00 USD (Bs 2,385.90) · Cierre: $180.00 USD (Bs 2,169.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec6681",
+    "name": "Donner DDP-60 Semi-weighted Upright Digital Piano",
+    "slug": "donner-ddp-60-semi-weighted-upright-digital-piano-ec6681",
+    "brand": "Donner",
+    "category": "otros-instrumentos",
+    "subcategory": "Piano digital / Batería electrónica Donner",
+    "model": "EC6681",
+    "description_short": "Donner DDP-60 Semi-weighted Upright Digital Piano (SKU: EC6681). Precio de tienda: $550.00 USD (Bs 6,627.50).",
+    "description_long": "Donner DDP-60 Semi-weighted Upright Digital Piano disponible en Don Bolivia. Donner DDP-60 Semi-weighted Upright Digital Piano (SKU: EC6681). Precio de tienda: $550.00 USD (Bs 6,627.50).",
+    "price": 550.0,
+    "price_bs": 6627.5,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC6681"
+      },
+      {
+        "key": "Categoría",
+        "value": "Piano digital / Batería electrónica Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$550.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 6,627.50"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC6681 · Publicado: $550.00 USD (Bs 6,627.50) · Cierre: $500.00 USD (Bs 6,025.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec7220",
+    "name": "Donner DHP-100 PRO Digital Piano Brown",
+    "slug": "donner-dhp-100-pro-digital-piano-brown-ec7220",
+    "brand": "Donner",
+    "category": "otros-instrumentos",
+    "subcategory": "Piano digital / Batería electrónica Donner",
+    "model": "EC7220",
+    "description_short": "Donner DHP-100 PRO Digital Piano Brown (SKU: EC7220). Precio de tienda: $715.00 USD (Bs 8,615.75).",
+    "description_long": "Donner DHP-100 PRO Digital Piano Brown disponible en Don Bolivia. Donner DHP-100 PRO Digital Piano Brown (SKU: EC7220). Precio de tienda: $715.00 USD (Bs 8,615.75).",
+    "price": 715.0,
+    "price_bs": 8615.75,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC7220"
+      },
+      {
+        "key": "Categoría",
+        "value": "Piano digital / Batería electrónica Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$715.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 8,615.75"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC7220 · Publicado: $715.00 USD (Bs 8,615.75) · Cierre: $650.00 USD (Bs 7,832.50). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec6773",
+    "name": "DONNER DDP-80 PRO Digital piano",
+    "slug": "donner-ddp-80-pro-digital-piano-ec6773",
+    "brand": "Donner",
+    "category": "otros-instrumentos",
+    "subcategory": "Piano digital / Batería electrónica Donner",
+    "model": "EC6773",
+    "description_short": "DONNER DDP-80 PRO Digital piano (SKU: EC6773). Precio de tienda: $1,540.00 USD (Bs 18,557.00).",
+    "description_long": "DONNER DDP-80 PRO Digital piano disponible en Don Bolivia. DONNER DDP-80 PRO Digital piano (SKU: EC6773). Precio de tienda: $1,540.00 USD (Bs 18,557.00).",
+    "price": 1540.0,
+    "price_bs": 18557.0,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC6773"
+      },
+      {
+        "key": "Categoría",
+        "value": "Piano digital / Batería electrónica Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$1,540.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 18,557.00"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC6773 · Publicado: $1,540.00 USD (Bs 18,557.00) · Cierre: $1,400.00 USD (Bs 16,870.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec6724",
+    "name": "DONNER DEK-620 61 KEYS ELECTRONIC PIANO Bundle",
+    "slug": "donner-dek-620-61-keys-electronic-piano-bundle-ec6724",
+    "brand": "Donner",
+    "category": "otros-instrumentos",
+    "subcategory": "Piano digital / Batería electrónica Donner",
+    "model": "EC6724",
+    "description_short": "DONNER DEK-620 61 KEYS ELECTRONIC PIANO Bundle (SKU: EC6724). Precio de tienda: $352.00 USD (Bs 4,241.60).",
+    "description_long": "DONNER DEK-620 61 KEYS ELECTRONIC PIANO Bundle disponible en Don Bolivia. DONNER DEK-620 61 KEYS ELECTRONIC PIANO Bundle (SKU: EC6724). Precio de tienda: $352.00 USD (Bs 4,241.60).",
+    "price": 352.0,
+    "price_bs": 4241.6,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC6724"
+      },
+      {
+        "key": "Categoría",
+        "value": "Piano digital / Batería electrónica Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$352.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 4,241.60"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC6724 · Publicado: $352.00 USD (Bs 4,241.60) · Cierre: $320.00 USD (Bs 3,856.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec3360",
+    "name": "Donner DMK-25 PRO MIDI Keyboard",
+    "slug": "donner-dmk-25-pro-midi-keyboard-ec3360",
+    "brand": "Donner",
+    "category": "otros-instrumentos",
+    "subcategory": "Piano digital / Batería electrónica Donner",
+    "model": "EC3360",
+    "description_short": "Donner DMK-25 PRO MIDI Keyboard (SKU: EC3360). Precio de tienda: $222.23 USD (Bs 2,677.87).",
+    "description_long": "Donner DMK-25 PRO MIDI Keyboard disponible en Don Bolivia. Donner DMK-25 PRO MIDI Keyboard (SKU: EC3360). Precio de tienda: $222.23 USD (Bs 2,677.87).",
+    "price": 222.23,
+    "price_bs": 2677.87,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC3360"
+      },
+      {
+        "key": "Categoría",
+        "value": "Piano digital / Batería electrónica Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$222.23 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 2,677.87"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC3360 · Publicado: $222.23 USD (Bs 2,677.87) · Cierre: $200.00 USD (Bs 2,410.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec3413",
+    "name": "Donner DED-80 Electric Drum Set",
+    "slug": "donner-ded-80-electric-drum-set-ec3413",
+    "brand": "Donner",
+    "category": "otros-instrumentos",
+    "subcategory": "Piano digital / Batería electrónica Donner",
+    "model": "EC3413",
+    "description_short": "Donner DED-80 Electric Drum Set (SKU: EC3413). Precio de tienda: $440.00 USD (Bs 5,302.00).",
+    "description_long": "Donner DED-80 Electric Drum Set disponible en Don Bolivia. Donner DED-80 Electric Drum Set (SKU: EC3413). Precio de tienda: $440.00 USD (Bs 5,302.00).",
+    "price": 440.0,
+    "price_bs": 5302.0,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC3413"
+      },
+      {
+        "key": "Categoría",
+        "value": "Piano digital / Batería electrónica Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$440.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 5,302.00"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC3413 · Publicado: $440.00 USD (Bs 5,302.00) · Cierre: $400.00 USD (Bs 4,820.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec6782",
+    "name": "Donner DED-200Max Electronic Drum Set",
+    "slug": "donner-ded-200max-electronic-drum-set-ec6782",
+    "brand": "Donner",
+    "category": "otros-instrumentos",
+    "subcategory": "Piano digital / Batería electrónica Donner",
+    "model": "EC6782",
+    "description_short": "Donner DED-200Max Electronic Drum Set (SKU: EC6782). Precio de tienda: $825.00 USD (Bs 9,941.25).",
+    "description_long": "Donner DED-200Max Electronic Drum Set disponible en Don Bolivia. Donner DED-200Max Electronic Drum Set (SKU: EC6782). Precio de tienda: $825.00 USD (Bs 9,941.25).",
+    "price": 825.0,
+    "price_bs": 9941.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC6782"
+      },
+      {
+        "key": "Categoría",
+        "value": "Piano digital / Batería electrónica Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$825.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 9,941.25"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC6782 · Publicado: $825.00 USD (Bs 9,941.25) · Cierre: $750.00 USD (Bs 9,037.50). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec7247",
+    "name": "Donner Groove Drum SET",
+    "slug": "donner-groove-drum-set-ec7247",
+    "brand": "Donner",
+    "category": "otros-instrumentos",
+    "subcategory": "Piano digital / Batería electrónica Donner",
+    "model": "EC7247",
+    "description_short": "Donner Groove Drum SET (SKU: EC7247). Precio de tienda: $748.00 USD (Bs 9,013.40).",
+    "description_long": "Donner Groove Drum SET disponible en Don Bolivia. Donner Groove Drum SET (SKU: EC7247). Precio de tienda: $748.00 USD (Bs 9,013.40).",
+    "price": 748.0,
+    "price_bs": 9013.4,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC7247"
+      },
+      {
+        "key": "Categoría",
+        "value": "Piano digital / Batería electrónica Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$748.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 9,013.40"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC7247 · Publicado: $748.00 USD (Bs 9,013.40) · Cierre: $680.00 USD (Bs 8,194.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec1137",
+    "name": "Donner Drum Sticks 5A Classic Maple Wood 3 Pair with Carrying Bag",
+    "slug": "donner-drum-sticks-5a-classic-maple-wood-3-pair-with-carrying-bag-ec1137",
+    "brand": "Donner",
+    "category": "accesorios",
+    "subcategory": "Accesorio musical Donner",
+    "model": "EC1137",
+    "description_short": "Donner Drum Sticks 5A Classic Maple Wood 3 Pair with Carrying Bag (SKU: EC1137). Precio de tienda: $19.00 USD (Bs 228.95).",
+    "description_long": "Donner Drum Sticks 5A Classic Maple Wood 3 Pair with Carrying Bag disponible en Don Bolivia. Donner Drum Sticks 5A Classic Maple Wood 3 Pair with Carrying Bag (SKU: EC1137). Precio de tienda: $19.00 USD (Bs 228.95).",
+    "price": 19.0,
+    "price_bs": 228.95,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC1137"
+      },
+      {
+        "key": "Categoría",
+        "value": "Accesorio musical Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$19.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 228.95"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC1137 · Publicado: $19.00 USD (Bs 228.95) · Cierre: $18.95 USD (Bs 228.32). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec1301",
+    "name": "Donner EM1 Personal In-Ear Headphone Amplifier",
+    "slug": "donner-em1-personal-in-ear-headphone-amplifier-ec1301",
+    "brand": "Donner",
+    "category": "accesorios",
+    "subcategory": "Accesorio musical Donner",
+    "model": "EC1301",
+    "description_short": "Donner EM1 Personal In-Ear Headphone Amplifier (SKU: EC1301). Precio de tienda: $60.50 USD (Bs 729.03).",
+    "description_long": "Donner EM1 Personal In-Ear Headphone Amplifier disponible en Don Bolivia. Donner EM1 Personal In-Ear Headphone Amplifier (SKU: EC1301). Precio de tienda: $60.50 USD (Bs 729.03).",
+    "price": 60.5,
+    "price_bs": 729.03,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC1301"
+      },
+      {
+        "key": "Categoría",
+        "value": "Accesorio musical Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$60.50 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 729.03"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC1301 · Publicado: $60.50 USD (Bs 729.03) · Cierre: $55.00 USD (Bs 662.75). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec7200",
+    "name": "Donner EM1 Personal In-Ear Headphone Amplifier(Black)",
+    "slug": "donner-em1-personal-in-ear-headphone-amplifier-black-ec7200",
+    "brand": "Donner",
+    "category": "accesorios",
+    "subcategory": "Accesorio musical Donner",
+    "model": "EC7200",
+    "description_short": "Donner EM1 Personal In-Ear Headphone Amplifier(Black) (SKU: EC7200). Precio de tienda: $60.50 USD (Bs 729.03).",
+    "description_long": "Donner EM1 Personal In-Ear Headphone Amplifier(Black) disponible en Don Bolivia. Donner EM1 Personal In-Ear Headphone Amplifier(Black) (SKU: EC7200). Precio de tienda: $60.50 USD (Bs 729.03).",
+    "price": 60.5,
+    "price_bs": 729.03,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC7200"
+      },
+      {
+        "key": "Categoría",
+        "value": "Accesorio musical Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$60.50 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 729.03"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC7200 · Publicado: $60.50 USD (Bs 729.03) · Cierre: $55.00 USD (Bs 662.75). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "donner-ec1302",
+    "name": "Donner EM2 Personal In-Ear Headphone Amplifier",
+    "slug": "donner-em2-personal-in-ear-headphone-amplifier-ec1302",
+    "brand": "Donner",
+    "category": "accesorios",
+    "subcategory": "Accesorio musical Donner",
+    "model": "EC1302",
+    "description_short": "Donner EM2 Personal In-Ear Headphone Amplifier (SKU: EC1302). Precio de tienda: $82.00 USD (Bs 988.10).",
+    "description_long": "Donner EM2 Personal In-Ear Headphone Amplifier disponible en Don Bolivia. Donner EM2 Personal In-Ear Headphone Amplifier (SKU: EC1302). Precio de tienda: $82.00 USD (Bs 988.10).",
+    "price": 82.0,
+    "price_bs": 988.1,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Donner"
+      },
+      {
+        "key": "SKU",
+        "value": "EC1302"
+      },
+      {
+        "key": "Categoría",
+        "value": "Accesorio musical Donner"
+      },
+      {
+        "key": "Precio publicado USD",
+        "value": "$82.00 USD"
+      },
+      {
+        "key": "Precio publicado Bs (TC 12.05)",
+        "value": "Bs 988.10"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_donner_2026",
+    "notes": "SKU: EC1302 · Publicado: $82.00 USD (Bs 988.10) · Cierre: $75.00 USD (Bs 903.75). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ge110n",
+    "name": "Set Cuerdas Guit Electrica Magma - Extra Light Nickel Plated Steel Guit Electrica Set .009\" - .042\" - (GE110N) - 1 Set",
+    "slug": "magma-ge110n-set-cuerdas-guit-electrica-magma-extra-l",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Eléctrica Magma",
+    "model": "GE110N",
+    "description_short": "Set Cuerdas Guit Electrica Magma - Extra Light Nickel Plated Steel Guit Electrica Set .009\" - .042\" - (GE110N) - 1 Set. Precio vigente: $9.00 USD (Bs 108.45).",
+    "description_long": "Set Cuerdas Guit Electrica Magma - Extra Light Nickel Plated Steel Guit Electrica Set .009\" - .042\" - (GE110N) - 1 Set disponible en Don Bolivia. Set Cuerdas Guit Electrica Magma - Extra Light Nickel Plated Steel Guit Electrica Set .009\" - .042\" - (GE110N) - 1 Set. Precio vigente: $9.00 USD (Bs 108.45).",
+    "price": 9.0,
+    "price_bs": 108.45,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GE110N"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Eléctrica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$9.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 108.45"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GE110N · Precio vigente: $9.00 USD (Bs 108.45). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ge130n",
+    "name": "Set Cuerdas Guit Electrica Magma - Custom Light Nickel Plated Steel Guit Electrica Set .009\" - .046\" - (GE130N) - 1 Set",
+    "slug": "magma-ge130n-set-cuerdas-guit-electrica-magma-custom",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Eléctrica Magma",
+    "model": "GE130N",
+    "description_short": "Set Cuerdas Guit Electrica Magma - Custom Light Nickel Plated Steel Guit Electrica Set .009\" - .046\" - (GE130N) - 1 Set. Precio vigente: $9.00 USD (Bs 108.45).",
+    "description_long": "Set Cuerdas Guit Electrica Magma - Custom Light Nickel Plated Steel Guit Electrica Set .009\" - .046\" - (GE130N) - 1 Set disponible en Don Bolivia. Set Cuerdas Guit Electrica Magma - Custom Light Nickel Plated Steel Guit Electrica Set .009\" - .046\" - (GE130N) - 1 Set. Precio vigente: $9.00 USD (Bs 108.45).",
+    "price": 9.0,
+    "price_bs": 108.45,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GE130N"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Eléctrica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$9.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 108.45"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GE130N · Precio vigente: $9.00 USD (Bs 108.45). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ge140n",
+    "name": "Set Cuerdas Guit Electrica Magma - Light Nickel Plated Steel Guit Electrica Set .010\" - .046\" - (GE140N) - 1 Set",
+    "slug": "magma-ge140n-set-cuerdas-guit-electrica-magma-light-n",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Eléctrica Magma",
+    "model": "GE140N",
+    "description_short": "Set Cuerdas Guit Electrica Magma - Light Nickel Plated Steel Guit Electrica Set .010\" - .046\" - (GE140N) - 1 Set. Precio vigente: $8.50 USD (Bs 102.43).",
+    "description_long": "Set Cuerdas Guit Electrica Magma - Light Nickel Plated Steel Guit Electrica Set .010\" - .046\" - (GE140N) - 1 Set disponible en Don Bolivia. Set Cuerdas Guit Electrica Magma - Light Nickel Plated Steel Guit Electrica Set .010\" - .046\" - (GE140N) - 1 Set. Precio vigente: $8.50 USD (Bs 102.43).",
+    "price": 8.5,
+    "price_bs": 102.43,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GE140N"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Eléctrica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$8.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 102.43"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GE140N · Precio vigente: $8.50 USD (Bs 102.43). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ge155n",
+    "name": "Set Cuerdas Guit Electrica Magma - Heavy Bottom Nickel Plated Steel Guit Electrica Set .010\" - .052\" - (GE155N) - 1 Set",
+    "slug": "magma-ge155n-set-cuerdas-guit-electrica-magma-heavy-b",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Eléctrica Magma",
+    "model": "GE155N",
+    "description_short": "Set Cuerdas Guit Electrica Magma - Heavy Bottom Nickel Plated Steel Guit Electrica Set .010\" - .052\" - (GE155N) - 1 Set. Precio vigente: $9.00 USD (Bs 108.45).",
+    "description_long": "Set Cuerdas Guit Electrica Magma - Heavy Bottom Nickel Plated Steel Guit Electrica Set .010\" - .052\" - (GE155N) - 1 Set disponible en Don Bolivia. Set Cuerdas Guit Electrica Magma - Heavy Bottom Nickel Plated Steel Guit Electrica Set .010\" - .052\" - (GE155N) - 1 Set. Precio vigente: $9.00 USD (Bs 108.45).",
+    "price": 9.0,
+    "price_bs": 108.45,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GE155N"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Eléctrica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$9.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 108.45"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GE155N · Precio vigente: $9.00 USD (Bs 108.45). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ge160n",
+    "name": "Set Cuerdas Guit Electrica Magma - Medium Nickel Plated Steel Guit Electrica Set .011\" - .050\" - (GE160N) - 1 Set",
+    "slug": "magma-ge160n-set-cuerdas-guit-electrica-magma-medium",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Eléctrica Magma",
+    "model": "GE160N",
+    "description_short": "Set Cuerdas Guit Electrica Magma - Medium Nickel Plated Steel Guit Electrica Set .011\" - .050\" - (GE160N) - 1 Set. Precio vigente: $9.00 USD (Bs 108.45).",
+    "description_long": "Set Cuerdas Guit Electrica Magma - Medium Nickel Plated Steel Guit Electrica Set .011\" - .050\" - (GE160N) - 1 Set disponible en Don Bolivia. Set Cuerdas Guit Electrica Magma - Medium Nickel Plated Steel Guit Electrica Set .011\" - .050\" - (GE160N) - 1 Set. Precio vigente: $9.00 USD (Bs 108.45).",
+    "price": 9.0,
+    "price_bs": 108.45,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GE160N"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Eléctrica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$9.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 108.45"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GE160N · Precio vigente: $9.00 USD (Bs 108.45). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be150n",
+    "name": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" Set, .040 - .100 (BE150N) 1 Set",
+    "slug": "magma-be150n-set-cuerdas-bajo-electrico-magma-light-n",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE150N",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" Set, .040 - .100 (BE150N) 1 Set. Precio vigente: $30.00 USD (Bs 361.50).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" Set, .040 - .100 (BE150N) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" Set, .040 - .100 (BE150N) 1 Set. Precio vigente: $30.00 USD (Bs 361.50).",
+    "price": 30.0,
+    "price_bs": 361.5,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE150N"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$30.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 361.50"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE150N · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be170n",
+    "name": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" Set, .045 - .105 (BE170N) 1 Set",
+    "slug": "magma-be170n-set-cuerdas-bajo-electrico-magma-medium",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE170N",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" Set, .045 - .105 (BE170N) 1 Set. Precio vigente: $30.00 USD (Bs 361.50).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" Set, .045 - .105 (BE170N) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" Set, .045 - .105 (BE170N) 1 Set. Precio vigente: $30.00 USD (Bs 361.50).",
+    "price": 30.0,
+    "price_bs": 361.5,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE170N"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$30.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 361.50"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE170N · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be155n",
+    "name": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" 5 Cuerdas Set, .040 - .125 (BE155N) 1 Set",
+    "slug": "magma-be155n-set-cuerdas-bajo-electrico-magma-light-n",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE155N",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" 5 Cuerdas Set, .040 - .125 (BE155N) 1 Set. Precio vigente: $38.00 USD (Bs 457.90).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" 5 Cuerdas Set, .040 - .125 (BE155N) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" 5 Cuerdas Set, .040 - .125 (BE155N) 1 Set. Precio vigente: $38.00 USD (Bs 457.90).",
+    "price": 38.0,
+    "price_bs": 457.9,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE155N"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$38.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 457.90"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE155N · Precio vigente: $38.00 USD (Bs 457.90). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be175n",
+    "name": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" 5 Cuerdas Set, .045 - .130 (BE175N) 1 Set",
+    "slug": "magma-be175n-set-cuerdas-bajo-electrico-magma-medium",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE175N",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" 5 Cuerdas Set, .045 - .130 (BE175N) 1 Set. Precio vigente: $38.00 USD (Bs 457.90).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" 5 Cuerdas Set, .045 - .130 (BE175N) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" 5 Cuerdas Set, .045 - .130 (BE175N) 1 Set. Precio vigente: $38.00 USD (Bs 457.90).",
+    "price": 38.0,
+    "price_bs": 457.9,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE175N"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$38.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 457.90"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE175N · Precio vigente: $38.00 USD (Bs 457.90). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be156n",
+    "name": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" 6 Cuerdas Set, .030 - .125 (BE156N) 1 Set",
+    "slug": "magma-be156n-set-cuerdas-bajo-electrico-magma-light-n",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE156N",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" 6 Cuerdas Set, .030 - .125 (BE156N) 1 Set. Precio vigente: $44.00 USD (Bs 530.20).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" 6 Cuerdas Set, .030 - .125 (BE156N) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" 6 Cuerdas Set, .030 - .125 (BE156N) 1 Set. Precio vigente: $44.00 USD (Bs 530.20).",
+    "price": 44.0,
+    "price_bs": 530.2,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE156N"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$44.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 530.20"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE156N · Precio vigente: $44.00 USD (Bs 530.20). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be176n",
+    "name": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" 6 Cuerdas Set, .030 - .130 (BE176N) 1 Set",
+    "slug": "magma-be176n-set-cuerdas-bajo-electrico-magma-medium",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE176N",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" 6 Cuerdas Set, .030 - .130 (BE176N) 1 Set. Precio vigente: $44.00 USD (Bs 530.20).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" 6 Cuerdas Set, .030 - .130 (BE176N) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" 6 Cuerdas Set, .030 - .130 (BE176N) 1 Set. Precio vigente: $44.00 USD (Bs 530.20).",
+    "price": 44.0,
+    "price_bs": 530.2,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE176N"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$44.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 530.20"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE176N · Precio vigente: $44.00 USD (Bs 530.20). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be160suf",
+    "name": "Set Cuerdas Bajo Electrico Magma Medium Light - Steel Ultra Flat Strings - Escala Larga 34\" 4 Cuerdas Set, .045 - .100 (BE160SUF) 1 Set",
+    "slug": "magma-be160suf-set-cuerdas-bajo-electrico-magma-medium-li",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE160SUF",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Medium Light - Steel Ultra Flat Strings - Escala Larga 34\" 4 Cuerdas Set, .045 - .100 (BE160SUF) 1 Set. Precio vigente: $48.00 USD (Bs 578.40).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Medium Light - Steel Ultra Flat Strings - Escala Larga 34\" 4 Cuerdas Set, .045 - .100 (BE160SUF) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Medium Light - Steel Ultra Flat Strings - Escala Larga 34\" 4 Cuerdas Set, .045 - .100 (BE160SUF) 1 Set. Precio vigente: $48.00 USD (Bs 578.40).",
+    "price": 48.0,
+    "price_bs": 578.4,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE160SUF"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$48.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 578.40"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE160SUF · Precio vigente: $48.00 USD (Bs 578.40). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be165suf",
+    "name": "Set Cuerdas Bajo Electrico Magma Medium Light - Steel Ultra Flat Strings - Escala Larga 34\" 5 Cuerdas Set, .045 - .125 (BE165SUF) 1 Set",
+    "slug": "magma-be165suf-set-cuerdas-bajo-electrico-magma-medium-li",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE165SUF",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Medium Light - Steel Ultra Flat Strings - Escala Larga 34\" 5 Cuerdas Set, .045 - .125 (BE165SUF) 1 Set. Precio vigente: $60.00 USD (Bs 723.00).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Medium Light - Steel Ultra Flat Strings - Escala Larga 34\" 5 Cuerdas Set, .045 - .125 (BE165SUF) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Medium Light - Steel Ultra Flat Strings - Escala Larga 34\" 5 Cuerdas Set, .045 - .125 (BE165SUF) 1 Set. Precio vigente: $60.00 USD (Bs 723.00).",
+    "price": 60.0,
+    "price_bs": 723.0,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE165SUF"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$60.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 723.00"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE165SUF · Precio vigente: $60.00 USD (Bs 723.00). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be400nb",
+    "name": "Set Cuerdas Bajo Electrico Magma Light - Flat Black Nylon Tapewound Strings - Escala Larga 34\" 4 Cuerdas Set, .050 - .105 (BE400NB) 1 Set",
+    "slug": "magma-be400nb-set-cuerdas-bajo-electrico-magma-light-f",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE400NB",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Light - Flat Black Nylon Tapewound Strings - Escala Larga 34\" 4 Cuerdas Set, .050 - .105 (BE400NB) 1 Set. Precio vigente: $45.00 USD (Bs 542.25).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Light - Flat Black Nylon Tapewound Strings - Escala Larga 34\" 4 Cuerdas Set, .050 - .105 (BE400NB) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Light - Flat Black Nylon Tapewound Strings - Escala Larga 34\" 4 Cuerdas Set, .050 - .105 (BE400NB) 1 Set. Precio vigente: $45.00 USD (Bs 542.25).",
+    "price": 45.0,
+    "price_bs": 542.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE400NB"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$45.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 542.25"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE400NB · Precio vigente: $45.00 USD (Bs 542.25). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be140nsf",
+    "name": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" Set, .040 - .095 (BE140NSF) 1 Set",
+    "slug": "magma-be140nsf-set-cuerdas-bajo-electrico-magma-extra-lig",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE140NSF",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" Set, .040 - .095 (BE140NSF) 1 Set. Precio vigente: $38.50 USD (Bs 463.93).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" Set, .040 - .095 (BE140NSF) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" Set, .040 - .095 (BE140NSF) 1 Set. Precio vigente: $38.50 USD (Bs 463.93).",
+    "price": 38.5,
+    "price_bs": 463.93,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE140NSF"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$38.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 463.93"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE140NSF · Precio vigente: $38.50 USD (Bs 463.93). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be145nsf",
+    "name": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" 5 Cuerdas Set, .040 - .120 (BE145NSF) 1 Set",
+    "slug": "magma-be145nsf-set-cuerdas-bajo-electrico-magma-extra-lig",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE145NSF",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" 5 Cuerdas Set, .040 - .120 (BE145NSF) 1 Set. Precio vigente: $48.50 USD (Bs 584.43).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" 5 Cuerdas Set, .040 - .120 (BE145NSF) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" 5 Cuerdas Set, .040 - .120 (BE145NSF) 1 Set. Precio vigente: $48.50 USD (Bs 584.43).",
+    "price": 48.5,
+    "price_bs": 584.43,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE145NSF"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$48.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 584.43"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE145NSF · Precio vigente: $48.50 USD (Bs 584.43). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be146nsf",
+    "name": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" 6 Cuerdas Set, .028 - .120 (BE146NSF) 1 Set",
+    "slug": "magma-be146nsf-set-cuerdas-bajo-electrico-magma-extra-lig",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE146NSF",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" 6 Cuerdas Set, .028 - .120 (BE146NSF) 1 Set. Precio vigente: $56.50 USD (Bs 680.83).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" 6 Cuerdas Set, .028 - .120 (BE146NSF) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" 6 Cuerdas Set, .028 - .120 (BE146NSF) 1 Set. Precio vigente: $56.50 USD (Bs 680.83).",
+    "price": 56.5,
+    "price_bs": 680.83,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE146NSF"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$56.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 680.83"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE146NSF · Precio vigente: $56.50 USD (Bs 680.83). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be170nsf",
+    "name": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" Set, .045 - .105 (BE170NSF) 1 Set",
+    "slug": "magma-be170nsf-set-cuerdas-bajo-electrico-magma-medium",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE170NSF",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" Set, .045 - .105 (BE170NSF) 1 Set. Precio vigente: $38.50 USD (Bs 463.93).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" Set, .045 - .105 (BE170NSF) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" Set, .045 - .105 (BE170NSF) 1 Set. Precio vigente: $38.50 USD (Bs 463.93).",
+    "price": 38.5,
+    "price_bs": 463.93,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE170NSF"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$38.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 463.93"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE170NSF · Precio vigente: $38.50 USD (Bs 463.93). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be175nsf",
+    "name": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" 5 Cuerdas Set, .045 - .130 (BE175NSF) 1 Set",
+    "slug": "magma-be175nsf-set-cuerdas-bajo-electrico-magma-medium",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE175NSF",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" 5 Cuerdas Set, .045 - .130 (BE175NSF) 1 Set. Precio vigente: $48.50 USD (Bs 584.43).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" 5 Cuerdas Set, .045 - .130 (BE175NSF) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" 5 Cuerdas Set, .045 - .130 (BE175NSF) 1 Set. Precio vigente: $48.50 USD (Bs 584.43).",
+    "price": 48.5,
+    "price_bs": 584.43,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE175NSF"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$48.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 584.43"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE175NSF · Precio vigente: $48.50 USD (Bs 584.43). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-be176nsf",
+    "name": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" 6 Cuerdas Set, .030 - .130 (BE176NSF) 1 Set",
+    "slug": "magma-be176nsf-set-cuerdas-bajo-electrico-magma-medium",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BE176NSF",
+    "description_short": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" 6 Cuerdas Set, .030 - .130 (BE176NSF) 1 Set. Precio vigente: $56.50 USD (Bs 680.83).",
+    "description_long": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" 6 Cuerdas Set, .030 - .130 (BE176NSF) 1 Set disponible en Don Bolivia. Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" 6 Cuerdas Set, .030 - .130 (BE176NSF) 1 Set. Precio vigente: $56.50 USD (Bs 680.83).",
+    "price": 56.5,
+    "price_bs": 680.83,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BE176NSF"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$56.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 680.83"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BE176NSF · Precio vigente: $56.50 USD (Bs 680.83). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ba150g",
+    "name": "Encordado Bajo Acustico Magma - Light Cuerdas Gold Alloy - Escala Larga 34\" Set .040 - .100 (BA150G) 1 Set",
+    "slug": "magma-ba150g-encordado-bajo-acustico-magma-light-cuer",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BA150G",
+    "description_short": "Encordado Bajo Acustico Magma - Light Cuerdas Gold Alloy - Escala Larga 34\" Set .040 - .100 (BA150G) 1 Set. Precio vigente: $30.00 USD (Bs 361.50).",
+    "description_long": "Encordado Bajo Acustico Magma - Light Cuerdas Gold Alloy - Escala Larga 34\" Set .040 - .100 (BA150G) 1 Set disponible en Don Bolivia. Encordado Bajo Acustico Magma - Light Cuerdas Gold Alloy - Escala Larga 34\" Set .040 - .100 (BA150G) 1 Set. Precio vigente: $30.00 USD (Bs 361.50).",
+    "price": 30.0,
+    "price_bs": 361.5,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BA150G"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$30.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 361.50"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BA150G · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ba160g",
+    "name": "Encordado Bajo Acustico Magma - Medium Light Cuerdas Gold Alloy - Escala Larga 34\" Set .045 - .100 (BA160G) 1 Set",
+    "slug": "magma-ba160g-encordado-bajo-acustico-magma-medium-lig",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Bajo Magma",
+    "model": "BA160G",
+    "description_short": "Encordado Bajo Acustico Magma - Medium Light Cuerdas Gold Alloy - Escala Larga 34\" Set .045 - .100 (BA160G) 1 Set. Precio vigente: $30.00 USD (Bs 361.50).",
+    "description_long": "Encordado Bajo Acustico Magma - Medium Light Cuerdas Gold Alloy - Escala Larga 34\" Set .045 - .100 (BA160G) 1 Set disponible en Don Bolivia. Encordado Bajo Acustico Magma - Medium Light Cuerdas Gold Alloy - Escala Larga 34\" Set .045 - .100 (BA160G) 1 Set. Precio vigente: $30.00 USD (Bs 361.50).",
+    "price": 30.0,
+    "price_bs": 361.5,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "BA160G"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Bajo Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$30.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 361.50"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: BA160G · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ga120b80",
+    "name": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Bronce 80/20 Set .010\" - .048\" - 1 Set (GA120B80)",
+    "slug": "magma-ga120b80-set-cuerdas-guit-acustica-magma-light-cu",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Acústica Magma",
+    "model": "GA120B80",
+    "description_short": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Bronce 80/20 Set .010\" - .048\" - 1 Set (GA120B80). Precio vigente: $9.50 USD (Bs 114.48).",
+    "description_long": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Bronce 80/20 Set .010\" - .048\" - 1 Set (GA120B80) disponible en Don Bolivia. Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Bronce 80/20 Set .010\" - .048\" - 1 Set (GA120B80). Precio vigente: $9.50 USD (Bs 114.48).",
+    "price": 9.5,
+    "price_bs": 114.48,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GA120B80"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Acústica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$9.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 114.48"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GA120B80 · Precio vigente: $9.50 USD (Bs 114.48). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ga130b80",
+    "name": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Bronce 80/20 Set .011\" - .052\" - 1 Set (GA130B80)",
+    "slug": "magma-ga130b80-set-cuerdas-guit-acustica-magma-light-c",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Acústica Magma",
+    "model": "GA130B80",
+    "description_short": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Bronce 80/20 Set .011\" - .052\" - 1 Set (GA130B80). Precio vigente: $9.50 USD (Bs 114.48).",
+    "description_long": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Bronce 80/20 Set .011\" - .052\" - 1 Set (GA130B80) disponible en Don Bolivia. Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Bronce 80/20 Set .011\" - .052\" - 1 Set (GA130B80). Precio vigente: $9.50 USD (Bs 114.48).",
+    "price": 9.5,
+    "price_bs": 114.48,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GA130B80"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Acústica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$9.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 114.48"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GA130B80 · Precio vigente: $9.50 USD (Bs 114.48). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ga120pb",
+    "name": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Phosphor Bronze Set .010\" - .048\" - 1 Set (GA120PB)",
+    "slug": "magma-ga120pb-set-cuerdas-guit-acustica-magma-light-cu",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Acústica Magma",
+    "model": "GA120PB",
+    "description_short": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Phosphor Bronze Set .010\" - .048\" - 1 Set (GA120PB). Precio vigente: $11.50 USD (Bs 138.58).",
+    "description_long": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Phosphor Bronze Set .010\" - .048\" - 1 Set (GA120PB) disponible en Don Bolivia. Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Phosphor Bronze Set .010\" - .048\" - 1 Set (GA120PB). Precio vigente: $11.50 USD (Bs 138.58).",
+    "price": 11.5,
+    "price_bs": 138.58,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GA120PB"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Acústica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$11.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 138.58"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GA120PB · Precio vigente: $11.50 USD (Bs 138.58). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ga130pb",
+    "name": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Phosphor Bronze Set .011\" - .052\" - 1 Set (GA130PB)",
+    "slug": "magma-ga130pb-set-cuerdas-guit-acustica-magma-light-c",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Acústica Magma",
+    "model": "GA130PB",
+    "description_short": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Phosphor Bronze Set .011\" - .052\" - 1 Set (GA130PB). Precio vigente: $11.50 USD (Bs 138.58).",
+    "description_long": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Phosphor Bronze Set .011\" - .052\" - 1 Set (GA130PB) disponible en Don Bolivia. Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Phosphor Bronze Set .011\" - .052\" - 1 Set (GA130PB). Precio vigente: $11.50 USD (Bs 138.58).",
+    "price": 11.5,
+    "price_bs": 138.58,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GA130PB"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Acústica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$11.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 138.58"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GA130PB · Precio vigente: $11.50 USD (Bs 138.58). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ga120sp",
+    "name": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Silver Plated Copper Gypsy Jazz Set .010\" - .048\" - 1 Set (GA120SP)",
+    "slug": "magma-ga120sp-set-cuerdas-guit-acustica-magma-light-cu",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Acústica Magma",
+    "model": "GA120SP",
+    "description_short": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Silver Plated Copper Gypsy Jazz Set .010\" - .048\" - 1 Set (GA120SP). Precio vigente: $14.00 USD (Bs 168.70).",
+    "description_long": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Silver Plated Copper Gypsy Jazz Set .010\" - .048\" - 1 Set (GA120SP) disponible en Don Bolivia. Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Silver Plated Copper Gypsy Jazz Set .010\" - .048\" - 1 Set (GA120SP). Precio vigente: $14.00 USD (Bs 168.70).",
+    "price": 14.0,
+    "price_bs": 168.7,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GA120SP"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Acústica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$14.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 168.70"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GA120SP · Precio vigente: $14.00 USD (Bs 168.70). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-ga130sp",
+    "name": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Silver Plated Copper Gypsy Jazz Set .011\" - .052\" - 1 Set (GA130SP)",
+    "slug": "magma-ga130sp-set-cuerdas-guit-acustica-magma-light-c",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Acústica Magma",
+    "model": "GA130SP",
+    "description_short": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Silver Plated Copper Gypsy Jazz Set .011\" - .052\" - 1 Set (GA130SP). Precio vigente: $14.00 USD (Bs 168.70).",
+    "description_long": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Silver Plated Copper Gypsy Jazz Set .011\" - .052\" - 1 Set (GA130SP) disponible en Don Bolivia. Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Silver Plated Copper Gypsy Jazz Set .011\" - .052\" - 1 Set (GA130SP). Precio vigente: $14.00 USD (Bs 168.70).",
+    "price": 14.0,
+    "price_bs": 168.7,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GA130SP"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Acústica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$14.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 168.70"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GA130SP · Precio vigente: $14.00 USD (Bs 168.70). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-gc110d",
+    "name": "Encordado Magma Guitarra Clásica - Nylon Cristal Especial/Aleación de Bronce Tensión Media (GC110D) 1 Set",
+    "slug": "magma-gc110d-encordado-magma-guitarra-clasica-nylon-c",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Clásica Magma",
+    "model": "GC110D",
+    "description_short": "Encordado Magma Guitarra Clásica - Nylon Cristal Especial/Aleación de Bronce Tensión Media (GC110D) 1 Set. Precio vigente: $8.00 USD (Bs 96.40).",
+    "description_long": "Encordado Magma Guitarra Clásica - Nylon Cristal Especial/Aleación de Bronce Tensión Media (GC110D) 1 Set disponible en Don Bolivia. Encordado Magma Guitarra Clásica - Nylon Cristal Especial/Aleación de Bronce Tensión Media (GC110D) 1 Set. Precio vigente: $8.00 USD (Bs 96.40).",
+    "price": 8.0,
+    "price_bs": 96.4,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GC110D"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Clásica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$8.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 96.40"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GC110D · Precio vigente: $8.00 USD (Bs 96.40). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-gc120d",
+    "name": "Encordado Magma Guitarra Clásica - Nylon Cristal Especial/Aleación de Bronce Tensión Alta (GC120D) 1 Set",
+    "slug": "magma-gc120d-encordado-magma-guitarra-clasica-nylon-c",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Encordado para Guitarra Clásica Magma",
+    "model": "GC120D",
+    "description_short": "Encordado Magma Guitarra Clásica - Nylon Cristal Especial/Aleación de Bronce Tensión Alta (GC120D) 1 Set. Precio vigente: $8.00 USD (Bs 96.40).",
+    "description_long": "Encordado Magma Guitarra Clásica - Nylon Cristal Especial/Aleación de Bronce Tensión Alta (GC120D) 1 Set disponible en Don Bolivia. Encordado Magma Guitarra Clásica - Nylon Cristal Especial/Aleación de Bronce Tensión Alta (GC120D) 1 Set. Precio vigente: $8.00 USD (Bs 96.40).",
+    "price": 8.0,
+    "price_bs": 96.4,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "GC120D"
+      },
+      {
+        "key": "Tipo",
+        "value": "Encordado para Guitarra Clásica Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$8.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 96.40"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: GC120D · Precio vigente: $8.00 USD (Bs 96.40). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07mp01",
+    "name": "Correa lisa Magma de polipropileno negro (07MP01.)",
+    "slug": "magma-07mp01-correa-lisa-magma-de-polipropileno-negro",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MP01",
+    "description_short": "Correa lisa Magma de polipropileno negro (07MP01.). Precio vigente: $11.00 USD (Bs 132.55).",
+    "description_long": "Correa lisa Magma de polipropileno negro (07MP01.) disponible en Don Bolivia. Correa lisa Magma de polipropileno negro (07MP01.). Precio vigente: $11.00 USD (Bs 132.55).",
+    "price": 11.0,
+    "price_bs": 132.55,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MP01."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$11.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 132.55"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MP01. · Precio vigente: $11.00 USD (Bs 132.55). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07mp02",
+    "name": "Correa lisa Magma de polipropileno roja (07MP02.)",
+    "slug": "magma-07mp02-correa-lisa-magma-de-polipropileno-roja-0",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MP02",
+    "description_short": "Correa lisa Magma de polipropileno roja (07MP02.). Precio vigente: $11.00 USD (Bs 132.55).",
+    "description_long": "Correa lisa Magma de polipropileno roja (07MP02.) disponible en Don Bolivia. Correa lisa Magma de polipropileno roja (07MP02.). Precio vigente: $11.00 USD (Bs 132.55).",
+    "price": 11.0,
+    "price_bs": 132.55,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MP02."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$11.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 132.55"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MP02. · Precio vigente: $11.00 USD (Bs 132.55). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07mp03",
+    "name": "Correa lisa Magma de polipropileno azul (07MP03.)",
+    "slug": "magma-07mp03-correa-lisa-magma-de-polipropileno-azul-0",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MP03",
+    "description_short": "Correa lisa Magma de polipropileno azul (07MP03.). Precio vigente: $11.00 USD (Bs 132.55).",
+    "description_long": "Correa lisa Magma de polipropileno azul (07MP03.) disponible en Don Bolivia. Correa lisa Magma de polipropileno azul (07MP03.). Precio vigente: $11.00 USD (Bs 132.55).",
+    "price": 11.0,
+    "price_bs": 132.55,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MP03."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$11.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 132.55"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MP03. · Precio vigente: $11.00 USD (Bs 132.55). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07mp04",
+    "name": "Correa lisa Magma de polipropileno verde (07MP04.)",
+    "slug": "magma-07mp04-correa-lisa-magma-de-polipropileno-verde",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MP04",
+    "description_short": "Correa lisa Magma de polipropileno verde (07MP04.). Precio vigente: $11.00 USD (Bs 132.55).",
+    "description_long": "Correa lisa Magma de polipropileno verde (07MP04.) disponible en Don Bolivia. Correa lisa Magma de polipropileno verde (07MP04.). Precio vigente: $11.00 USD (Bs 132.55).",
+    "price": 11.0,
+    "price_bs": 132.55,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MP04."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$11.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 132.55"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MP04. · Precio vigente: $11.00 USD (Bs 132.55). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07ms01",
+    "name": "Correa Magma polyester Rock (07MS01.)",
+    "slug": "magma-07ms01-correa-magma-polyester-rock-07ms01",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MS01",
+    "description_short": "Correa Magma polyester Rock (07MS01.). Precio vigente: $16.50 USD (Bs 198.83).",
+    "description_long": "Correa Magma polyester Rock (07MS01.) disponible en Don Bolivia. Correa Magma polyester Rock (07MS01.). Precio vigente: $16.50 USD (Bs 198.83).",
+    "price": 16.5,
+    "price_bs": 198.83,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MS01."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$16.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 198.83"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MS01. · Precio vigente: $16.50 USD (Bs 198.83). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07ms01c",
+    "name": "Correa Magma polyester Comic (07MS01C.)",
+    "slug": "magma-07ms01c-correa-magma-polyester-comic-07ms01c",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MS01C",
+    "description_short": "Correa Magma polyester Comic (07MS01C.). Precio vigente: $16.50 USD (Bs 198.83).",
+    "description_long": "Correa Magma polyester Comic (07MS01C.) disponible en Don Bolivia. Correa Magma polyester Comic (07MS01C.). Precio vigente: $16.50 USD (Bs 198.83).",
+    "price": 16.5,
+    "price_bs": 198.83,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MS01C."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$16.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 198.83"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MS01C. · Precio vigente: $16.50 USD (Bs 198.83). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07ms01rt",
+    "name": "Correa Magma polyester Retro (07MS01RT.)",
+    "slug": "magma-07ms01rt-correa-magma-polyester-retro-07ms01rt",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MS01RT",
+    "description_short": "Correa Magma polyester Retro (07MS01RT.). Precio vigente: $16.50 USD (Bs 198.83).",
+    "description_long": "Correa Magma polyester Retro (07MS01RT.) disponible en Don Bolivia. Correa Magma polyester Retro (07MS01RT.). Precio vigente: $16.50 USD (Bs 198.83).",
+    "price": 16.5,
+    "price_bs": 198.83,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MS01RT."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$16.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 198.83"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MS01RT. · Precio vigente: $16.50 USD (Bs 198.83). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07ms01s",
+    "name": "Correa Magma polyester Ska (07MS01S.)",
+    "slug": "magma-07ms01s-correa-magma-polyester-ska-07ms01s",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MS01S",
+    "description_short": "Correa Magma polyester Ska (07MS01S.). Precio vigente: $16.50 USD (Bs 198.83).",
+    "description_long": "Correa Magma polyester Ska (07MS01S.) disponible en Don Bolivia. Correa Magma polyester Ska (07MS01S.). Precio vigente: $16.50 USD (Bs 198.83).",
+    "price": 16.5,
+    "price_bs": 198.83,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MS01S."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$16.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 198.83"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MS01S. · Precio vigente: $16.50 USD (Bs 198.83). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07ms01jh",
+    "name": "Correa Magma polyester Jimi Hendrix Woodstock (07MS01JH.)",
+    "slug": "magma-07ms01jh-correa-magma-polyester-jimi-hendrix-woodst",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MS01JH",
+    "description_short": "Correa Magma polyester Jimi Hendrix Woodstock (07MS01JH.). Precio vigente: $18.50 USD (Bs 222.93).",
+    "description_long": "Correa Magma polyester Jimi Hendrix Woodstock (07MS01JH.) disponible en Don Bolivia. Correa Magma polyester Jimi Hendrix Woodstock (07MS01JH.). Precio vigente: $18.50 USD (Bs 222.93).",
+    "price": 18.5,
+    "price_bs": 222.93,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MS01JH."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$18.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 222.93"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MS01JH. · Precio vigente: $18.50 USD (Bs 222.93). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07ms01bw",
+    "name": "Correa Magma polyester Blue Woodstoc (07MS01BW.)",
+    "slug": "magma-07ms01bw-correa-magma-polyester-blue-woodstoc-07ms",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MS01BW",
+    "description_short": "Correa Magma polyester Blue Woodstoc (07MS01BW.). Precio vigente: $18.50 USD (Bs 222.93).",
+    "description_long": "Correa Magma polyester Blue Woodstoc (07MS01BW.) disponible en Don Bolivia. Correa Magma polyester Blue Woodstoc (07MS01BW.). Precio vigente: $18.50 USD (Bs 222.93).",
+    "price": 18.5,
+    "price_bs": 222.93,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MS01BW."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$18.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 222.93"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MS01BW. · Precio vigente: $18.50 USD (Bs 222.93). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07ms01rw",
+    "name": "Correa Magma polyester Red Woodstoc (07MS01RW.)",
+    "slug": "magma-07ms01rw-correa-magma-polyester-red-woodstoc-07ms0",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MS01RW",
+    "description_short": "Correa Magma polyester Red Woodstoc (07MS01RW.). Precio vigente: $18.50 USD (Bs 222.93).",
+    "description_long": "Correa Magma polyester Red Woodstoc (07MS01RW.) disponible en Don Bolivia. Correa Magma polyester Red Woodstoc (07MS01RW.). Precio vigente: $18.50 USD (Bs 222.93).",
+    "price": 18.5,
+    "price_bs": 222.93,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MS01RW."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$18.50 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 222.93"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MS01RW. · Precio vigente: $18.50 USD (Bs 222.93). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07mc01f",
+    "name": "Correa Magma lisa cuero negro 5 cm Fina (07MC01F.)",
+    "slug": "magma-07mc01f-correa-magma-lisa-cuero-negro-5-cm-fina-0",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MC01F",
+    "description_short": "Correa Magma lisa cuero negro 5 cm Fina (07MC01F.). Precio vigente: $25.00 USD (Bs 301.25).",
+    "description_long": "Correa Magma lisa cuero negro 5 cm Fina (07MC01F.) disponible en Don Bolivia. Correa Magma lisa cuero negro 5 cm Fina (07MC01F.). Precio vigente: $25.00 USD (Bs 301.25).",
+    "price": 25.0,
+    "price_bs": 301.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MC01F."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$25.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 301.25"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MC01F. · Precio vigente: $25.00 USD (Bs 301.25). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07mb02f",
+    "name": "Correa Magma lisa cuero marron 5 cm Fina (07MB02F.)",
+    "slug": "magma-07mb02f-correa-magma-lisa-cuero-marron-5-cm-fina",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MB02F",
+    "description_short": "Correa Magma lisa cuero marron 5 cm Fina (07MB02F.). Precio vigente: $25.00 USD (Bs 301.25).",
+    "description_long": "Correa Magma lisa cuero marron 5 cm Fina (07MB02F.) disponible en Don Bolivia. Correa Magma lisa cuero marron 5 cm Fina (07MB02F.). Precio vigente: $25.00 USD (Bs 301.25).",
+    "price": 25.0,
+    "price_bs": 301.25,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MB02F."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$25.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 301.25"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MB02F. · Precio vigente: $25.00 USD (Bs 301.25). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07mb02",
+    "name": "Correa Magma lisa cuero marron (07MB02.)",
+    "slug": "magma-07mb02-correa-magma-lisa-cuero-marron-07mb02",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MB02",
+    "description_short": "Correa Magma lisa cuero marron (07MB02.). Precio vigente: $30.00 USD (Bs 361.50).",
+    "description_long": "Correa Magma lisa cuero marron (07MB02.) disponible en Don Bolivia. Correa Magma lisa cuero marron (07MB02.). Precio vigente: $30.00 USD (Bs 361.50).",
+    "price": 30.0,
+    "price_bs": 361.5,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MB02."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$30.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 361.50"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MB02. · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07mb01",
+    "name": "Correa Magma lisa cuero negro (07MB01.)",
+    "slug": "magma-07mb01-correa-magma-lisa-cuero-negro-07mb01",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MB01",
+    "description_short": "Correa Magma lisa cuero negro (07MB01.). Precio vigente: $30.00 USD (Bs 361.50).",
+    "description_long": "Correa Magma lisa cuero negro (07MB01.) disponible en Don Bolivia. Correa Magma lisa cuero negro (07MB01.). Precio vigente: $30.00 USD (Bs 361.50).",
+    "price": 30.0,
+    "price_bs": 361.5,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MB01."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$30.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 361.50"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MB01. · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07mb01b",
+    "name": "Correa Magma lisa cuero negro para Bajo (07MB01B.)",
+    "slug": "magma-07mb01b-correa-magma-lisa-cuero-negro-para-bajo-0",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MB01B",
+    "description_short": "Correa Magma lisa cuero negro para Bajo (07MB01B.). Precio vigente: $38.00 USD (Bs 457.90).",
+    "description_long": "Correa Magma lisa cuero negro para Bajo (07MB01B.) disponible en Don Bolivia. Correa Magma lisa cuero negro para Bajo (07MB01B.). Precio vigente: $38.00 USD (Bs 457.90).",
+    "price": 38.0,
+    "price_bs": 457.9,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MB01B."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$38.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 457.90"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MB01B. · Precio vigente: $38.00 USD (Bs 457.90). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07mb02b",
+    "name": "Correa Magma lisa cuero marron para Bajo (07MB02B.)",
+    "slug": "magma-07mb02b-correa-magma-lisa-cuero-marron-para-bajo",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07MB02B",
+    "description_short": "Correa Magma lisa cuero marron para Bajo (07MB02B.). Precio vigente: $38.00 USD (Bs 457.90).",
+    "description_long": "Correa Magma lisa cuero marron para Bajo (07MB02B.) disponible en Don Bolivia. Correa Magma lisa cuero marron para Bajo (07MB02B.). Precio vigente: $38.00 USD (Bs 457.90).",
+    "price": 38.0,
+    "price_bs": 457.9,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": false,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07MB02B."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$38.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 457.90"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07MB02B. · Precio vigente: $38.00 USD (Bs 457.90). Confirmar existencias antes de ofrecer."
+  },
+  {
+    "id": "magma-07scs01",
+    "name": "Correa Magma de seguridad negra con cliplock (07SCS01.)",
+    "slug": "magma-07scs01-correa-magma-de-seguridad-negra-con-cliplo",
+    "brand": "Magma",
+    "category": "accesorios",
+    "subcategory": "Correa Magma",
+    "model": "07SCS01",
+    "description_short": "Correa Magma de seguridad negra con cliplock (07SCS01.). Precio vigente: $36.00 USD (Bs 433.80).",
+    "description_long": "Correa Magma de seguridad negra con cliplock (07SCS01.) disponible en Don Bolivia. Correa Magma de seguridad negra con cliplock (07SCS01.). Precio vigente: $36.00 USD (Bs 433.80).",
+    "price": 36.0,
+    "price_bs": 433.8,
+    "currency": "USD",
+    "availability": "available",
+    "status": "published",
+    "featured": true,
+    "specs": [
+      {
+        "key": "Marca",
+        "value": "Magma"
+      },
+      {
+        "key": "SKU",
+        "value": "07SCS01."
+      },
+      {
+        "key": "Tipo",
+        "value": "Correa Magma"
+      },
+      {
+        "key": "Precio USD",
+        "value": "$36.00 USD"
+      },
+      {
+        "key": "Precio Bs (TC 12.05)",
+        "value": "Bs 433.80"
+      }
+    ],
+    "images": [],
+    "source": "google_sheets_magma_2026",
+    "notes": "SKU: 07SCS01. · Precio vigente: $36.00 USD (Bs 433.80). Confirmar existencias antes de ofrecer."
+  }
 ]
 
-// Función para construir los productos con referencias completas
 function buildProducts(): Product[] {
   return RAW_PRODUCTS.map((raw, index) => {
-    const brandId = BRAND_NAME_MAP[raw.brand] || 'brand-donner'
-    const categoryId = CATEGORY_SLUG_MAP[raw.category] || 'cat-otros'
+    const brandId = BRAND_NAME_MAP[raw.brand] || 'brand-sire'
+    const categoryId = CATEGORY_SLUG_MAP[raw.category] || 'cat-bajos'
     const brand = STATIC_BRANDS.find(b => b.id === brandId)
     const category = STATIC_CATEGORIES.find(c => c.id === categoryId)
 
-    const images: ProductImage[] = (raw.images || []).map((img, imgIndex) => ({
-      id: `img-${raw.id}-${imgIndex}`,
+    const images: ProductImage[] = (raw.images || []).map((img, i) => ({
+      id: `${raw.id}-img-${i}`,
       product_id: raw.id,
       url: img.url,
-      alt_text: img.alt_text || raw.name,
-      order: img.order,
-      is_primary: img.is_primary,
-      created_at: '2025-01-01T00:00:00Z',
+      alt_text: img.alt_text,
+      order: img.order ?? i,
+      is_primary: img.is_primary ?? i === 0,
+      created_at: '2026-11-17T00:00:00Z',
     }))
 
-    const realInstrument = images.find(i => !i.url.includes('_img00.jpeg'));
-    const primaryImage = images.find(i => i.is_primary && !i.url.includes('_img00.jpeg')) || realInstrument || images.find(i => i.is_primary)
+    const primaryImage = images.find(img => img.is_primary) || images[0]
 
     return {
       id: raw.id,
@@ -1258,6 +5036,7 @@ function buildProducts(): Product[] {
       description_short: raw.description_short,
       description_long: raw.description_long,
       price: raw.price,
+      price_bs: raw.price_bs,
       currency: raw.currency,
       availability: raw.availability,
       status: raw.status,
@@ -1269,15 +5048,14 @@ function buildProducts(): Product[] {
       source_catalog: raw.source,
       notes: raw.notes,
       tags: [],
-      created_at: '2025-01-01T00:00:00Z',
-      updated_at: '2025-01-01T00:00:00Z',
+      created_at: '2026-11-17T00:00:00Z',
+      updated_at: '2026-11-17T00:00:00Z',
     }
   })
 }
 
 export const STATIC_PRODUCTS: Product[] = buildProducts()
 
-// Helper functions
 export function getProductBySlug(slug: string): Product | undefined {
   return STATIC_PRODUCTS.find(p => p.slug === slug && p.status === 'published')
 }

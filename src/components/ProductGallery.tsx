@@ -1,15 +1,31 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import type { Product } from '@/types'
+import { getStoredProductImage } from '@/components/ProductCard'
 
 interface ProductGalleryProps {
   product: Product
 }
 
 export function ProductGallery({ product }: ProductGalleryProps) {
-  const images =
+  const [customImage, setCustomImage] = useState<string | undefined>(undefined)
+
+  useEffect(() => {
+    const sync = () => {
+      setCustomImage(getStoredProductImage(product.id))
+    }
+    sync()
+    window.addEventListener('storage', sync)
+    window.addEventListener('don-bolivia-images-updated', sync)
+    return () => {
+      window.removeEventListener('storage', sync)
+      window.removeEventListener('don-bolivia-images-updated', sync)
+    }
+  }, [product.id])
+
+  const baseImages =
     product.images && product.images.length > 0
       ? product.images
       : product.primary_image_url
@@ -25,18 +41,43 @@ export function ProductGallery({ product }: ProductGalleryProps) {
           ]
         : []
 
+  const images = customImage
+    ? [
+        {
+          id: 'admin-custom',
+          product_id: product.id,
+          url: customImage,
+          alt_text: product.name,
+          is_primary: true,
+          order: 0,
+        },
+        ...baseImages,
+      ]
+    : baseImages
+
   const [activeIdx, setActiveIdx] = useState(0)
-  const activeImage = images[activeIdx]
+  const activeImage = images[activeIdx] || images[0]
+  const isDarkMono = product.order % 2 === 0
 
   if (images.length === 0) {
     return (
-      <div className="lux-gallery-stage">
-        <div className="lux-catalog-card__placeholder">
-          <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" aria-hidden="true">
-            <rect x="3" y="3" width="18" height="18" rx="3" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <path d="M21 15l-5-5L5 21" />
-          </svg>
+      <div
+        className={`lux-gallery-stage ${
+          isDarkMono
+            ? 'lux-catalog-card__box--mono-dark'
+            : 'lux-catalog-card__box--mono-light'
+        }`}
+      >
+        <div className="lux-mono-placeholder lux-mono-placeholder--lg">
+          <span className="lux-mono-placeholder__brand">
+            {product.brand?.name || 'DON BOLIVIA'}
+          </span>
+          <span className="lux-mono-placeholder__model">
+            {product.model || product.name}
+          </span>
+          <span className="lux-mono-placeholder__cat">
+            {product.subcategory || product.category?.name || 'Instrumento'}
+          </span>
         </div>
       </div>
     )

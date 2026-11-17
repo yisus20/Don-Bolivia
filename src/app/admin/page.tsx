@@ -72,12 +72,13 @@ export default function AdminDashboard() {
         {/* Catalog source note */}
         <div className="admin-card">
           <h2 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.75rem', color: '#222223' }}>
-            Fuentes del catálogo inicial
+            Fuentes del catálogo oficial (Google Sheets · TC 12.05 Bs/USD)
           </h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {[
-              { source: 'Catálogo Sire 2025', count: 29, note: '24 bajos eléctricos + 5 guitarras eléctricas' },
-              { source: 'Catálogo Donner 2026', count: 18, note: 'Guitarras, pedales, pianos, baterías y accesorios' },
+              { source: 'Precios Sire (Google Sheets)', count: 35, note: '30 bajos Marcus Miller + 3 guitarras Larry Carlton + 2 correas Sire' },
+              { source: 'Precios Donner (Google Sheets)', count: 23, note: 'Guitarras HUSH y DST-80, pedales Arena/PocketX, pianos DDP/DHP/DEK, baterías DED y monitores EM' },
+              { source: 'Precios Magma (Google Sheets)', count: 48, note: '30 sets de cuerdas (eléctrica, bajo, acústica, clásica) + 18 correas profesionales' },
             ].map(s => (
               <div key={s.source} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0.75rem', background: '#F4F4F2', borderRadius: '4px', gap: '1rem', flexWrap: 'wrap' }}>
                 <div>

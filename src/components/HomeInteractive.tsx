@@ -1,12 +1,13 @@
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowUpRight, Check } from 'lucide-react'
-import { STATIC_PRODUCTS } from '@/lib/data'
+import { useCatalogProducts } from '@/lib/admin-storage'
 import { useStoreInteractive } from '@/components/StoreInteractiveProvider'
 import { InkFlutedHero } from '@/components/InkFlutedHero'
+import { ADMIN_IMAGE_STORAGE_KEY } from '@/components/ProductCard'
 
 type CategoryTab = 'all' | 'bajos' | 'guitarras' | 'pedales-efectos' | 'accesorios' | 'otros-instrumentos'
 
@@ -19,12 +20,33 @@ const CATEGORY_TABS: { slug: CategoryTab; label: string }[] = [
 ]
 
 export function HomeInteractive() {
-  const { openWhatsApp, openQuickview } = useStoreInteractive()
+  const { openWhatsApp } = useStoreInteractive()
   const [selectedCategory, setSelectedCategory] = useState<CategoryTab>('all')
+  const [customImages, setCustomImages] = useState<Record<string, string>>({})
+
+  useEffect(() => {
+    const sync = () => {
+      try {
+        const raw = window.localStorage.getItem(ADMIN_IMAGE_STORAGE_KEY)
+        setCustomImages(raw ? JSON.parse(raw) : {})
+      } catch {
+        setCustomImages({})
+      }
+    }
+    sync()
+    window.addEventListener('storage', sync)
+    window.addEventListener('don-bolivia-images-updated', sync)
+    return () => {
+      window.removeEventListener('storage', sync)
+      window.removeEventListener('don-bolivia-images-updated', sync)
+    }
+  }, [])
+
+  const { products: allProducts } = useCatalogProducts()
 
   const publishedProducts = useMemo(
-    () => STATIC_PRODUCTS.filter(p => p.status === 'published'),
-    []
+    () => allProducts.filter(p => p.status === 'published'),
+    [allProducts]
   )
 
   const showcaseProducts = useMemo(() => {
@@ -55,9 +77,10 @@ export function HomeInteractive() {
 
   const counts = useMemo(() => {
     return {
-      bajos: publishedProducts.filter(p => p.category_id === 'cat-bajos').length,
-      guitarras: publishedProducts.filter(p => p.category_id === 'cat-guitarras').length,
-      donner: publishedProducts.filter(p => p.brand_id === 'brand-donner').length,
+      sire: publishedProducts.filter(p => p.brand_id === 'brand-sire').length,
+      donnerMagma: publishedProducts.filter(
+        p => p.brand_id === 'brand-donner' || p.brand_id === 'brand-magma'
+      ).length,
     }
   }, [publishedProducts])
 
@@ -113,15 +136,29 @@ export function HomeInteractive() {
         <div className="lux-marquee-viewport" role="region" aria-label="Carrusel de productos destacados">
           <div className="lux-marquee-track" key={selectedCategory}>
             {marqueeItems.map((product, index) => {
-              const imgUrl = product.primary_image_url || product.images?.[0]?.url
-              const shortTitle = product.model || product.name.replace(/^Sire\s+|^Donner\s+/i, '')
+              const imgUrl =
+                customImages[product.id] ||
+                product.primary_image_url ||
+                product.images?.[0]?.url
+              const shortTitle =
+                product.model || product.name.replace(/^Marcus Miller by Sire\s+|^Larry Carlton by Sire\s+|^Donner\s+/i, '')
+              const isDarkMono = product.order % 2 === 0
 
               return (
                 <article
                   key={`${product.id}-${index}`}
                   className="lux-marquee-card"
                 >
-                  <Link href={`/producto/${product.slug}`} className="lux-marquee-card__box">
+                  <Link
+                    href={`/producto/${product.slug}`}
+                    className={`lux-marquee-card__box ${
+                      !imgUrl
+                        ? isDarkMono
+                          ? 'lux-catalog-card__box--mono-dark'
+                          : 'lux-catalog-card__box--mono-light'
+                        : ''
+                    }`}
+                  >
                     {imgUrl ? (
                       <Image
                         src={imgUrl}
@@ -130,16 +167,33 @@ export function HomeInteractive() {
                         sizes="270px"
                         className="lux-marquee-card__img"
                       />
-                    ) : null}
+                    ) : (
+                      <div className="lux-mono-placeholder">
+                        <span className="lux-mono-placeholder__brand">
+                          {product.brand?.name || 'DON BOLIVIA'}
+                        </span>
+                        <span className="lux-mono-placeholder__model">
+                          {shortTitle}
+                        </span>
+                        {product.price && (
+                          <span className="lux-mono-placeholder__cat">
+                            ${product.price.toLocaleString('es-BO', { minimumFractionDigits: 2 })} USD
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </Link>
 
                   <div className="lux-marquee-card__meta">
                     <div>
                       <span className="lux-showcase-card__brand">
                         {product.brand?.name || 'DON BOLIVIA'}
+                        {product.price
+                          ? ` · $${product.price.toLocaleString('es-BO', { minimumFractionDigits: 2 })} USD`
+                          : ''}
                       </span>
                       <Link href={`/producto/${product.slug}`}>
-                        <h3 className="lux-showcase-card__title">{shortTitle}</h3>
+                        <h3 className="lux-showcase-card__title">{product.name}</h3>
                       </Link>
                     </div>
 
@@ -147,7 +201,7 @@ export function HomeInteractive() {
                       type="button"
                       onClick={() =>
                         openWhatsApp(
-                          `Hola Don Bolivia! Me interesa el ${product.name}. ¿Está disponible y cuál es su precio?`
+                          `Hola Don Bolivia! Me interesa el ${product.name} ($${product.price?.toLocaleString('es-BO', { minimumFractionDigits: 2 })} USD). ¿Tienen existencias disponibles?`
                         )
                       }
                       className="lux-showcase-card__wa"
@@ -247,45 +301,32 @@ export function HomeInteractive() {
               <div className="lux-curated-card__top">
                 <span className="lux-curated-card__tag">SIRE SIGNATURE</span>
                 <span className="lux-curated-card__count">
-                  {counts.bajos + counts.guitarras} modelos
+                  {counts.sire} modelos
                 </span>
               </div>
 
-              <div
-                className="lux-curated-card__media"
-                onClick={() =>
-                  openQuickview({
-                    title: 'Sire Marcus Miller V7 Vintage Alder',
-                    subtitle: 'HERITAGE-3 PREAMP 18V · ROASTED MAPLE NECK',
-                    description:
-                      'Mástil de arce tostado con bordes redondeados Edgeless™, cejuela de hueso real y preamplificador activo/pasivo de 3 bandas.',
-                    slug: 'sire-marcus-miller-v7-4-cuerdas',
-                    imageUrl: '/catalog-images/sire/p006_img00.jpeg',
-                  })
-                }
-                role="button"
-                tabIndex={0}
-                aria-label="Inspeccionar Sire Marcus Miller V7"
-              >
+              <div className="lux-curated-card__media">
                 <div className="lux-curated-card__img-pair">
-                  <div className="lux-curated-card__img-box">
-                    <Image
-                      src="/catalog-images/sire/p006_img00.jpeg"
-                      alt="Bajo Sire Marcus Miller V7"
-                      fill
-                      sizes="220px"
-                      className="lux-curated-card__img"
-                    />
-                  </div>
-                  <div className="lux-curated-card__img-box">
-                    <Image
-                      src="/catalog-images/sire/p026_img00.jpeg"
-                      alt="Guitarra Sire Larry Carlton L7"
-                      fill
-                      sizes="220px"
-                      className="lux-curated-card__img"
-                    />
-                  </div>
+                  <Link
+                    href="/catalogo?brand=sire&category=bajos"
+                    className="lux-curated-card__img-box lux-catalog-card__box--mono-dark"
+                  >
+                    <div className="lux-mono-placeholder">
+                      <span className="lux-mono-placeholder__brand">MARCUS MILLER</span>
+                      <span className="lux-mono-placeholder__model">V7 · V8 · P8 · M7</span>
+                      <span className="lux-mono-placeholder__cat">Bajos Sire</span>
+                    </div>
+                  </Link>
+                  <Link
+                    href="/catalogo?brand=sire&category=guitarras"
+                    className="lux-curated-card__img-box lux-catalog-card__box--mono-light"
+                  >
+                    <div className="lux-mono-placeholder">
+                      <span className="lux-mono-placeholder__brand">LARRY CARLTON</span>
+                      <span className="lux-mono-placeholder__model">S7 FM · S3 SSS</span>
+                      <span className="lux-mono-placeholder__cat">Guitarras Sire</span>
+                    </div>
+                  </Link>
                 </div>
               </div>
 
@@ -379,30 +420,32 @@ export function HomeInteractive() {
                   DONNER & MAGMA
                 </span>
                 <span className="lux-curated-card__count lux-curated-card__count--dark">
-                  {counts.donner} modelos
+                  {counts.donnerMagma} modelos
                 </span>
               </div>
 
               <div className="lux-curated-card__media">
                 <div className="lux-curated-card__img-pair">
-                  <div className="lux-curated-card__img-box lux-curated-card__img-box--dark">
-                    <Image
-                      src="/catalog-images/donner/p011_img00.jpeg"
-                      alt="Pedal Multiefectos Donner Arena 2000"
-                      fill
-                      sizes="220px"
-                      className="lux-curated-card__img-normal"
-                    />
-                  </div>
-                  <div className="lux-curated-card__img-box lux-curated-card__img-box--dark">
-                    <Image
-                      src="/catalog-images/donner/p001_img00.jpeg"
-                      alt="Guitarra silenciosa Donner HUSH-I"
-                      fill
-                      sizes="220px"
-                      className="lux-curated-card__img-normal"
-                    />
-                  </div>
+                  <Link
+                    href="/catalogo?brand=donner"
+                    className="lux-curated-card__img-box lux-catalog-card__box--mono-light"
+                  >
+                    <div className="lux-mono-placeholder">
+                      <span className="lux-mono-placeholder__brand">DONNER</span>
+                      <span className="lux-mono-placeholder__model">HUSH · DDP · DED</span>
+                      <span className="lux-mono-placeholder__cat">Guitarras, Pianos & Drums</span>
+                    </div>
+                  </Link>
+                  <Link
+                    href="/catalogo?brand=magma"
+                    className="lux-curated-card__img-box lux-catalog-card__box--mono-dark"
+                  >
+                    <div className="lux-mono-placeholder">
+                      <span className="lux-mono-placeholder__brand">MAGMA</span>
+                      <span className="lux-mono-placeholder__model">CUERDAS & CORREAS</span>
+                      <span className="lux-mono-placeholder__cat">48 modelos</span>
+                    </div>
+                  </Link>
                 </div>
               </div>
 

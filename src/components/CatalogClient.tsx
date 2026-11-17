@@ -1,9 +1,10 @@
 'use client'
 
 import React, { useState, useMemo, useEffect } from 'react'
-import { Search, X, ArrowUpRight, SlidersHorizontal } from 'lucide-react'
+import { Search, X, ArrowUpRight, SlidersHorizontal, ChevronDown } from 'lucide-react'
 import { ProductCard } from '@/components/ProductCard'
-import { STATIC_PRODUCTS, STATIC_CATEGORIES, STATIC_BRANDS } from '@/lib/data'
+import { STATIC_CATEGORIES, STATIC_BRANDS } from '@/lib/data'
+import { useCatalogProducts } from '@/lib/admin-storage'
 import { useStoreInteractive } from '@/components/StoreInteractiveProvider'
 
 interface CatalogClientProps {
@@ -23,10 +24,12 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
 
 export function CatalogClient({ initialCategory, initialBrand }: CatalogClientProps) {
   const { openWhatsApp } = useStoreInteractive()
+  const { products: allProducts } = useCatalogProducts()
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState(initialCategory || '')
   const [brand, setBrand] = useState(initialBrand || '')
   const [sort, setSort] = useState<SortOption>('relevance')
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -40,8 +43,8 @@ export function CatalogClient({ initialCategory, initialBrand }: CatalogClientPr
   }, [initialCategory, initialBrand])
 
   const publishedProducts = useMemo(
-    () => STATIC_PRODUCTS.filter(p => p.status === 'published'),
-    []
+    () => allProducts.filter(p => p.status === 'published'),
+    [allProducts]
   )
 
   const availableCategories = useMemo(() => {
@@ -122,7 +125,7 @@ export function CatalogClient({ initialCategory, initialBrand }: CatalogClientPr
   return (
     <div className="lux-catalog-shell">
       <div className="lux-catalog-container">
-        {/* Always-Visible Filter Panel */}
+        {/* Filter Panel (Always visible on Desktop, Collapsible on Mobile) */}
         <section className="lux-filter-panel" aria-label="Filtros del catálogo">
           <div className="lux-filter-panel__top">
             <div className="lux-filter-panel__title-wrap">
@@ -157,6 +160,27 @@ export function CatalogClient({ initialCategory, initialBrand }: CatalogClientPr
               )}
             </div>
 
+            {/* Mobile-only collapsible filter toggle button */}
+            <button
+              type="button"
+              onClick={() => setMobileFiltersOpen(prev => !prev)}
+              className={`lux-filter-mobile-toggle ${
+                mobileFiltersOpen ? 'lux-filter-mobile-toggle--open' : ''
+              }`}
+              aria-expanded={mobileFiltersOpen}
+              id="catalog-mobile-filter-toggle"
+            >
+              <SlidersHorizontal size={14} />
+              <span>{mobileFiltersOpen ? 'Ocultar filtros' : 'Filtros'}</span>
+              <ChevronDown
+                size={14}
+                style={{
+                  transform: mobileFiltersOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                  transition: 'transform 200ms ease',
+                }}
+              />
+            </button>
+
             {hasActiveFilters && (
               <button
                 type="button"
@@ -170,7 +194,11 @@ export function CatalogClient({ initialCategory, initialBrand }: CatalogClientPr
             )}
           </div>
 
-          <div className="lux-filter-panel__rows">
+          <div
+            className={`lux-filter-panel__rows ${
+              mobileFiltersOpen ? 'lux-filter-panel__rows--open' : ''
+            }`}
+          >
             {/* Row 1: Categorías */}
             <div className="lux-filter-group">
               <span className="lux-filter-group__label">CATEGORÍA</span>

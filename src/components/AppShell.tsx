@@ -12,7 +12,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const isAdmin = pathname.startsWith('/admin')
 
   if (isAdmin) {
-    return <main>{children}</main>
+    return <>{children}</>
   }
 
   return (

@@ -29,7 +29,7 @@ export function Footer() {
           </div>
 
           {/* Col 2: Navegación */}
-          <div className="lux-footer__col">
+          <div className="lux-footer__col lux-footer__col--nav">
             <h4 className="lux-footer__heading">Navegación</h4>
             <ul className="lux-footer__links">
               <li>
@@ -56,7 +56,7 @@ export function Footer() {
           </div>
 
           {/* Col 3: Contacto */}
-          <div className="lux-footer__col">
+          <div className="lux-footer__col lux-footer__col--contact">
             <h4 className="lux-footer__heading">Contacto</h4>
             <div className="lux-footer__contact">
               <button
@@ -143,7 +143,12 @@ export function Footer() {
         </div>
 
         <div className="lux-footer__bottom">
-          <span>© 2026 DON BOLIVIA · SHOWROOM COCHABAMBA & ENVÍOS A TODA BOLIVIA</span>
+          <span>
+            © 2026 Don Bolivia. Todos los derechos reservados · Desarrollado por{' '}
+            <strong style={{ color: 'rgba(255, 255, 255, 0.78)', fontWeight: 600 }}>
+              Dime Más
+            </strong>
+          </span>
           <button
             type="button"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}

@@ -58,6 +58,7 @@ export interface Product {
   description_short?: string
   description_long?: string
   price?: number
+  price_bs?: number
   currency: Currency
   availability: AvailabilityStatus
   status: ProductStatus

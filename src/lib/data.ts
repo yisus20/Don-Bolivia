@@ -196,7 +196,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 15,484.25"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v7-alder-5-2nd-gen-bk.png",
+        "alt_text": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — BK - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,355.00 USD / Bs 16,327.75). Opción sin gigbag: $1,285.00 USD (Bs 15,484.25). Existencias por confirmar antes de ofrecer."
   },
@@ -250,7 +257,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 15,484.25"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v7-alder-5-2nd-gen-ts.png",
+        "alt_text": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — TS - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,355.00 USD / Bs 16,327.75). Opción sin gigbag: $1,285.00 USD (Bs 15,484.25). Existencias por confirmar antes de ofrecer."
   },
@@ -304,7 +318,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 15,484.25"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v7-alder-5-2nd-gen-awh.png",
+        "alt_text": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — AWH - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,355.00 USD / Bs 16,327.75). Opción sin gigbag: $1,285.00 USD (Bs 15,484.25). Existencias por confirmar antes de ofrecer."
   },
@@ -358,7 +379,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 15,484.25"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v7-alder-5-2nd-gen-lpb.png",
+        "alt_text": "Marcus Miller by Sire V7 ALDER-5 (2nd Gen) — LPB - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,355.00 USD / Bs 16,327.75). Opción sin gigbag: $1,285.00 USD (Bs 15,484.25). Existencias por confirmar antes de ofrecer."
   },
@@ -412,7 +440,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 15,845.75"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v7-vintage-alder-5-2nd-gen-bk.png",
+        "alt_text": "Marcus Miller by Sire V7 VINTAGE ALDER-5 (2nd Gen) — BK - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,385.00 USD / Bs 16,689.25). Opción sin gigbag: $1,315.00 USD (Bs 15,845.75). Existencias por confirmar antes de ofrecer."
   },
@@ -466,7 +501,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 15,845.75"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v7-vintage-alder-5-2nd-gen-ts.png",
+        "alt_text": "Marcus Miller by Sire V7 VINTAGE ALDER-5 (2nd Gen) — TS - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,385.00 USD / Bs 16,689.25). Opción sin gigbag: $1,315.00 USD (Bs 15,845.75). Existencias por confirmar antes de ofrecer."
   },
@@ -520,7 +562,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 18,882.35"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v7-vintage-swamp-ash-5-2nd-gen-nt.png",
+        "alt_text": "Marcus Miller by Sire V7 VINTAGE SWAMP ASH-5 (2nd Gen) — NT - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,637.00 USD / Bs 19,725.85). Opción sin gigbag: $1,567.00 USD (Bs 18,882.35). Existencias por confirmar antes de ofrecer."
   },
@@ -574,7 +623,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 18,882.35"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v7-vintage-swamp-ash-5-2nd-gen-wb.png",
+        "alt_text": "Marcus Miller by Sire V7 VINTAGE SWAMP ASH-5 (2nd Gen) — WB - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,637.00 USD / Bs 19,725.85). Opción sin gigbag: $1,567.00 USD (Bs 18,882.35). Existencias por confirmar antes de ofrecer."
   },
@@ -628,7 +684,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 19,171.55"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v8-5-nt.png",
+        "alt_text": "Marcus Miller by Sire V8-5 — NT - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,661.00 USD / Bs 20,015.05). Opción sin gigbag: $1,591.00 USD (Bs 19,171.55). Existencias por confirmar antes de ofrecer."
   },
@@ -682,7 +745,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 19,171.55"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v8-5-ts.png",
+        "alt_text": "Marcus Miller by Sire V8-5 — TS - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,661.00 USD / Bs 20,015.05). Opción sin gigbag: $1,591.00 USD (Bs 19,171.55). Existencias por confirmar antes de ofrecer."
   },
@@ -736,7 +806,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 14,833.55"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v5-24-5-ts.png",
+        "alt_text": "Marcus Miller by Sire V5 24-5 — TS - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,301.00 USD / Bs 15,677.05). Opción sin gigbag: $1,231.00 USD (Bs 14,833.55). Existencias por confirmar antes de ofrecer."
   },
@@ -790,7 +867,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 14,833.55"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v5-24-5-mlg.png",
+        "alt_text": "Marcus Miller by Sire V5 24-5 — MLG - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,301.00 USD / Bs 15,677.05). Opción sin gigbag: $1,231.00 USD (Bs 14,833.55). Existencias por confirmar antes de ofrecer."
   },
@@ -844,7 +928,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 11,652.35"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v3-4-2nd-gen-org.png",
+        "alt_text": "Marcus Miller by Sire V3-4 (2nd Gen) — ORG - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,037.00 USD / Bs 12,495.85). Opción sin gigbag: $967.00 USD (Bs 11,652.35). Existencias por confirmar antes de ofrecer."
   },
@@ -898,7 +989,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 11,652.35"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v3-4-2nd-gen-snb.png",
+        "alt_text": "Marcus Miller by Sire V3-4 (2nd Gen) — SNB - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,037.00 USD / Bs 12,495.85). Opción sin gigbag: $967.00 USD (Bs 11,652.35). Existencias por confirmar antes de ofrecer."
   },
@@ -952,7 +1050,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 12,809.15"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v3-5-2nd-gen-ts.png",
+        "alt_text": "Marcus Miller by Sire V3-5 (2nd Gen) — TS - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,133.00 USD / Bs 13,652.65). Opción sin gigbag: $1,063.00 USD (Bs 12,809.15). Existencias por confirmar antes de ofrecer."
   },
@@ -1006,7 +1111,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 12,809.15"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v3-5-2nd-gen-awh.png",
+        "alt_text": "Marcus Miller by Sire V3-5 (2nd Gen) — AWH - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,133.00 USD / Bs 13,652.65). Opción sin gigbag: $1,063.00 USD (Bs 12,809.15). Existencias por confirmar antes de ofrecer."
   },
@@ -1060,7 +1172,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 12,809.15"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v3-5-2nd-gen-ma.png",
+        "alt_text": "Marcus Miller by Sire V3-5 (2nd Gen) — MA - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,133.00 USD / Bs 13,652.65). Opción sin gigbag: $1,063.00 USD (Bs 12,809.15). Existencias por confirmar antes de ofrecer."
   },
@@ -1114,7 +1233,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 12,809.15"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-v3-5-2nd-gen-snb.png",
+        "alt_text": "Marcus Miller by Sire V3-5 (2nd Gen) — SNB - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,133.00 USD / Bs 13,652.65). Opción sin gigbag: $1,063.00 USD (Bs 12,809.15). Existencias por confirmar antes de ofrecer."
   },
@@ -1168,7 +1294,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 15,701.15"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-p7-alder-5-2nd-gen-ts.png",
+        "alt_text": "Marcus Miller by Sire P7 ALDER-5 (2nd Gen) — TS - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,373.00 USD / Bs 16,544.65). Opción sin gigbag: $1,303.00 USD (Bs 15,701.15). Existencias por confirmar antes de ofrecer."
   },
@@ -1222,7 +1355,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 19,316.15"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-p8-5-nt.png",
+        "alt_text": "Marcus Miller by Sire P8-5 — NT - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,673.00 USD / Bs 20,159.65). Opción sin gigbag: $1,603.00 USD (Bs 19,316.15). Existencias por confirmar antes de ofrecer."
   },
@@ -1276,7 +1416,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 19,316.15"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-p8-5-ts.png",
+        "alt_text": "Marcus Miller by Sire P8-5 — TS - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,673.00 USD / Bs 20,159.65). Opción sin gigbag: $1,603.00 USD (Bs 19,316.15). Existencias por confirmar antes de ofrecer."
   },
@@ -1330,7 +1477,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 18,737.75"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-m7-alder-5-2nd-gen-brs.png",
+        "alt_text": "Marcus Miller by Sire M7 ALDER-5 (2nd Gen) — BRS - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,625.00 USD / Bs 19,581.25). Opción sin gigbag: $1,555.00 USD (Bs 18,737.75). Existencias por confirmar antes de ofrecer."
   },
@@ -1384,7 +1538,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 18,737.75"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-m7-alder-5-2nd-gen-tbl.png",
+        "alt_text": "Marcus Miller by Sire M7 ALDER-5 (2nd Gen) — TBL - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,625.00 USD / Bs 19,581.25). Opción sin gigbag: $1,555.00 USD (Bs 18,737.75). Existencias por confirmar antes de ofrecer."
   },
@@ -1438,7 +1599,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 21,918.95"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-m7-swamp-ash-5-2nd-gen-nt.png",
+        "alt_text": "Marcus Miller by Sire M7 SWAMP ASH-5 (2nd Gen) — NT - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,889.00 USD / Bs 22,762.45). Opción sin gigbag: $1,819.00 USD (Bs 21,918.95). Existencias por confirmar antes de ofrecer."
   },
@@ -1492,7 +1660,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 21,918.95"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-m7-swamp-ash-5-2nd-gen-tbk.png",
+        "alt_text": "Marcus Miller by Sire M7 SWAMP ASH-5 (2nd Gen) — TBK - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,889.00 USD / Bs 22,762.45). Opción sin gigbag: $1,819.00 USD (Bs 21,918.95). Existencias por confirmar antes de ofrecer."
   },
@@ -1546,7 +1721,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 23,075.75"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-m7-6-tbl.png",
+        "alt_text": "Marcus Miller by Sire M7-6 — TBL - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,985.00 USD / Bs 23,919.25). Opción sin gigbag: $1,915.00 USD (Bs 23,075.75). Existencias por confirmar antes de ofrecer."
   },
@@ -1600,7 +1782,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 23,075.75"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-m7-6-tbk.png",
+        "alt_text": "Marcus Miller by Sire M7-6 — TBK - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,985.00 USD / Bs 23,919.25). Opción sin gigbag: $1,915.00 USD (Bs 23,075.75). Existencias por confirmar antes de ofrecer."
   },
@@ -1654,7 +1843,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 17,580.95"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-m5-swamp-ash-5-nt.png",
+        "alt_text": "Marcus Miller by Sire M5 SWAMP ASH-5 — NT - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,529.00 USD / Bs 18,424.45). Opción sin gigbag: $1,459.00 USD (Bs 17,580.95). Existencias por confirmar antes de ofrecer."
   },
@@ -1708,7 +1904,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 17,580.95"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-m5-swamp-ash-5-tbl.png",
+        "alt_text": "Marcus Miller by Sire M5 SWAMP ASH-5 — TBL - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,529.00 USD / Bs 18,424.45). Opción sin gigbag: $1,459.00 USD (Bs 17,580.95). Existencias por confirmar antes de ofrecer."
   },
@@ -1762,7 +1965,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 12,086.15"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-m2-5-2nd-gen-tbk.png",
+        "alt_text": "Marcus Miller by Sire M2-5 (2nd Gen) — TBK - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,073.00 USD / Bs 12,929.65). Opción sin gigbag: $1,003.00 USD (Bs 12,086.15). Existencias por confirmar antes de ofrecer."
   },
@@ -1816,7 +2026,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 14,905.85"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-s7-fm-tbk.png",
+        "alt_text": "Larry Carlton by Sire S7 FM — TBK - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($1,307.00 USD / Bs 15,749.35). Opción sin gigbag: $1,237.00 USD (Bs 14,905.85). Existencias por confirmar antes de ofrecer."
   },
@@ -1870,7 +2087,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 10,495.55"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-s3-sss-drd.png",
+        "alt_text": "Larry Carlton by Sire S3 SSS — DRD - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($941.00 USD / Bs 11,339.05). Opción sin gigbag: $871.00 USD (Bs 10,495.55). Existencias por confirmar antes de ofrecer."
   },
@@ -1924,7 +2148,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 10,495.55"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-s3-sss-mlg.png",
+        "alt_text": "Larry Carlton by Sire S3 SSS — MLG - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Incluye gigbag en precio base ($941.00 USD / Bs 11,339.05). Opción sin gigbag: $871.00 USD (Bs 10,495.55). Existencias por confirmar antes de ofrecer."
   },
@@ -1970,7 +2201,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 723.00"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-sire-strap-brn.png",
+        "alt_text": "Sire Strap — BRN - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Precio único: $60.00 USD (Bs 723.00). Existencias por confirmar."
   },
@@ -2016,7 +2254,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 723.00"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/sire/sire-sire-strap-blk.png",
+        "alt_text": "Sire Strap — BLK - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_sire_2026",
     "notes": "Precio único: $60.00 USD (Bs 723.00). Existencias por confirmar."
   },
@@ -2058,7 +2303,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 6,362.40"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec6866.png",
+        "alt_text": "Donner HUSH-I PRO Guitar Natural Spruce - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC6866 · Publicado: $528.00 USD (Bs 6,362.40) · Cierre: $480.00 USD (Bs 5,784.00). Confirmar existencias antes de ofrecer."
   },
@@ -2100,7 +2352,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 6,362.40"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec6868.png",
+        "alt_text": "Donner HUSH-I PRO Guitar White - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC6868 · Publicado: $528.00 USD (Bs 6,362.40) · Cierre: $480.00 USD (Bs 5,784.00). Confirmar existencias antes de ofrecer."
   },
@@ -2142,7 +2401,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 7,290.25"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec7029.png",
+        "alt_text": "Donner HUSH-X PRO Guitar White - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC7029 · Publicado: $605.00 USD (Bs 7,290.25) · Cierre: $550.00 USD (Bs 6,627.50). Confirmar existencias antes de ofrecer."
   },
@@ -2184,7 +2450,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 7,290.25"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec7030.png",
+        "alt_text": "Donner HUSH-X PRO Guitar Black - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC7030 · Publicado: $605.00 USD (Bs 7,290.25) · Cierre: $550.00 USD (Bs 6,627.50). Confirmar existencias antes de ofrecer."
   },
@@ -2226,7 +2499,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 5,036.90"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec7251.png",
+        "alt_text": "Donner HUSH-C SUNBURST Classical Guitar - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC7251 · Publicado: $418.00 USD (Bs 5,036.90) · Cierre: $380.00 USD (Bs 4,579.00). Confirmar existencias antes de ofrecer."
   },
@@ -2268,7 +2548,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 5,036.90"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec7252.png",
+        "alt_text": "Donner HUSH-C BLACK Nylon String Classical Guitar - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC7252 · Publicado: $418.00 USD (Bs 5,036.90) · Cierre: $380.00 USD (Bs 4,579.00). Confirmar existencias antes de ofrecer."
   },
@@ -2310,7 +2597,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 4,016.75"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec6961.png",
+        "alt_text": "Donner DST-80 Matton Black Electric Guitar with Amplifier,Strap,String,Tuner,Cable,Capo and Pick - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC6961 · Publicado: $333.34 USD (Bs 4,016.75) · Cierre: $300.00 USD (Bs 3,615.00). Confirmar existencias antes de ofrecer."
   },
@@ -2352,7 +2646,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 4,016.75"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec6960.png",
+        "alt_text": "Donner DST-80 Surf Green Electric Guitar with Amplifier,Strap,String,Tuner,Cable,Capo and Pick - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC6960 · Publicado: $333.34 USD (Bs 4,016.75) · Cierre: $300.00 USD (Bs 3,615.00). Confirmar existencias antes de ofrecer."
   },
@@ -2394,7 +2695,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 4,639.25"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec1790.png",
+        "alt_text": "Donner Arena Multi-FX Pedal Amp-Modeller - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC1790 · Publicado: $385.00 USD (Bs 4,639.25) · Cierre: $350.00 USD (Bs 4,217.50). Confirmar existencias antes de ofrecer."
   },
@@ -2436,7 +2744,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 5,302.00"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec6928.png",
+        "alt_text": "Donner Ultra Dual Series Multi Effects Acoustic Preamp Loop - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC6928 · Publicado: $440.00 USD (Bs 5,302.00) · Cierre: $400.00 USD (Bs 4,820.00). Confirmar existencias antes de ofrecer."
   },
@@ -2478,7 +2793,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 2,385.90"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec7031.png",
+        "alt_text": "Donner PocketX Guitar/Bass AMP Modeler Multi Effects Processor - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC7031 · Publicado: $198.00 USD (Bs 2,385.90) · Cierre: $180.00 USD (Bs 2,169.00). Confirmar existencias antes de ofrecer."
   },
@@ -2520,7 +2842,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 6,627.50"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec6681.png",
+        "alt_text": "Donner DDP-60 Semi-weighted Upright Digital Piano - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC6681 · Publicado: $550.00 USD (Bs 6,627.50) · Cierre: $500.00 USD (Bs 6,025.00). Confirmar existencias antes de ofrecer."
   },
@@ -2562,7 +2891,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 8,615.75"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec7220.png",
+        "alt_text": "Donner DHP-100 PRO Digital Piano Brown - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC7220 · Publicado: $715.00 USD (Bs 8,615.75) · Cierre: $650.00 USD (Bs 7,832.50). Confirmar existencias antes de ofrecer."
   },
@@ -2604,7 +2940,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 18,557.00"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec6773.png",
+        "alt_text": "DONNER DDP-80 PRO Digital piano - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC6773 · Publicado: $1,540.00 USD (Bs 18,557.00) · Cierre: $1,400.00 USD (Bs 16,870.00). Confirmar existencias antes de ofrecer."
   },
@@ -2646,7 +2989,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 4,241.60"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec6724.png",
+        "alt_text": "DONNER DEK-620 61 KEYS ELECTRONIC PIANO Bundle - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC6724 · Publicado: $352.00 USD (Bs 4,241.60) · Cierre: $320.00 USD (Bs 3,856.00). Confirmar existencias antes de ofrecer."
   },
@@ -2688,7 +3038,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 2,677.87"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec3360.png",
+        "alt_text": "Donner DMK-25 PRO MIDI Keyboard - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC3360 · Publicado: $222.23 USD (Bs 2,677.87) · Cierre: $200.00 USD (Bs 2,410.00). Confirmar existencias antes de ofrecer."
   },
@@ -2730,7 +3087,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 5,302.00"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec3413.png",
+        "alt_text": "Donner DED-80 Electric Drum Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC3413 · Publicado: $440.00 USD (Bs 5,302.00) · Cierre: $400.00 USD (Bs 4,820.00). Confirmar existencias antes de ofrecer."
   },
@@ -2772,7 +3136,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 9,941.25"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec6782.png",
+        "alt_text": "Donner DED-200Max Electronic Drum Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC6782 · Publicado: $825.00 USD (Bs 9,941.25) · Cierre: $750.00 USD (Bs 9,037.50). Confirmar existencias antes de ofrecer."
   },
@@ -2814,7 +3185,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 9,013.40"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec7247.png",
+        "alt_text": "Donner Groove Drum SET - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC7247 · Publicado: $748.00 USD (Bs 9,013.40) · Cierre: $680.00 USD (Bs 8,194.00). Confirmar existencias antes de ofrecer."
   },
@@ -2856,7 +3234,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 228.95"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec1137.png",
+        "alt_text": "Donner Drum Sticks 5A Classic Maple Wood 3 Pair with Carrying Bag - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC1137 · Publicado: $19.00 USD (Bs 228.95) · Cierre: $18.95 USD (Bs 228.32). Confirmar existencias antes de ofrecer."
   },
@@ -2898,7 +3283,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 729.03"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec1301.png",
+        "alt_text": "Donner EM1 Personal In-Ear Headphone Amplifier - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC1301 · Publicado: $60.50 USD (Bs 729.03) · Cierre: $55.00 USD (Bs 662.75). Confirmar existencias antes de ofrecer."
   },
@@ -2940,7 +3332,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 729.03"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec7200.png",
+        "alt_text": "Donner EM1 Personal In-Ear Headphone Amplifier(Black) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC7200 · Publicado: $60.50 USD (Bs 729.03) · Cierre: $55.00 USD (Bs 662.75). Confirmar existencias antes de ofrecer."
   },
@@ -2982,7 +3381,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 988.10"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/donner/donner-ec1302.png",
+        "alt_text": "Donner EM2 Personal In-Ear Headphone Amplifier - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_donner_2026",
     "notes": "SKU: EC1302 · Publicado: $82.00 USD (Bs 988.10) · Cierre: $75.00 USD (Bs 903.75). Confirmar existencias antes de ofrecer."
   },
@@ -3024,7 +3430,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 108.45"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ge110n.png",
+        "alt_text": "Set Cuerdas Guit Electrica Magma - Extra Light Nickel Plated Steel Guit Electrica Set .009\" - .042\" - (GE110N) - 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GE110N · Precio vigente: $9.00 USD (Bs 108.45). Confirmar existencias antes de ofrecer."
   },
@@ -3066,7 +3479,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 108.45"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ge130n.png",
+        "alt_text": "Set Cuerdas Guit Electrica Magma - Custom Light Nickel Plated Steel Guit Electrica Set .009\" - .046\" - (GE130N) - 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GE130N · Precio vigente: $9.00 USD (Bs 108.45). Confirmar existencias antes de ofrecer."
   },
@@ -3108,7 +3528,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 102.43"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ge140n.png",
+        "alt_text": "Set Cuerdas Guit Electrica Magma - Light Nickel Plated Steel Guit Electrica Set .010\" - .046\" - (GE140N) - 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GE140N · Precio vigente: $8.50 USD (Bs 102.43). Confirmar existencias antes de ofrecer."
   },
@@ -3150,7 +3577,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 108.45"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ge155n.png",
+        "alt_text": "Set Cuerdas Guit Electrica Magma - Heavy Bottom Nickel Plated Steel Guit Electrica Set .010\" - .052\" - (GE155N) - 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GE155N · Precio vigente: $9.00 USD (Bs 108.45). Confirmar existencias antes de ofrecer."
   },
@@ -3192,7 +3626,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 108.45"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ge160n.png",
+        "alt_text": "Set Cuerdas Guit Electrica Magma - Medium Nickel Plated Steel Guit Electrica Set .011\" - .050\" - (GE160N) - 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GE160N · Precio vigente: $9.00 USD (Bs 108.45). Confirmar existencias antes de ofrecer."
   },
@@ -3234,7 +3675,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 361.50"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be150n.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" Set, .040 - .100 (BE150N) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE150N · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
   },
@@ -3276,7 +3724,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 361.50"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be170n.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" Set, .045 - .105 (BE170N) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE170N · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
   },
@@ -3318,7 +3773,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 457.90"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be155n.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" 5 Cuerdas Set, .040 - .125 (BE155N) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE155N · Precio vigente: $38.00 USD (Bs 457.90). Confirmar existencias antes de ofrecer."
   },
@@ -3360,7 +3822,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 457.90"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be175n.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" 5 Cuerdas Set, .045 - .130 (BE175N) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE175N · Precio vigente: $38.00 USD (Bs 457.90). Confirmar existencias antes de ofrecer."
   },
@@ -3402,7 +3871,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 530.20"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be156n.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Light - Nickel Plated Steel Round Wound - Escala Larga 34\" 6 Cuerdas Set, .030 - .125 (BE156N) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE156N · Precio vigente: $44.00 USD (Bs 530.20). Confirmar existencias antes de ofrecer."
   },
@@ -3444,7 +3920,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 530.20"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be176n.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Plated Steel Round Wound - Escala Larga 34\" 6 Cuerdas Set, .030 - .130 (BE176N) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE176N · Precio vigente: $44.00 USD (Bs 530.20). Confirmar existencias antes de ofrecer."
   },
@@ -3486,7 +3969,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 578.40"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be160suf.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Medium Light - Steel Ultra Flat Strings - Escala Larga 34\" 4 Cuerdas Set, .045 - .100 (BE160SUF) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE160SUF · Precio vigente: $48.00 USD (Bs 578.40). Confirmar existencias antes de ofrecer."
   },
@@ -3528,7 +4018,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 723.00"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be165suf.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Medium Light - Steel Ultra Flat Strings - Escala Larga 34\" 5 Cuerdas Set, .045 - .125 (BE165SUF) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE165SUF · Precio vigente: $60.00 USD (Bs 723.00). Confirmar existencias antes de ofrecer."
   },
@@ -3570,7 +4067,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 542.25"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be400nb.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Light - Flat Black Nylon Tapewound Strings - Escala Larga 34\" 4 Cuerdas Set, .050 - .105 (BE400NB) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE400NB · Precio vigente: $45.00 USD (Bs 542.25). Confirmar existencias antes de ofrecer."
   },
@@ -3612,7 +4116,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 463.93"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be140nsf.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" Set, .040 - .095 (BE140NSF) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE140NSF · Precio vigente: $38.50 USD (Bs 463.93). Confirmar existencias antes de ofrecer."
   },
@@ -3654,7 +4165,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 584.43"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be145nsf.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" 5 Cuerdas Set, .040 - .120 (BE145NSF) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE145NSF · Precio vigente: $48.50 USD (Bs 584.43). Confirmar existencias antes de ofrecer."
   },
@@ -3696,7 +4214,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 680.83"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be146nsf.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Extra Light+ - Nickel Super Flex - Escala Larga 34\" 6 Cuerdas Set, .028 - .120 (BE146NSF) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE146NSF · Precio vigente: $56.50 USD (Bs 680.83). Confirmar existencias antes de ofrecer."
   },
@@ -3738,7 +4263,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 463.93"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be170nsf.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" Set, .045 - .105 (BE170NSF) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE170NSF · Precio vigente: $38.50 USD (Bs 463.93). Confirmar existencias antes de ofrecer."
   },
@@ -3780,7 +4312,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 584.43"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be175nsf.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" 5 Cuerdas Set, .045 - .130 (BE175NSF) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE175NSF · Precio vigente: $48.50 USD (Bs 584.43). Confirmar existencias antes de ofrecer."
   },
@@ -3822,7 +4361,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 680.83"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-be176nsf.png",
+        "alt_text": "Set Cuerdas Bajo Electrico Magma Medium - Nickel Super Flex - Escala Larga 34\" 6 Cuerdas Set, .030 - .130 (BE176NSF) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BE176NSF · Precio vigente: $56.50 USD (Bs 680.83). Confirmar existencias antes de ofrecer."
   },
@@ -3864,7 +4410,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 361.50"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ba150g.png",
+        "alt_text": "Encordado Bajo Acustico Magma - Light Cuerdas Gold Alloy - Escala Larga 34\" Set .040 - .100 (BA150G) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BA150G · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
   },
@@ -3906,7 +4459,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 361.50"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ba160g.png",
+        "alt_text": "Encordado Bajo Acustico Magma - Medium Light Cuerdas Gold Alloy - Escala Larga 34\" Set .045 - .100 (BA160G) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: BA160G · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
   },
@@ -3948,7 +4508,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 114.48"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ga120b80.png",
+        "alt_text": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Bronce 80/20 Set .010\" - .048\" - 1 Set (GA120B80) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GA120B80 · Precio vigente: $9.50 USD (Bs 114.48). Confirmar existencias antes de ofrecer."
   },
@@ -3990,7 +4557,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 114.48"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ga130b80.png",
+        "alt_text": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Bronce 80/20 Set .011\" - .052\" - 1 Set (GA130B80) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GA130B80 · Precio vigente: $9.50 USD (Bs 114.48). Confirmar existencias antes de ofrecer."
   },
@@ -4032,7 +4606,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 138.58"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ga120pb.png",
+        "alt_text": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Phosphor Bronze Set .010\" - .048\" - 1 Set (GA120PB) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GA120PB · Precio vigente: $11.50 USD (Bs 138.58). Confirmar existencias antes de ofrecer."
   },
@@ -4074,7 +4655,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 138.58"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ga130pb.png",
+        "alt_text": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Phosphor Bronze Set .011\" - .052\" - 1 Set (GA130PB) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GA130PB · Precio vigente: $11.50 USD (Bs 138.58). Confirmar existencias antes de ofrecer."
   },
@@ -4116,7 +4704,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 168.70"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ga120sp.png",
+        "alt_text": "Set Cuerdas Guit Acustica Magma - Light Cuerdas Guit Acustica Silver Plated Copper Gypsy Jazz Set .010\" - .048\" - 1 Set (GA120SP) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GA120SP · Precio vigente: $14.00 USD (Bs 168.70). Confirmar existencias antes de ofrecer."
   },
@@ -4158,7 +4753,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 168.70"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-ga130sp.png",
+        "alt_text": "Set Cuerdas Guit Acustica Magma - Light+ Cuerdas Guit Acustica Silver Plated Copper Gypsy Jazz Set .011\" - .052\" - 1 Set (GA130SP) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GA130SP · Precio vigente: $14.00 USD (Bs 168.70). Confirmar existencias antes de ofrecer."
   },
@@ -4200,7 +4802,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 96.40"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-gc110d.png",
+        "alt_text": "Encordado Magma Guitarra Clásica - Nylon Cristal Especial/Aleación de Bronce Tensión Media (GC110D) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GC110D · Precio vigente: $8.00 USD (Bs 96.40). Confirmar existencias antes de ofrecer."
   },
@@ -4242,7 +4851,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 96.40"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-gc120d.png",
+        "alt_text": "Encordado Magma Guitarra Clásica - Nylon Cristal Especial/Aleación de Bronce Tensión Alta (GC120D) 1 Set - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: GC120D · Precio vigente: $8.00 USD (Bs 96.40). Confirmar existencias antes de ofrecer."
   },
@@ -4284,7 +4900,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 132.55"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07mp01.png",
+        "alt_text": "Correa lisa Magma de polipropileno negro (07MP01.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MP01. · Precio vigente: $11.00 USD (Bs 132.55). Confirmar existencias antes de ofrecer."
   },
@@ -4326,7 +4949,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 132.55"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07mp02.png",
+        "alt_text": "Correa lisa Magma de polipropileno roja (07MP02.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MP02. · Precio vigente: $11.00 USD (Bs 132.55). Confirmar existencias antes de ofrecer."
   },
@@ -4368,7 +4998,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 132.55"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07mp03.png",
+        "alt_text": "Correa lisa Magma de polipropileno azul (07MP03.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MP03. · Precio vigente: $11.00 USD (Bs 132.55). Confirmar existencias antes de ofrecer."
   },
@@ -4410,7 +5047,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 132.55"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07mp04.png",
+        "alt_text": "Correa lisa Magma de polipropileno verde (07MP04.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MP04. · Precio vigente: $11.00 USD (Bs 132.55). Confirmar existencias antes de ofrecer."
   },
@@ -4452,7 +5096,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 198.83"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07ms01.png",
+        "alt_text": "Correa Magma polyester Rock (07MS01.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MS01. · Precio vigente: $16.50 USD (Bs 198.83). Confirmar existencias antes de ofrecer."
   },
@@ -4494,7 +5145,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 198.83"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07ms01c.png",
+        "alt_text": "Correa Magma polyester Comic (07MS01C.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MS01C. · Precio vigente: $16.50 USD (Bs 198.83). Confirmar existencias antes de ofrecer."
   },
@@ -4536,7 +5194,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 198.83"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07ms01rt.png",
+        "alt_text": "Correa Magma polyester Retro (07MS01RT.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MS01RT. · Precio vigente: $16.50 USD (Bs 198.83). Confirmar existencias antes de ofrecer."
   },
@@ -4578,7 +5243,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 198.83"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07ms01s.png",
+        "alt_text": "Correa Magma polyester Ska (07MS01S.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MS01S. · Precio vigente: $16.50 USD (Bs 198.83). Confirmar existencias antes de ofrecer."
   },
@@ -4620,7 +5292,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 222.93"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07ms01jh.png",
+        "alt_text": "Correa Magma polyester Jimi Hendrix Woodstock (07MS01JH.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MS01JH. · Precio vigente: $18.50 USD (Bs 222.93). Confirmar existencias antes de ofrecer."
   },
@@ -4662,7 +5341,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 222.93"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07ms01bw.png",
+        "alt_text": "Correa Magma polyester Blue Woodstoc (07MS01BW.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MS01BW. · Precio vigente: $18.50 USD (Bs 222.93). Confirmar existencias antes de ofrecer."
   },
@@ -4704,7 +5390,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 222.93"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07ms01rw.png",
+        "alt_text": "Correa Magma polyester Red Woodstoc (07MS01RW.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MS01RW. · Precio vigente: $18.50 USD (Bs 222.93). Confirmar existencias antes de ofrecer."
   },
@@ -4746,7 +5439,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 301.25"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07mc01f.png",
+        "alt_text": "Correa Magma lisa cuero negro 5 cm Fina (07MC01F.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MC01F. · Precio vigente: $25.00 USD (Bs 301.25). Confirmar existencias antes de ofrecer."
   },
@@ -4788,7 +5488,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 301.25"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07mb02f.png",
+        "alt_text": "Correa Magma lisa cuero marron 5 cm Fina (07MB02F.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MB02F. · Precio vigente: $25.00 USD (Bs 301.25). Confirmar existencias antes de ofrecer."
   },
@@ -4830,7 +5537,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 361.50"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07mb02.png",
+        "alt_text": "Correa Magma lisa cuero marron (07MB02.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MB02. · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
   },
@@ -4872,7 +5586,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 361.50"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07mb01.png",
+        "alt_text": "Correa Magma lisa cuero negro (07MB01.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MB01. · Precio vigente: $30.00 USD (Bs 361.50). Confirmar existencias antes de ofrecer."
   },
@@ -4914,7 +5635,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 457.90"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07mb01b.png",
+        "alt_text": "Correa Magma lisa cuero negro para Bajo (07MB01B.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MB01B. · Precio vigente: $38.00 USD (Bs 457.90). Confirmar existencias antes de ofrecer."
   },
@@ -4956,7 +5684,14 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 457.90"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07mb02b.png",
+        "alt_text": "Correa Magma lisa cuero marron para Bajo (07MB02B.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07MB02B. · Precio vigente: $38.00 USD (Bs 457.90). Confirmar existencias antes de ofrecer."
   },
@@ -4998,12 +5733,18 @@ const RAW_PRODUCTS: RawProductEntry[] = [
         "value": "Bs 433.80"
       }
     ],
-    "images": [],
+    "images": [
+      {
+        "url": "/catalog-images/magma/magma-07scs01.png",
+        "alt_text": "Correa Magma de seguridad negra con cliplock (07SCS01.) - Don Bolivia Oficial",
+        "is_primary": true,
+        "order": 0
+      }
+    ],
     "source": "google_sheets_magma_2026",
     "notes": "SKU: 07SCS01. · Precio vigente: $36.00 USD (Bs 433.80). Confirmar existencias antes de ofrecer."
   }
 ]
-
 function buildProducts(): Product[] {
   return RAW_PRODUCTS.map((raw, index) => {
     const brandId = BRAND_NAME_MAP[raw.brand] || 'brand-sire'

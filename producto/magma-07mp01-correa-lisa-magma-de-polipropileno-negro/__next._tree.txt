@@ -3,4 +3,4 @@
 3:[["children",{"s":"__PAGE__","h":160}]]
 2:[["children",{"s":{"n":"slug","t":"d","k":"magma-07mp01-correa-lisa-magma-de-polipropileno-negro","s":[]},"h":96,"c":"$Q3"}]]
 1:[["children",{"s":"producto","h":64,"c":"$Q2"}]]
-0:{"b":"GQhgfk9Dy3JVma0pJzmcQ","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
+0:{"b":"180q4MZnqX90bAOtrPZ0u","t":{"t":{"s":"","h":16,"c":"$Q1"}}}
